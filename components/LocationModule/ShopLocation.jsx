@@ -25,7 +25,7 @@ const ShopLocation = () => {
         <div>
           <p>{"Product category" < "frozenfoods"} </p>
           <p className="text-[39px] font-bold text-black font-montserrat">
-            Explore Tingo's Store location
+            Explore Tingos Store location
           </p>
         </div>
         <div className="md:flex hidden">

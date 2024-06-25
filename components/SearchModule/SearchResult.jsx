@@ -17,7 +17,7 @@ const SearchResult = () => {
        <div className='bg-[#E7EBF6] px-[100px] flex items-center justify-between ' >
             <div>
                 <p>{"Product category" < "frozenfoods" }  </p>
-            <p className='text-[50px] font-bold text-black font-montserrat' >Search Result  "Prawn"</p>
+            <p className='text-[50px] font-bold text-black font-montserrat' >Search Result:  Prawn</p>
 
             </div>
             <div>

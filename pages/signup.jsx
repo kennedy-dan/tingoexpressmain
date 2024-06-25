@@ -27,7 +27,7 @@ const Signup = () => {
             </p>
             <p className="text-[16px] font-[400] text-[#8A848F] text-center ">
               Already have an account Click{" "}
-              <span className="text-[#4FA9AB]">"Login"</span>
+              <span className="text-[#4FA9AB]">Login</span>
             </p>
             <div className="mt-16">
               <p className="font-semibold">Name</p>
