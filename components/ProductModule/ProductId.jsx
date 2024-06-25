@@ -60,30 +60,30 @@ const handleTrackOpen = () => {
     
   return (
     <section>
-        <div className='bg-[#E7EBF6] px-[100px] flex items-center justify-between ' >
+        <div className='bg-[#E7EBF6] py-10 md:py-0 mt-20 px-4 lg:px-[20px]  xl:px-[100px]  flex items-center justify-between ' >
             <div>
                 <p>{"Product category" < "frozenfoods" }  </p>
-            <p className='text-[54px] font-bold text-black font-montserrat' >Frozen Foods</p>
+            <p className='md:text-[54px] text-[32px] font-bold text-black font-montserrat' >Frozen Foods</p>
 
             </div>
-            <div>
+            <div className='hidden md:block' >
                 <img src='/images/frozencartbanner.png' alt='' />
             </div>
         </div>
       
-      <div className="p-[100px]">
+      <div className="py-20 px-4 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
         <div className='flex justify-between ' >
-        <p className="text-[24px] font-montserrat font-semibold ">
+        <p className="md:text-[24px] text-[14px] font-montserrat font-semibold ">
           Showing 1-70 of 78 results
         </p>
 
-        <p className="text-[24px] font-montserrat font-semibold ">
+        <p className="md:text-[24px] text-[14px] font-montserrat font-semibold ">
           Sort by: Price Low To High
         </p>
         
         </div>
   
-        <div className="grid grid-cols-3 gap-6 ">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
           {topSell?.map((items, index) => (
             <div key={index}  onClick={handleTrackOpen} className="mt-6 cursor-pointer font-urbanist p-[13px] hover:border hover:border-1 hover:shadow-lg rounded-2xl ">
               {" "}

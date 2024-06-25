@@ -12,38 +12,49 @@ const Footer = () => {
             elementum gravida nibh ultrices <br /> urna egestas lectus tempus.
             Eu <br /> eu dui tellus mattis feugiat et <br /> elementum.
           </p>
-          <p className="my-6 text-white " >Follow us on</p>
+          <p className="my-6 text-white ">Follow us on</p>
           <div>
-            <img src='/images/socials.png' alt='' />
+            <img src="/images/socials.png" alt="" />
           </div>
         </div>
         <div className="text-white lg:pt-6 pt-6">
           <p className="text-white text-[24px] font-semibold pb-4 ">Explore</p>
-
-          <Link href="/contact">
+          <Link href="/about">
+            <p className="text-[18px] mb-3  ">About us</p>
+          </Link>
+          <Link href="/product">
             <p className="text-[18px] mb-3  ">Products</p>
           </Link>
 
-            <p className="text-[18px] mb-3  ">Blogs</p>
+          <p className="text-[18px] mb-3  ">Blogs</p>
 
-          <p className="text-[18px] mb-3  ">Events</p>
           <p className="text-[18px] mb-3  ">New arrivals</p>
           <p className="text-[18px] mb-3  ">Location</p>
         </div>
 
         <div className="text-white lg:pt-6 pt-6">
-          <p className="text-white text-[24px] font-semibold pb-4 ">Partners</p>
+          <p className="text-white text-[24px] font-semibold pb-4 ">
+            Terms & Conditions
+          </p>
 
-          <p className="text-[18px] mb-3  ">Investments</p>
-          <Link href="/distributor">
-            <p className="text-[18px] mb-3  ">Be A Distributor</p>
+          <Link href="/returnpolcy">
+            <p className="text-[18px] mb-3  ">Return Poicy</p>
           </Link>
-
-          <p className="text-[18px] mb-3  ">Corporate Governance</p>
+          <Link href="/privacy-polcy">
+            <p className="text-[18px] mb-3  ">Privacy Policy</p>
+          </Link>
+          <Link href="/cookies">
+            <p className="text-[18px] mb-3  ">Cookie Policy</p>
+          </Link>
+          <Link href="/dataprivacy">
+            <p className="text-[18px] mb-3  ">Data Privacy Statement</p>
+          </Link>
         </div>
 
         <div className="lg:w-[40%] w-full lg:pt-6 pt-6">
-          <p className="text-[24px] font-  text-white pb-2">Sign up for our newsletters</p>
+          <p className="text-[24px] font-  text-white pb-2">
+            Sign up for our newsletters
+          </p>
           <div className="flex h-[54px]  ">
             <input
               className=" border border-gray-400 bg-transparent rounded-l-md w-full px-6 "
@@ -54,11 +65,11 @@ const Footer = () => {
             </button>
           </div>
           <p className="text-[16px] font-bold text-white mb-3 mt-14 ">
-              COMING SOON
-            </p>
-            <div>
-              <img src="/images/gooapp.png" alt='' />
-            </div>
+            COMING SOON
+          </p>
+          <div>
+            <img src="/images/gooapp.png" alt="" />
+          </div>
         </div>
       </div>
       <div className="bg-gray-600 h-[1px] w-full px-0 my-8"></div>
@@ -67,7 +78,6 @@ const Footer = () => {
         <p className="text-white lg:text-base text-[10px]">
           Copyright © 2024 Tingo BV. All rights reserved.
         </p>
-  
       </div>
     </section>
   );
