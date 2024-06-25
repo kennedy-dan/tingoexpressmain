@@ -84,8 +84,8 @@ const handleTrackOpen = () => {
         </div>
   
         <div className="grid grid-cols-3 gap-6 ">
-          {topSell?.map((items) => (
-            <div onClick={handleTrackOpen} className="mt-6 cursor-pointer font-urbanist p-[13px] hover:border hover:border-1 hover:shadow-lg rounded-2xl ">
+          {topSell?.map((items, index) => (
+            <div key={index}  onClick={handleTrackOpen} className="mt-6 cursor-pointer font-urbanist p-[13px] hover:border hover:border-1 hover:shadow-lg rounded-2xl ">
               {" "}
               <div className="flex ">
                 <img src={items.img} alt="" className="" />

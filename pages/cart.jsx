@@ -44,8 +44,8 @@ const Cart = () => {
             Recently Viewed{" "}
           </p>
           <div className="lg:flex justify-between  ">
-            {newArrival.map((items) => (
-              <img src={items} alt="" />
+            {newArrival.map((items, index) => (
+              <img key={index}  src={items} alt="" />
             ))}
           </div>
         </div>

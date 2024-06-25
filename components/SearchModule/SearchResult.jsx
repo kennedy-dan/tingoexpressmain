@@ -17,7 +17,7 @@ const SearchResult = () => {
        <div className='bg-[#E7EBF6] px-[100px] flex items-center justify-between ' >
             <div>
                 <p>{"Product category" < "frozenfoods" }  </p>
-            <p className='text-[50px] font-bold text-black font-montserrat' >Search Result : "Prawn"</p>
+            <p className='text-[50px] font-bold text-black font-montserrat' >Search Result  "Prawn"</p>
 
             </div>
             <div>
@@ -37,8 +37,8 @@ const SearchResult = () => {
         </div>
   
         <div className="grid grid-cols-3 gap-6 ">
-          {topSell?.map((items) => (
-            <div className="mt-6 font-urbanist">
+          {topSell?.map((items, index) => (
+            <div key={index}  className="mt-6 font-urbanist">
               {" "}
               <div className="flex ">
                 <img src={items.img} alt="" className="" />

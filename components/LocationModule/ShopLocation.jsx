@@ -33,8 +33,8 @@ const ShopLocation = () => {
         </div>
       </div>
       <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] font-montserrat ">
-        {tngorea.map((data) => (
-          <div className="border rounded-xl mb-9 border-gray-300 md:p-[50px] p-[7px]    w-full">
+        {tngorea.map((data, index) => (
+          <div key={index}  className="border rounded-xl mb-9 border-gray-300 md:p-[50px] p-[7px]    w-full">
             <p className="font-[500] text-[24px]"> Tingo supermarket- Ikeja</p>
 
             <div className="mt-2 md:flex justify-between items-center font-[400] text-[14px] md:text-[16px]">

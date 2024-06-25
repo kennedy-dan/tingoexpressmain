@@ -62,8 +62,8 @@ const Home = () => {
   return (
     <section>
       <AntCarousel autoplay effect="fade" speed={1500}>
-        {carouselbg.map((img) => (
-          <div>
+        {carouselbg.map((img, index) => (
+          <div key={index} >
             <div className="relative h-[80vh] mt-28 ">
               <div
                 style={{ backgroundImage: `url(${img.img})` }}
@@ -103,8 +103,8 @@ const Home = () => {
           Featured Categories
         </p>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-4 ">
-          {featCats?.map((items) => (
-            <div className="mt-6 font-urbanist">
+          {featCats?.map((items, index) => (
+            <div key={index} className="mt-6 font-urbanist">
               {" "}
               <div className="flex justify-center ">
                 <img src={items.img} alt="" className="" />
@@ -123,8 +123,8 @@ const Home = () => {
           Top Selling Product
         </p>
         <div className="grid grid-cols-3 gap-6 ">
-          {topSell?.map((items) => (
-            <div className="mt-6 font-urbanist">
+          {topSell?.map((items, index) => (
+            <div key={index}  className="mt-6 font-urbanist">
               {" "}
               <div className="flex ">
                 <img src={items.img} alt="" className="" />
@@ -169,8 +169,8 @@ const Home = () => {
           New Arrival
         </p>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6   ">
-          {newArrival.map((items) => (
-            <img src={items} alt="" />
+          {newArrival.map((items, index) => (
+            <img key={index}  src={items} alt="" />
           ))}
         </div>
       </div>

@@ -57,8 +57,8 @@ const Products = () => {
           All Categories
         </p>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-4 ">
-          {featCats?.map((items) => (
-            <Link href='/product/1' >
+          {featCats?.map((items, index) => (
+            <Link key={index}  href='/product/1' >
                    <div className="mt-6 font-urbanist">
               {" "}
               <div className="flex justify-center ">
@@ -80,8 +80,8 @@ const Products = () => {
           Best Selling Product
         </p>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 ">
-          {topSell?.map((items) => (
-            <div className="mt-6 font-urbanist">
+          {topSell?.map((items, index) => (
+            <div key={index}  className="mt-6 font-urbanist">
               {" "}
               <div className="flex ">
                 <img src={items.img} alt="" className="" />

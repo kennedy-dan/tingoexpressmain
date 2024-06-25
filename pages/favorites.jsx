@@ -77,8 +77,8 @@ const Fav = () => {
         </div>
   
         <div className="grid grid-cols-3 gap-6 ">
-          {topSell?.map((items) => (
-            <div className="mt-6 font-urbanist">
+          {topSell?.map((items, index) => (
+            <div key={index}  className="mt-6 font-urbanist">
               {" "}
               <div className="flex ">
                 <img src={items.img} alt="" className="" />
