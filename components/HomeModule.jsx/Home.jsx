@@ -113,8 +113,8 @@ const handleTrackOpen = () => {
         </p>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-4 ">
           {featCats?.map((items, index) => (
-            <Link href="/product/1">
-              <div key={index} className="mt-6 font-urbanist">
+            <Link key={index} href="/product/1">
+              <div  className="mt-6 font-urbanist">
                 {" "}
                 <div className="flex justify-center ">
                   <img src={items.img} alt="" className="" />
