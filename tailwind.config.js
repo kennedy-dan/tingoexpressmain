@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        urbanist: ['Urbanist', 'sans-serif'],
+        montserrat:['Montserrat', 'sans-serif']
+      },
       colors: {
         searchheader: "#128B8E",
         primary:'#004143',

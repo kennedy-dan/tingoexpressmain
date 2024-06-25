@@ -1,53 +1,73 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
-    <section>
-      <div className="px-20 bg-[#0A0014] py-10">
-        <div className="flex justify-between items-center">
-          <img src="/images/footerlogo.png" alt=''/>
-          <div className="flex w-full justify-end text-white items-center">
-            <p className="pr-4">Waiting list</p>
-
-            <div className="flex bg-white py-1 px-4">
-              <input className="outline-none" />
-              <button className="bg-secondary w-full text-white py-2 px-5">
-                JOIN
-              </button>
-            </div>
+    <section id="contact" className="bg-[#0F001F] pt-10 pb-20 font-urbanist">
+      <div className="lg:flex justify-between lg:px-20 md:px-10 px-6">
+        <div>
+          <img src="images/navbarlogo.png" alt="" className=" " />
+          <p className="text-white mt-4 ">
+            Lorem ipsum dolor sit amet <br /> consectetur. Sodales velit <br />{" "}
+            elementum gravida nibh ultrices <br /> urna egestas lectus tempus.
+            Eu <br /> eu dui tellus mattis feugiat et <br /> elementum.
+          </p>
+          <p className="my-6 text-white " >Follow us on</p>
+          <div>
+            <img src='/images/socials.png' alt='' />
           </div>
         </div>
+        <div className="text-white lg:pt-6 pt-6">
+          <p className="text-white text-[24px] font-semibold pb-4 ">Explore</p>
 
-        <div className="flex justify-between">
-          <div>
-            <p className='text-white mb-3'>Follow us on</p>
-            <div className="flex">
-              <div>
-                <img src="/images/fb.png" alt=''/>
-              </div>
-              <div className="ml-2">
-                <img src="/images/twitter.png" alt='' />
-              </div>{" "}
-              <div className="ml-2">
-                <img src="/images/insta.png" alt=''/>
-              </div>{" "}
-              <div className="ml-2">
-                <img src="/images/linkedin.png" alt=''/>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p className="text-white">Contact Us</p>
-            <div className="flex">
-                <img src='/images/sms.png' alt=''/>
-                <p className="ml-2 text-gray-400">connect@tinfoexpress.com</p>
-            </div>
-          </div>
-          <div>
-            <p className='text-center text-white mb-1'>COMING SOON</p>
-            <img src='/images/appgoo.png' alt=''/>
-          </div>
+          <Link href="/contact">
+            <p className="text-[18px] mb-3  ">Products</p>
+          </Link>
+
+            <p className="text-[18px] mb-3  ">Blogs</p>
+
+          <p className="text-[18px] mb-3  ">Events</p>
+          <p className="text-[18px] mb-3  ">New arrivals</p>
+          <p className="text-[18px] mb-3  ">Location</p>
         </div>
+
+        <div className="text-white lg:pt-6 pt-6">
+          <p className="text-white text-[24px] font-semibold pb-4 ">Partners</p>
+
+          <p className="text-[18px] mb-3  ">Investments</p>
+          <Link href="/distributor">
+            <p className="text-[18px] mb-3  ">Be A Distributor</p>
+          </Link>
+
+          <p className="text-[18px] mb-3  ">Corporate Governance</p>
+        </div>
+
+        <div className="lg:w-[40%] w-full lg:pt-6 pt-6">
+          <p className="text-[24px] font-  text-white pb-2">Sign up for our newsletters</p>
+          <div className="flex h-[54px]  ">
+            <input
+              className=" border border-gray-400 bg-transparent rounded-l-md w-full px-6 "
+              placeholder="Enter Your Email Address "
+            />
+            <button className="text-white rounded-r-md px-3 bg-[#128B8E] font-bold text-[24px] ">
+              Submit
+            </button>
+          </div>
+          <p className="text-[16px] font-bold text-white mb-3 mt-14 ">
+              COMING SOON
+            </p>
+            <div>
+              <img src="/images/gooapp.png" />
+            </div>
+        </div>
+      </div>
+      <div className="bg-gray-600 h-[1px] w-full px-0 my-8"></div>
+
+      <div className="md:flex justify-between lg:px-20 md:px-10 px-6 ">
+        <p className="text-white lg:text-base text-[10px]">
+          Copyright © 2024 Tingo BV. All rights reserved.
+        </p>
+  
       </div>
     </section>
   );
