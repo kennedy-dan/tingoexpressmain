@@ -88,11 +88,11 @@ const Home = () => {
       <section className=' py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]' >
         <div className="md:flex md:space-x-7 " >
           <div>
-          <img src='/images/discount.png' />
+          <img src='/images/discount.png' alt='' />
 
           </div>
           <div className="mt-4 md:mt-0" >
-          <img src='/images/exporteletronics.png' />
+          <img src='/images/exporteletronics.png' alt='' />
 
           </div>
         </div>
@@ -134,7 +134,7 @@ const Home = () => {
                   {items.desc}
                 </p>
                 <div className="text-black font-semibold text-[20px] flex items-center ">
-                  <img src="/images/naira.png" />
+                  <img src="/images/naira.png" alt='' />
                   <p className="pl-1">{items.price}</p>
                 </div>
               </div>
@@ -145,7 +145,7 @@ const Home = () => {
       <div className="py-[100px] ">
         <div className="bg-primary w-full px-10 md:px-0 md:flex py-10 space-x-4 justify-center">
           <div>
-            <img src="/images/mobile.png" />
+            <img src="/images/mobile.png" alt='' />
           </div>
           <div className="font-urbanist">
             <p className="text-[32px] text-white font-bold md:pt-0 pt-10  ">
@@ -159,7 +159,7 @@ const Home = () => {
               COMING SOON
             </p>
             <div>
-              <img src="/images/gooapp.png" />
+              <img src="/images/gooapp.png" alt='' />
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@ const SearchResult = () => {
 
             </div>
             <div>
-                <img src='/images/searchcartbanner.png' />
+                <img src='/images/searchcartbanner.png' alt='' />
             </div>
         </div>
         <div className="p-[100px]">
@@ -48,7 +48,7 @@ const SearchResult = () => {
                   {items.desc}
                 </p>
                 <div className="text-black font-semibold text-[20px] flex items-center ">
-                  <img src="/images/naira.png" />
+                  <img src="/images/naira.png" alt='' />
                   <p className="pl-1">{items.price}</p>
                 </div>
               </div>

@@ -13,12 +13,12 @@ const Cookies = () => {
             </p>
           </div>
           <div>
-            <img src="/images/privacycartbanner.png" />
+            <img src="/images/privacycartbanner.png" alt='' />
           </div>
         </div>
 
         <div>
-            <img src='/images/cookiescontent.png' />
+            <img src='/images/cookiescontent.png' alt='' />
         </div>
         </section>
     </HomeLayout>

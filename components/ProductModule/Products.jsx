@@ -49,7 +49,7 @@ const Products = () => {
         <div className='bg-[#E7EBF6] py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] flex items-center justify-between ' >
             <p className='text-[54px] font-bold text-black font-montserrat ' >Product Categories</p>
             <div className='md:block hidden' >
-                <img src='/images/prodcartbanner.png' />
+                <img src='/images/prodcartbanner.png' alt='' />
             </div>
         </div>
         <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
@@ -91,7 +91,7 @@ const Products = () => {
                   {items.desc}
                 </p>
                 <div className="text-black font-semibold text-[20px] flex items-center ">
-                  <img src="/images/naira.png" />
+                  <img src="/images/naira.png" alt='' />
                   <p className="pl-1">{items.price}</p>
                 </div>
               </div>

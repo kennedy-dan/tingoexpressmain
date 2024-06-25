@@ -13,12 +13,12 @@ const DataPrivacy = () => {
             </p>
           </div>
           <div>
-            <img src="/images/privacycartbanner.png" />
+            <img src="/images/privacycartbanner.png" alt='' />
           </div>
         </div>
 
         <div>
-            <img src='/images/dataprivacycontent.png' />
+            <img src='/images/dataprivacycontent.png' alt='' />
         </div>
         </section>
     </HomeLayout>

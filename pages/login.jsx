@@ -12,7 +12,7 @@ const Login = () => {
       <div className="flex md:space-x-14 ">
 
          <div className="md:w-1/2 md:block hidden">
-          <img src="/images/loginimg.png" />
+          <img src="/images/loginimg.png" alt='' />
         </div>
         <div className="md:w-1/2 md:mt-0 mt-20 font-montserrat ">
             <div className="flex w-full justify-center">

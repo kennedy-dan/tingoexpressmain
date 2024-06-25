@@ -60,7 +60,7 @@ const Fav = () => {
 
             </div>
             <div>
-                <img src='/images/favouritecartbanner.png' />
+                <img src='/images/favouritecartbanner.png' alt='' />
             </div>
         </div>
       
@@ -92,7 +92,7 @@ const Fav = () => {
                     IN STOCK
                   </div>
                 <div className="text-black font-semibold text-[20px] flex items-center ">
-                  <img src="/images/naira.png" />
+                  <img src="/images/naira.png" alt='' />
                   <p className="pl-1">{items.price}</p>
                 </div>
                 </div>

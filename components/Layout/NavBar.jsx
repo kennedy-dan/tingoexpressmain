@@ -16,22 +16,22 @@ const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
       className="fixed z-50 top-[80px] font-urbanist right-[85px] h-[200px] font-medium  bg-[#DEDCE0] rounded-lg border shadow-lg p-4"
     >
       <div className="flex space-x-3">
-        <img src="/images/profile.png" />
+        <img src="/images/profile.png" alt='' />
         <p>My Profile</p>
       </div>
       <div className="flex my-4 space-x-3">
-        <img src="/images/fav.png" />
+        <img src="/images/fav.png" alt='' />
         <p>Favorite</p>
       </div>
       <div className="flex space-x-3">
-        <img src="/images/ord.png" />
+        <img src="/images/ord.png" alt='' />
         <p>Orders History</p>
       </div>
 
       <div className="h-[1px] bg-gray-400 w-full mt-4 "></div>
 
       <div className="flex mt-4 space-x-3">
-        <img src="/images/ord.png" className="opacity-0" />
+        <img src="/images/ord.png" alt='' className="opacity-0" />
         <p>Logout</p>
       </div>
 
@@ -120,12 +120,12 @@ const NavBar = () => {
           </Link>
           <div>
             <Link href="/location">
-              <img src="/images/locationicon.png" />
+              <img src="/images/locationicon.png" alt='' />
             </Link>
           </div>
           <div>
             <Link href="/cart">
-              <img src="/images/carticon.png" />
+              <img src="/images/carticon.png" alt='' />
             </Link>
           </div>
 
@@ -141,8 +141,8 @@ const NavBar = () => {
           {userlog && (
             <div className="flex space-x-2 cursor-pointer items-center " onClick={toggleCard}>
               {" "}
-              <img src="/images/profile.png" /> <p>Hi, kennedy</p>{" "}
-              <img src="/images/arrowdown.png" />{" "}
+              <img src="/images/profile.png" alt='' /> <p>Hi, kennedy</p>{" "}
+              <img src="/images/arrowdown.png" alt='' />{" "}
             </div>
           )}
         </div>

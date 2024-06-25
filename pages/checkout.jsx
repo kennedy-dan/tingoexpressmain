@@ -9,13 +9,13 @@ const Checkout = () => {
             <p className='font-bold text-[24px] pb-5' >Checkout</p>
             <div className='md:flex justify-between' >
                 <div>
-                    <img src='/images/checkoutleft.png' />
+                    <img src='/images/checkoutleft.png' alt='' />
                 </div>
                 <div>
                 <div className="shadow-lg md:w-[540px] md:mt-0 mt-10 rounded-xl p-[20px] border-2  font-montserrat ">
             <p className="font-bold text-[32px]">Summary</p>
             <div className='flex md:space-x-3 space-x-2' >
-                <img src='/images/checkoutrightimg.png' />
+                <img src='/images/checkoutrightimg.png' alt='' />
                 <div className='flex md:text-[17px] text-[14px] justify-between w-full font-[500] ' >
                     <div  >
                     <p>Hollandia Evap Full Cream 190g</p>
@@ -25,7 +25,7 @@ const Checkout = () => {
                 </div>
             </div>
             <div className='flex py-4  md:space-x-3 space-x-2' >
-                <img src='/images/checkoutrightimg.png' />
+                <img src='/images/checkoutrightimg.png' alt='' />
                 <div className='flex md:text-[17px] text-[14px] justify-between w-full font-[500] ' >
                     <div  >
                     <p>Hollandia Evap Full Cream 190g</p>

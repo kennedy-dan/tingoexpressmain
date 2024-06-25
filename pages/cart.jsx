@@ -11,7 +11,7 @@ const Cart = () => {
     <HomeLayout>
       <div className="md:flex py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:space-x-10">
         <div>
-          <img src="/images/cartleft.png" />
+          <img src="/images/cartleft.png" alt=''/>
         </div>
         <div>
           <div className="shadow-lg md:w-[370px] mt-4 md:mt-0 rounded-xl p-[20px] border-2  font-montserrat ">

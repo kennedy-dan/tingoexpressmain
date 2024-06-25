@@ -13,10 +13,10 @@ const Privacy = () => {
             </p>
           </div>
           <div>
-            <img src="/images/privacycartbanner.png" />
+            <img src="/images/privacycartbanner.png" alt='' />
           </div>
         </div>
-        <img src='/images/privacycontent.png' />
+        <img src='/images/privacycontent.png' alt='' />
         </section>
     </HomeLayout>
   )

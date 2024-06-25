@@ -41,7 +41,7 @@ const Orderhistory = () => {
             </div>
           </div>
           <div className="flex py-4 md:space-x-3">
-            <img src="/images/checkoutrightimg.png" />
+            <img src="/images/checkoutrightimg.png" alt='' />
             <div className="flex text-[17px] justify-between w-full font-[500] ">
               <div>
                 <p>Hollandia Evap Full Cream 190g</p>
@@ -56,7 +56,7 @@ const Orderhistory = () => {
 
           <hr />
           <div className="flex py-4 md:space-x-3">
-            <img src="/images/checkoutrightimg.png" />
+            <img src="/images/checkoutrightimg.png" alt='' />
             <div className="flex text-[17px] justify-between w-full font-[500] ">
               <div>
                 <p>Hollandia Evap Full Cream 190g</p>
@@ -94,7 +94,7 @@ const Orderhistory = () => {
             </div>
           </div>
           <div className="flex py-4 md:space-x-3">
-            <img src="/images/checkoutrightimg.png" />
+            <img src="/images/checkoutrightimg.png" alt='' />
             <div className="flex text-[17px] justify-between w-full font-[500] ">
               <div>
                 <p>Hollandia Evap Full Cream 190g</p>
@@ -109,7 +109,7 @@ const Orderhistory = () => {
 
           <hr />
           <div className="flex py-4 md:space-x-3">
-            <img src="/images/checkoutrightimg.png" />
+            <img src="/images/checkoutrightimg.png" alt='' />
             <div className="flex text-[17px] justify-between w-full font-[500] ">
               <div>
                 <p>Hollandia Evap Full Cream 190g</p>
@@ -124,7 +124,7 @@ const Orderhistory = () => {
         </div>
       </section>
       <Modal open={openTrack} onCancel={handleTrackClose} footer={false}>
-        <img src='/images/tracking.png' />
+        <img src='/images/tracking.png' alt=''/>
       </Modal>
 
     </HomeLayout>

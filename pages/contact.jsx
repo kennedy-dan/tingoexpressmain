@@ -13,7 +13,7 @@ const Contact = () => {
             </p>
           </div>
           <div className="md:flex hidden" >
-            <img src="/images/contactcartbanner.png" />
+            <img src="/images/contactcartbanner.png" alt='' />
           </div>
         </div>
 
@@ -78,7 +78,7 @@ const Contact = () => {
                 <p>Tingo’s Supermarket location</p>
                 <p>Phone Number</p>
             </div>
-            <img src='/images/loc.png' />
+            <img src='/images/loc.png' alt='' />
 
           </div>
         </div>

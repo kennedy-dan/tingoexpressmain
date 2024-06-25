@@ -29,7 +29,7 @@ const ShopLocation = () => {
           </p>
         </div>
         <div className="md:flex hidden">
-          <img src="/images/locationcartbanner.png" />
+          <img src="/images/locationcartbanner.png" alt='' />
         </div>
       </div>
       <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] font-montserrat ">
@@ -55,7 +55,7 @@ const ShopLocation = () => {
                 <p className="text-[16px] font-[400] text-primary " >Show direction on map</p>
             </div>
             <button className="w-full bg-secondary mt-3 text-white flex justify-center space-x-3 py-4 rounded-lg  " >
-                <img src='/images/cartwhiteicon.png' />
+                <img src='/images/cartwhiteicon.png' alt='' />
                 <p className='text-[16px] font-semibold' >View Store page</p>
             </button>
           </div>

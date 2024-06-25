@@ -57,7 +57,7 @@ const Footer = () => {
               COMING SOON
             </p>
             <div>
-              <img src="/images/gooapp.png" />
+              <img src="/images/gooapp.png" alt='' />
             </div>
         </div>
       </div>

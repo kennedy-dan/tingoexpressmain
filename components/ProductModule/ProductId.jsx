@@ -67,7 +67,7 @@ const handleTrackOpen = () => {
 
             </div>
             <div>
-                <img src='/images/frozencartbanner.png' />
+                <img src='/images/frozencartbanner.png' alt='' />
             </div>
         </div>
       
@@ -95,7 +95,7 @@ const handleTrackOpen = () => {
                   {items.desc}
                 </p>
                 <div className="text-black font-semibold text-[20px] flex items-center ">
-                  <img src="/images/naira.png" />
+                  <img src="/images/naira.png" alt='' />
                   <p className="pl-1">{items.price}</p>
                 </div>
               </div>
@@ -105,7 +105,7 @@ const handleTrackOpen = () => {
       </div>
       <Modal width={800} style={{ height: "", width: "600px" }} open={openTrack} onCancel={handleTrackClose} footer={false}>
         <div>
-        <img src='/images/proddisc.png' className='h-full w-[] ' />
+        <img src='/images/proddisc.png' alt='' className='h-full w-[] ' />
 
         </div>
 

@@ -11,7 +11,7 @@ const Signup = () => {
     <section className="md:p-[40px] p-[10px]">
       <div className="flex md:space-x-14 ">
         <div className="md:w-1/2 hidden">
-          <img src="/images/signupimg.png" />
+          <img src="/images/signupimg.png" alt='' />
         </div>
         {reg === 1 && (
           <div className="md:w-1/2 font-montserrat ">

@@ -13,11 +13,11 @@ const About = () => {
             </p>
           </div>
           <div>
-            <img src="/images/abb.png" />
+            <img src="/images/abb.png" alt='' />
           </div>
         </div>
         <div className="flex justify-between font-montserrat space-x-10 p-[90px]">
-          <img src="/images/ab1.png" />
+          <img src="/images/ab1.png" alt='' />
           <div>
             <p className="text-[30px] mt-10 font-semibold ">Our Vission</p>
             <p className="font-[400] text-[16px] pt-3 pb-2 ">
