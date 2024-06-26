@@ -46,15 +46,14 @@ const SingleShopLocationn = () => {
       </div>
       <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-10 justify-between font-montserrat">
         <div className="md:w-[25%] shadow-md h-fit border   rounded-lg ">
-          <div className='font-bold pl-8 py-2 text-[18px]' >
+          <div className="font-bold pl-8 py-2 text-[18px]">
             <p>Categories</p>
-
           </div>
           <hr />
 
-          <div className="space-y-10 pl-8 py-4" >
+          <div className="space-y-10 pl-8 py-4">
             {cats?.map((info, index) => (
-              <p key={index} >{info}</p>
+              <p key={index}>{info}</p>
             ))}
           </div>
         </div>
@@ -69,42 +68,43 @@ const SingleShopLocationn = () => {
             </p>
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
-  {topSell?.map((items, index) => (
-    <div
-      key={index}
-      onClick={handleTrackOpen}
-      className="mt-6 cursor-pointer font-urbanist   rounded-2xl relative group"
-    >
-      <div className="flex">
-        <img src={items.img} alt="" className="" />
-      </div>
-      <div className="">
-        <p className="text-black font-semibold text-[20px]">
-          {items.desc}
-        </p>
-        <div className="text-black font-semibold text-[20px] flex items-center">
-          <img src="/images/naira.png" alt="" />
-          <p className="pl-1">{items.price}</p>
+            {topSell?.map((items, index) => (
+              <div
+                key={index}
+                onClick={handleTrackOpen}
+                className="mt-6 cursor-pointer font-urbanist   rounded-2xl relative group"
+              >
+                <div className="flex">
+                  <img src={items.img} alt="" className="" />
+                </div>
+                <div className="">
+                  <p className="text-black font-semibold text-[20px]">
+                    {items.desc}
+                  </p>
+                  <div className="text-black font-semibold text-[20px] flex items-center">
+                    <img src="/images/naira.png" alt="" />
+                    <p className="pl-1">{items.price}</p>
+                  </div>
+                </div>
+
+                <div className="w-full bg-secondary mt-8 text-white py-4 rounded-lg hidden group-hover:block">
+                  <button className="w-full">Add To Cart</button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
-      <div className="w-full bg-secondary mt-8 text-white py-4 rounded-lg hidden group-hover:block">
-        <button className="w-full">
-          Add To Cart
-        </button>
-      </div>
-    </div>
-  ))}
-</div>
-
-        </div>
-      </div>
-      <Modal width={800} style={{ height: "", width: "600px" }} open={openTrack} onCancel={handleTrackClose} footer={false}>
+      <Modal
+        width={800}
+        style={{ height: "", width: "600px" }}
+        open={openTrack}
+        onCancel={handleTrackClose}
+        footer={false}
+      >
         <div>
-        <img src='/images/proddisc.png' alt='' className='h-full w-[] ' />
-
+          <img src="/images/proddisc.png" alt="" className="h-full w-[] " />
         </div>
-
       </Modal>
     </section>
   );
