@@ -53,8 +53,8 @@ const SingleShopLocationn = () => {
           <hr />
 
           <div className="space-y-10 pl-8 py-4" >
-            {cats?.map((info) => (
-              <p>{info}</p>
+            {cats?.map((info, index) => (
+              <p key={index} >{info}</p>
             ))}
           </div>
         </div>
