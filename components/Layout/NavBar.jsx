@@ -2,8 +2,8 @@ import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
-import {Drawer, Space} from 'antd'
-import { MdOutlineCancel } from "react-icons/md"; 
+import { Drawer, Space } from "antd";
+import { MdOutlineCancel } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
 
 const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
@@ -16,27 +16,28 @@ const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
       className="fixed z-50 top-[80px] font-urbanist right-[85px] h-[200px] font-medium  bg-[#DEDCE0] rounded-lg border shadow-lg p-4"
     >
       <div className="flex space-x-3">
-        <img src="/images/profile.png" alt='' />
+        <img src="/images/profile.png" alt="" />
         <p>My Profile</p>
       </div>
-      <Link href='/favorites' >  <div className="flex my-4 space-x-3">
-        <img src="/images/fav.png" alt='' />
-        <p>Favorite</p>
-      </div></Link>
-
-      <Link href='/order-history'>
-      <div className="flex space-x-3">
-        <img src="/images/ord.png" alt='' />
-        <p>Orders History</p>
-      </div>
+      <Link href="/favorites">
+        {" "}
+        <div className="flex my-4 space-x-3">
+          <img src="/images/fav.png" alt="" />
+          <p>Favorite</p>
+        </div>
       </Link>
-     
-  
+
+      <Link href="/order-history">
+        <div className="flex space-x-3">
+          <img src="/images/ord.png" alt="" />
+          <p>Orders History</p>
+        </div>
+      </Link>
 
       <div className="h-[1px] bg-gray-400 w-full mt-4 "></div>
 
       <div className="flex mt-4 space-x-3">
-        <img src="/images/ord.png" alt='' className="opacity-0" />
+        <img src="/images/ord.png" alt="" className="opacity-0" />
         <p>Logout</p>
       </div>
 
@@ -52,7 +53,6 @@ const NavBar = () => {
   const [userlog, setUserLog] = useState(false);
   const [advplacement, setadvPlacement] = useState("left");
   const [openadv, setOpenAdv] = useState(false);
-
 
   const [isCardOpen, setIsCardOpen] = useState(false);
   const profileDropdownRef = useRef(null);
@@ -70,19 +70,18 @@ const NavBar = () => {
 
   const showDrawerAdv = () => {
     setOpenAdv(true);
-
   };
 
-  
   const onCloseadv = () => {
     setOpenAdv(false);
   };
 
-
   return (
     <section>
       <div className="bg-white flex justify-between items-center font-montserrat px-10 lg:px-[20px] xl:px-[100px]">
-        <img src="images/navbarlogo.png" alt="" className=" " />
+        <Link href="/">
+          <img src="images/navbarlogo.png" alt="" className=" " />
+        </Link>
         <div className="lg:flex hidden justify-between items-center ">
           <div className="flex items-center h-[] py-4">
             <div className="relative h-[56px] ">
@@ -125,12 +124,12 @@ const NavBar = () => {
           </Link>
           <div>
             <Link href="/location">
-              <img src="/images/locationicon.png" alt='' />
+              <img src="/images/locationicon.png" alt="" />
             </Link>
           </div>
           <div>
             <Link href="/cart">
-              <img src="/images/carticon.png" alt='' />
+              <img src="/images/carticon.png" alt="" />
             </Link>
           </div>
 
@@ -144,17 +143,20 @@ const NavBar = () => {
           )}
 
           {userlog && (
-            <div className="flex space-x-2 cursor-pointer items-center " onClick={toggleCard}>
+            <div
+              className="flex space-x-2 cursor-pointer items-center "
+              onClick={toggleCard}
+            >
               {" "}
-              <img src="/images/profile.png" alt='' /> <p>Hi, kennedy</p>{" "}
-              <img src="/images/arrowdown.png" alt='' />{" "}
+              <img src="/images/profile.png" alt="" /> <p>Hi, kennedy</p>{" "}
+              <img src="/images/arrowdown.png" alt="" />{" "}
             </div>
           )}
         </div>
 
         <div className="lg:hidden block" onClick={showDrawerAdv}>
-              <IoIosMenu />
-            </div>
+          <IoIosMenu />
+        </div>
       </div>
       <OrderHistoryCard
         profileDropdownRef={profileDropdownRef}
@@ -162,8 +164,7 @@ const NavBar = () => {
         onClose={toggleCard}
       />
 
-      
-<Drawer
+      <Drawer
         // title="WeOut"
         placement={advplacement}
         closable={false}
@@ -185,8 +186,7 @@ const NavBar = () => {
             </button>
           </div>
           <div>
-          <img src="images/navbarlogo.png" alt="" className=" " />
-
+            <img src="images/navbarlogo.png" alt="" className=" " />
           </div>
         </section>
       </Drawer>

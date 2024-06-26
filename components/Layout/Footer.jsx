@@ -37,10 +37,10 @@ const Footer = () => {
             Terms & Conditions
           </p>
 
-          <Link href="/returnpolcy">
+          <Link href="/returnpolicy">
             <p className="text-[18px] mb-3  ">Return Poicy</p>
           </Link>
-          <Link href="/privacy-polcy">
+          <Link href="/privacy-policy">
             <p className="text-[18px] mb-3  ">Privacy Policy</p>
           </Link>
           <Link href="/cookies">
