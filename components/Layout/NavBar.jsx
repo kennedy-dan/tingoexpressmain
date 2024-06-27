@@ -80,7 +80,7 @@ const NavBar = () => {
     <section>
       <div className="bg-white flex justify-between items-center font-montserrat px-10 lg:px-[20px] xl:px-[100px]">
         <Link href="/">
-          <img src="images/navbarlogo.png" alt="" className=" " />
+          <img src="/images/navbarlogo.png" alt="" className=" " />
         </Link>
         <div className="lg:flex hidden justify-between items-center ">
           <div className="flex items-center h-[] py-4">
@@ -93,7 +93,7 @@ const NavBar = () => {
                 {!inputValue && !isFocused && (
                   <div className="placeholder">
                     <img
-                      src="images/searchicon.png"
+                      src="/images/searchicon.png"
                       alt="Search Icon"
                       className="icon"
                     />
@@ -186,7 +186,7 @@ const NavBar = () => {
             </button>
           </div>
           <div>
-            <img src="images/navbarlogo.png" alt="" className=" " />
+            <img src="/images/navbarlogo.png" alt="" className=" " />
           </div>
         </section>
       </Drawer>
