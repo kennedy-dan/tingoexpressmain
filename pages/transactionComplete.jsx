@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import React, {useEffect} from 'react'
 import { useDispatch } from 'react-redux'
 
-const tranasactionComplete = () => {
+const TranasactionComplete = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const { tx_ref, status } = router.query;
@@ -36,4 +36,4 @@ const tranasactionComplete = () => {
   )
 }
 
-export default tranasactionComplete
+export default TranasactionComplete

@@ -188,8 +188,8 @@ const Checkout = () => {
           <div>
             <div className="shadow-lg md:w-[540px] md:mt-0 mt-10 rounded-xl p-[20px] border-2  font-montserrat ">
               <p className="font-bold text-[32px]">Summary</p>
-              {data?.map((items) => (
-                <div className="w-full">
+              {data?.map((items, index) => (
+                <div key={index} className="w-full">
                   <div className="flex w-full justify-between  font-montserrat">
                     <div className="flex   ">
                       <div className="w-1/">

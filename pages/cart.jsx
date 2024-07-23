@@ -105,8 +105,8 @@ const Cart = () => {
     <HomeLayout>
       <div className="md:flex justify-between py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:space-x-10">
         <div className="w-full">
-          {cartItems?.map((items) => (
-            <div className="w-full">
+          {cartItems?.map((items, index) => (
+            <div key={index} className="w-full">
               <div className="flex w-full justify-between  font-montserrat">
                 <div className="flex   ">
                   <div className="w-1/">
