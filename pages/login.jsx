@@ -66,6 +66,8 @@ const Login = () => {
               <input
                  onChange={(e) => setPword(e.target.value)}
                  value={pWord}
+                type='password'
+
                 placeholder="Create a unique password"
                 className=" w-[96%] pl-5 outline-none border border-[#C9C5CC] bg-[#F9F9F9] rounded-lg py-5"
               />
@@ -77,7 +79,6 @@ const Login = () => {
             <div className="mt-10">
               <button
                 onClick={login}
-                type='password'
                 className="w-[96%] bg-secondary text-white py-6 rounded-lg font-semibold text-[16px] "
               >
                 Login
