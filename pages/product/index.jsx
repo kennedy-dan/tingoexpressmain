@@ -16,7 +16,7 @@ const Product = () => {
       dispatch(getAllProducts())
 
     }
-  }, [token])
+  }, [])
   
   
   return (

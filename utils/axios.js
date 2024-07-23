@@ -68,8 +68,8 @@ instance.interceptors.response.use(
 
 		if (err.response.status == 401 && window.location.pathname !== "/login") {
 			
-			store.dispatch(logOutCustomer())
-			window.location.href = "/login";
+			// store.dispatch(logOutCustomer())
+			// window.location.href = "/login";
 		}
 		return;
 	}
