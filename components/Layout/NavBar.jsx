@@ -9,11 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOutCustomer } from "@/store/slice/authSlice";
 
 const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
-  const dispatch= useDispatch()
+  const dispatch = useDispatch();
 
   const logOut = () => {
-    dispatch(logOutCustomer())
-  }
+    dispatch(logOutCustomer());
+  };
   return (
     <motion.div
       initial={{ x: "100%" }}
@@ -61,6 +61,7 @@ const NavBar = () => {
   const [userlog, setUserLog] = useState(false);
   const [advplacement, setadvPlacement] = useState("left");
   const [openadv, setOpenAdv] = useState(false);
+  const { getcart, checkout } = useSelector((state) => state.product);
 
   const [isCardOpen, setIsCardOpen] = useState(false);
 
@@ -86,6 +87,7 @@ const NavBar = () => {
   const onCloseadv = () => {
     setOpenAdv(false);
   };
+  const data = getcart?.results?.data?.data?.items;
 
   return (
     <section>
@@ -140,7 +142,14 @@ const NavBar = () => {
           </div>
           <div>
             <Link href="/cart">
-              <img src="/images/carticon.png" alt="" />
+              <div className="relative">
+                <img src="/images/carticon.png" alt="" />
+                <div className="absolute top-[-56%] left-[50%] z-10 ">
+                  <div className="text-[8px] bg-red-800 text-white flex justify-center items-center h-[16px] w-[16px] rounded-full ">
+                    {data?.length}
+                  </div>
+                </div>
+              </div>
             </Link>
           </div>
 
@@ -159,7 +168,8 @@ const NavBar = () => {
               onClick={toggleCard}
             >
               {" "}
-              <img src="/images/profile.png" alt="" /> <p>Hi, {user?.first_name}</p>{" "}
+              <img src="/images/profile.png" alt="" />{" "}
+              <p>Hi, {user?.first_name}</p>{" "}
               <img src="/images/arrowdown.png" alt="" />{" "}
             </div>
           )}

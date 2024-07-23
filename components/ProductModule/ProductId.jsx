@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Pagination } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "antd/lib";
-import { addtocart, getSingleProduct } from "@/store/slice/productSlice";
+import { addtocart, getSingleProduct, getcartData } from "@/store/slice/productSlice";
+import { ClipLoader } from "react-spinners";
 
 
 const ProductsId = () => {
   const dispatch = useDispatch();
-  const { singlecats, singleproducts } = useSelector((state) => state.product);
+  const { singlecats, singleproducts, addcart } = useSelector((state) => state.product);
+  const { token } = useSelector((state) => state.auth);
   const [openTrack, setOpenTrack] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,10 +59,15 @@ const ProductsId = () => {
     product_id : id,
     quantity: quantity
   }
-  dispatch(addtocart(data))
+  dispatch(addtocart(data)).finally(setOpenTrack(false))
  }
   
-    
+ useEffect(() => {
+  if(token){
+    dispatch(getcartData());
+
+  }
+}, [ addcart, token]);
   return (
     <section>
         <div className='bg-[#E7EBF6] py-10 md:py-0 mt-20 px-4 lg:px-[20px]  xl:px-[100px]  flex items-center justify-between ' >
@@ -126,7 +133,8 @@ const ProductsId = () => {
         onCancel={handleTrackClose}
         footer={false}
       >
-        <div className="flex space-x-5 font-montserrat">
+        {singleproducts?.isLoading && <div className='w-full h-[300px] items-center justify-center flex' ><ClipLoader className='w-9 h-9' /></div>}
+        {!singleproducts?.isLoading &&   <div className="flex space-x-5 font-montserrat">
           <div>
             <img
               src={
@@ -169,10 +177,12 @@ const ProductsId = () => {
               </button>
             </div>
             <button onClick={() => addToCart(getSingleProductData?.id)}  className='bg-secondary w-full text-white mt-6 font-bold tet-[14px] py-2 rounded-md ' >
-              Add to cart
+             {addcart?.isLoading ? <ClipLoader className='w-5 h-5 text-white' /> : 'Add to cart' } 
             </button>
           </div>
-        </div>
+        </div>}
+       
+      
       </Modal>
     </section>
   )

@@ -10,6 +10,7 @@ const ProductId = () => {
    const router = useRouter()
 
    const {prodid} = router.query
+   console.log(router.query)
   useEffect(() => {
     dispatch(getSingleCats(prodid))
   }, [prodid])
