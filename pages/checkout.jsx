@@ -14,6 +14,7 @@ import { payStackConfig } from "@/utils/paystackConfig";
 const Checkout = () => {
   const dispatch = useDispatch();
   const { getcart, checkout } = useSelector((state) => state.product);
+  const { token } = useSelector((state) => state.auth);
 
   const [checked, setChecked] = useState(true);
   const [disabled, setDisabled] = useState(false);
@@ -39,7 +40,9 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    dispatch(getcartData());
+    if (token) {
+      dispatch(getcartData());
+    }
   }, []);
 
   const data = getcart?.results?.data?.data?.items;
