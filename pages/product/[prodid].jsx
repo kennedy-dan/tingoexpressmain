@@ -1,9 +1,19 @@
 import HomeLayout from '@/components/Layout/HomeLayout'
 import ProductsId from '@/components/ProductModule/ProductId'
-import React from 'react'
+import { getSingleCats } from '@/store/slice/productSlice'
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 const ProductId = () => {
-   
+   const dispatch = useDispatch()
+   const router = useRouter()
+
+   const {prodid} = router.query
+  useEffect(() => {
+    dispatch(getSingleCats(prodid))
+  }, [prodid])
+  
     
   return (
    <HomeLayout>

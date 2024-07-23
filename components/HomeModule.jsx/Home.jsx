@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Carousel as AntCarousel, Select, ConfigProvider } from "antd";
 import Link from "next/link";
 import { Modal } from "antd/lib";
+import { useDispatch, useSelector } from "react-redux";
+import { getcategories } from "@/store/slice/productSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const [openTrack, setOpenTrack] = useState(false);
   const [openLoc, setOpenLoc] = useState(false);
+
+  const { getcats } = useSelector((state) => state.product);
   const handleTrackClose = () => {
     setOpenTrack(false);
   };
@@ -83,6 +88,13 @@ const Home = () => {
       img: "/images/bghero1.png",
     },
   ];
+
+  useEffect(() => {
+    dispatch(getcategories());
+  }, []);
+
+  const catsData = getcats?.results?.data
+
   return (
     <section>
       <AntCarousel autoplay effect="fade" speed={1500}>
@@ -129,16 +141,16 @@ const Home = () => {
           Featured Categories
         </p>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-4 ">
-          {featCats?.map((items, index) => (
-            <Link key={index} href="/product/1">
+          {catsData?.map((items, index) => (
+            <Link key={index} href={`/product/${items?.id}`}>
               <div className="mt-6 font-urbanist">
                 {" "}
                 <div className="flex justify-center ">
-                  <img src={items.img} alt="" className="" />
+                  <img src={items?.image_url ? items?.image_url : items?.code === "Non - Food" ? '/images/fruit.png' : '/images/frozen.png' } alt="" className="" />
                 </div>
                 <div className="details  bg-[#F3F3F3] -mt-24 pt-14 rounded-3xl">
                   <p className="text-black py-12 text-center font-semibold text-[20px] t">
-                    {items.text}
+                    {items?.name}
                   </p>
                 </div>
               </div>
@@ -300,7 +312,7 @@ const Home = () => {
                 />
               </ConfigProvider>
             </div>
-            <Link href='/location/1' >
+            <Link href="/location/1">
               <button className="w-full bg-secondary mt-8  text-white py-4 rounded-lg ">
                 View Store Page
               </button>

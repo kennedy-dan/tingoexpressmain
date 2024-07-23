@@ -1,12 +1,34 @@
+import { _loginUser } from '@/store/slice/authSlice'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Login = () => {
+  const dispatch = useDispatch()
   const router = useRouter()
+  const [email, setEmail] = useState('')
+  const [pWord, setPword] = useState('')
+
+  //reduc useselector
+  const { token } = useSelector((state) => state.auth);
+
   const login = () => {
-    localStorage.setItem('user', 'logged')
-    router.push('/')
+    const data= {
+      email: email,
+      password: pWord
+    }
+    console.log('jnjnj')
+    dispatch(_loginUser(data))
   }
+
+  useEffect(() => {
+   if(token) {
+    router.push('/')
+   }
+  }, [token])
+  
+
+
   return (
     <section className="md:p-[40px] p-[10px]">
       <div className="flex md:space-x-14 ">
@@ -33,6 +55,8 @@ const Login = () => {
             <div className="mt-16">
               <p className="font-semibold">Email</p>
               <input
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
                 placeholder="Enter Your Email Address"
                 className=" w-[96%] pl-5 outline-none border border-[#C9C5CC] bg-[#F9F9F9] rounded-lg py-5"
               />
@@ -40,6 +64,8 @@ const Login = () => {
             <div className="mt-4">
               <p className="font-semibold">Password</p>
               <input
+                 onChange={(e) => setPword(e.target.value)}
+                 value={pWord}
                 placeholder="Create a unique password"
                 className=" w-[96%] pl-5 outline-none border border-[#C9C5CC] bg-[#F9F9F9] rounded-lg py-5"
               />

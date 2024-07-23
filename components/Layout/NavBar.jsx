@@ -5,8 +5,15 @@ import useOnClickOutside from "@/hooks/useOnClickOutside";
 import { Drawer, Space } from "antd";
 import { MdOutlineCancel } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutCustomer } from "@/store/slice/authSlice";
 
 const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
+  const dispatch= useDispatch()
+
+  const logOut = () => {
+    dispatch(logOutCustomer())
+  }
   return (
     <motion.div
       initial={{ x: "100%" }}
@@ -36,7 +43,7 @@ const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
 
       <div className="h-[1px] bg-gray-400 w-full mt-4 "></div>
 
-      <div className="flex mt-4 space-x-3">
+      <div onClick={logOut} className="flex mt-4 space-x-3 cursor-pointer ">
         <img src="/images/ord.png" alt="" className="opacity-0" />
         <p>Logout</p>
       </div>
@@ -50,11 +57,15 @@ const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
 const NavBar = () => {
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+
   const [userlog, setUserLog] = useState(false);
   const [advplacement, setadvPlacement] = useState("left");
   const [openadv, setOpenAdv] = useState(false);
 
   const [isCardOpen, setIsCardOpen] = useState(false);
+
+  const { user } = useSelector((state) => state.auth);
+
   const profileDropdownRef = useRef(null);
 
   const toggleCard = () => {
@@ -133,7 +144,7 @@ const NavBar = () => {
             </Link>
           </div>
 
-          {!userlog && (
+          {!user && (
             <Link href="/signup">
               {" "}
               <button className="bg-secondary px-5 rounded-lg py-3 text-white ">
@@ -142,13 +153,13 @@ const NavBar = () => {
             </Link>
           )}
 
-          {userlog && (
+          {user && (
             <div
               className="flex space-x-2 cursor-pointer items-center "
               onClick={toggleCard}
             >
               {" "}
-              <img src="/images/profile.png" alt="" /> <p>Hi, kennedy</p>{" "}
+              <img src="/images/profile.png" alt="" /> <p>Hi, {user?.first_name}</p>{" "}
               <img src="/images/arrowdown.png" alt="" />{" "}
             </div>
           )}

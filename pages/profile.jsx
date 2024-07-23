@@ -1,7 +1,19 @@
 import HomeLayout from "@/components/Layout/HomeLayout";
-import React from "react";
+import { getUsers } from "@/store/slice/authSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Profile = () => {
+  const dispatch = useDispatch()
+  const { users } = useSelector((state) => state.auth);
+
+
+  useEffect(() => {
+   dispatch(getUsers())
+  }, [])
+
+
+  
   return (
     <HomeLayout>
       <div className="bg-[#E7EBF6] py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px]  md:flex items-center justify-between ">
@@ -20,8 +32,8 @@ const Profile = () => {
         <div className="md:w-[30%]" >
           <div className="border pl-6 py-10 shadow-md space-y-8 rounded-md ">
             <div>
-              <p>John</p>
-              <p className="mt-1 text-gray-400 ">Johnbull@gmail.com</p>
+              {/* <p>John</p> */}
+              <p className=" ">{users?.result?.first_name}</p>
             </div>
             <div>
               <p>My Profile</p>
@@ -36,9 +48,45 @@ const Profile = () => {
         </div>
 
         <div className=" md:w-[70%] md:mt-0 mt-16">
-          <img src='/images/profiledet.png' />
+          <div className='border pl-6 py-10 shadow-md space-y-8 rounded-md' >
+            <p className='text-[18px] font-bold ' >Account Details</p>
+
+            <div className="mt-16">
+              <p className="font-semibold text-gray-300">Full Name</p>
+              <input
+                placeholder="Enter Your Email Address"
+                className=" w-[96%] pl-5 outline-none tracking-tighter bg-[#F9F9F9] rounded-lg py-5"
+                value={users?.result?.first_name + " " + users?.result?.last_name}
+              />
+            </div>{" "}
+            <div className="mt-4">
+              <p className="font-semibold text-gray-300">Email</p>
+              <input
+                placeholder="Create a unique password"
+                className=" w-[96%] pl-5 outline-none tracking-tighter bg-[#F9F9F9] rounded-lg py-5"
+                value={users?.result?.email}
+              />
+            </div>
+
+            <div className="mt-4">
+              <p className="font-semibold text-gray-300">Mobile Phone</p>
+              <input
+                className=" w-[96%] pl-5 outline-none tracking-tighter bg-[#F9F9F9] rounded-lg py-5"
+                value={users?.result?.phone_no}
+              />
+            </div>
+
+            <div className="mt-4">
+              <p className="font-semibold text-gray-300">Shipping Address</p>
+              <input
+                className=" w-[96%] pl-5 outline-none tracking-tighter bg-[#F9F9F9] rounded-lg py-5"
+                value={users?.result?.phone_no}
+              />
+            </div>
+          </div>
         </div>
       </div>
+
     </HomeLayout>
   );
 };
