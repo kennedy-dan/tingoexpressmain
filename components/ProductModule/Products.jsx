@@ -113,7 +113,7 @@ useEffect(() => {
                   {items.name}
                 </p>
                 <div className="text-black font-semibold text-[20px] flex items-center ">
-                  <img src="/images/naira.png" alt="" />
+                  <img src="/images/Naira.png" alt="" />
                   <p className="pl-1">{Math.floor(items.unit_price)}</p>
                 </div>
               </div>
@@ -167,7 +167,7 @@ useEffect(() => {
 
             <div className="text-black font-semibold text-[24px] pt-3 space-x-1 font-urbanist flex items-center ">
               <div>
-                <img src="/images/naira.png" alt="" />
+                <img src="/images/Naira.png" alt="" />
               </div>
               <p>{Math.floor(getSingleProductData?.unit_price)}</p>
             </div>

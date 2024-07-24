@@ -217,7 +217,7 @@ const Checkout = () => {
                     </div>
                     <div className="text-black font-semibold text-[24px] pt-3 space-x-1 font-urbanist h-fit flex items-center ">
                       <div>
-                        <img src="/images/naira.png" alt="" />
+                        <img src="/images/Naira.png" alt="" />
                       </div>
                       <p>{Math.floor(items?.price)}</p>
                     </div>
