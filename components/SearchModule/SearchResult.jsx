@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Pagination } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "antd/lib";
-import { addtocart, getSingleProduct } from "@/store/slice/productSlice";
+import { addtocart, getSingleProduct, getcartData } from "@/store/slice/productSlice";
 import { ClipLoader } from "react-spinners";
 import Image from "next/image";
 
@@ -19,6 +19,7 @@ const SearchResult = ({name}) => {
   const metaData = allproducts?.results?.data?.metadata;
   const data = allproducts?.results?.data?.data;
   const getSingleProductData = singleproducts?.results?.data?.data;
+  const { token } = useSelector((state) => state.auth);
 
   const itemsPerPage = 10;
 
@@ -73,6 +74,13 @@ const SearchResult = ({name}) => {
   }
   dispatch(addtocart(data))
  }
+
+ useEffect(() => {
+  if(token){
+    dispatch(getcartData());
+
+  }
+}, [ addcart, token]);
   return (
     <section>
        <div className='bg-[#E7EBF6] px-[100px] flex items-center justify-between ' >
