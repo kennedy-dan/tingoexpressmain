@@ -27,8 +27,8 @@ const Orderhistory = () => {
   return (
     <HomeLayout>
       <section className="py-20 px-4 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] font-montserrat ">
-        {data?.map((items) => (
-          <div className="border border-gray-300 rounded-lg md:p-[50px] p-[15px] ">
+        {data?.map((items, index) => (
+          <div key={index} className="border border-gray-300 rounded-lg md:p-[50px] p-[15px] ">
             <div className="border md:px-9 px-3 md:space-y-0 space-y-4 py-4 md:flex justify-between bg-[#EBF6F6] ">
               <div className="md:flex md:space-y-0 space-y-4">
                 <div>
@@ -59,8 +59,8 @@ const Orderhistory = () => {
                 </button>
               </div>
             </div>
-            {items?.items?.map((item) => (
-              <div>
+            {items?.items?.map((item, index) => (
+              <div key={index}>
   <div className="md:flex py-4 md:space-x-3">
                 <img
                   src={
