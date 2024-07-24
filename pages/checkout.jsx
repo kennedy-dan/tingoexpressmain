@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Checkbox } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { PaystackButton } from "react-paystack";
+import Image from "next/image";
 
 import {
   addtocart,
@@ -198,15 +199,18 @@ const Checkout = () => {
                     <div className="flex   ">
                       <div className="w-1/">
                         <div>
-                          <img
-                            className="w-[90px] h-[90px] mr-3 object-cover rounded-lg"
-                            src={
-                              items?.product?.image_url
-                                ? items?.product?.image_url
-                                : "/images/topsell.png"
-                            }
-                            alt=""
-                          />
+                        <Image
+                    src={
+                      items?.product?.image_url
+                        ? items?.product?.image_url
+                        : "/images/topsell.png"
+                    }
+                  alt=""
+                  className="w-[90px] h-[90px] mr-3 object-cover rounded-lg"
+
+                  width={500}
+                  height={500}
+                />
                         </div>
                       </div>
                       <div className="w-1/">

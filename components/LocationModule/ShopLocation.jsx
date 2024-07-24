@@ -1,7 +1,11 @@
 import Link from "next/link";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const ShopLocation = () => {
+  const { getcats, getstore, topsell, singleproducts, addcart } = useSelector((state) => state.product);
+  const storedata = getstore?.results?.data?.data
+
   const tngorea = [
     {
       place: "Tingo supermarket- Ikeja",
@@ -34,23 +38,23 @@ const ShopLocation = () => {
         </div>
       </div>
       <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] font-montserrat ">
-        {tngorea.map((data, index) => (
+        {storedata?.map((data, index) => (
           <div key={index}  className="border rounded-xl mb-9 border-gray-300 md:p-[50px] p-[7px]    w-full">
-            <p className="font-[500] text-[24px]"> Tingo supermarket- Ikeja</p>
+            <p className="font-[500] text-[24px]"> {data?.location}</p>
 
             <div className="mt-2 md:flex justify-between items-center font-[400] text-[14px] md:text-[16px]">
-              <p className='md:py-0 py-3' >{data.loc}</p>
+              <p className='md:py-0 py-3' >{data.location}</p>
               <div className='md:py-0 py-3'>
                 <p>Opening time</p>
-                <p>{data.time}</p>
+                <p>9:00am - 10:00pm"</p>
               </div>
             </div>
                 <p className="text-gray-400  text-[18px] md:mb-2 " >Contact Information</p>
             <div className='md:space-y-4'>
 
-                <p>{data.email}</p>
-                <p>{data.p1}</p>
-                <p>{data.p2}</p>
+                <p>Tingo.ikeja@Tignoexpress.com</p>
+                <p>08023476581</p>
+                {/* <p>{data.p2}</p> */}
             </div>
             <div className='flex md:justify-end my-4' >
                 <p className="text-[16px] font-[400] text-primary " >Show direction on map</p>

@@ -3,21 +3,29 @@ import { Carousel as AntCarousel, Select, ConfigProvider } from "antd";
 import Link from "next/link";
 import { Modal } from "antd/lib";
 import { useDispatch, useSelector } from "react-redux";
-import { getcategories } from "@/store/slice/productSlice";
+import { getcategories, getStores, topSell, getSingleProduct, addtocart, getcartData } from "@/store/slice/productSlice";
+import Image from "next/image";
+import ProductDescription from "../UI/ProductDescription";
 
 const Home = () => {
   const dispatch = useDispatch();
   const [openTrack, setOpenTrack] = useState(false);
   const [openLoc, setOpenLoc] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
-  const { getcats } = useSelector((state) => state.product);
+  const { getcats, getstore, topsell, singleproducts, addcart } = useSelector((state) => state.product);
   const { token } = useSelector((state) => state.auth);
+
+  const storedata = getstore?.results?.data?.data
+  const getSingleProductData = singleproducts?.results?.data?.data;
+
   const handleTrackClose = () => {
     setOpenTrack(false);
   };
 
-  const handleTrackOpen = () => {
+  const handleTrackOpen = (id) => {
     setOpenTrack(true);
+    dispatch(getSingleProduct(id));
   };
 
   const handleLocClose = () => {
@@ -28,10 +36,54 @@ const Home = () => {
     setOpenLoc(true);
   };
 
-  const loc = [
-    { place: "Tingo supermarket - Ikeja", id: 1 },
-    { place: "Tingo supermarket - Ikeja", id: 2 },
-  ];
+  useEffect(() => {
+    
+    dispatch(getStores())
+    dispatch(topSell())
+  
+  }, [])
+
+  const topselldata = topsell?.results?.data?.data
+  
+
+  const handleSubtract = () => {
+    if(quantity < 2){
+      setQuantity(1)
+    }else {
+      setQuantity(quantity - 1)
+
+    }
+  }
+
+  const handleAdd = () => {
+    setQuantity(quantity + 1)
+  }
+
+ const addToCart = (id) => {
+
+  const data = {
+    product_id : id,
+    quantity: quantity
+  }
+  dispatch(addtocart(data))
+ }
+  
+ useEffect(() => {
+  if(token){
+    dispatch(getcartData());
+
+  }
+}, [ addcart, token]);
+
+useEffect(() => {
+  if(addcart.success){
+    setOpenTrack(false);
+    setQuantity(1)
+
+  }
+  
+
+}, [addcart.success])
   const featCats = [
     {
       img: "/images/fruit.png",
@@ -72,7 +124,7 @@ const Home = () => {
     "/images/newarrival.png",
   ];
 
-  const topSell = [
+  const topSells = [
     { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
     { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
     { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
@@ -91,9 +143,9 @@ const Home = () => {
   ];
 
   useEffect(() => {
-    if (token) {
+    // if (token) {
       dispatch(getcategories());
-    }
+    // }
   }, []);
 
   const catsData = getcats?.results?.data;
@@ -114,12 +166,12 @@ const Home = () => {
                     Tingo Express{" "}
                   </p>
                   <div className="flex justify-center w-fit mt-6">
-                    {/* <button
+                    <button
                       onClick={handleLocOpen}
                       className="md:w-[550px] w-[250px] bg-secondary  text-white py-4 rounded-lg "
                     >
                       Shop Now
-                    </button> */}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -176,26 +228,27 @@ const Home = () => {
           Top Selling Product
         </p>
         <div className="grid grid-cols-3 gap-6 ">
-          {topSell?.map((items, index) => (
-            <div
-              onClick={handleTrackOpen}
-              key={index}
-              className="mt-6 font-urbanist"
-            >
-              {" "}
+          {topselldata?.map((items, index) => (
+              <div key={index}  onClick={() => handleTrackOpen(items?.product_id)} className="mt-6 cursor-pointer font-urbanist p-[13px] hover:border hover:border-1 hover:shadow-lg rounded-2xl ">
               <div className="flex ">
-                <img src={items.img} alt="" className="" />
-              </div>
-              <div className=" ">
-                <p className="text-black  font-semibold text-[20px] t">
-                  {items.desc}
-                </p>
-                <div className="text-black font-semibold text-[20px] flex items-center ">
-                  <img src="/images/Naira.png" alt="" />
-                  <p className="pl-1">{items.price}</p>
-                </div>
-              </div>
-            </div>
+              <Image
+                   src={items?.image_url ? items?.image_url : "/images/topsell.png"}
+                   alt=""
+                   className="w-[300px] h-[300px] object-contain rounded-lg "
+                   width={500}
+                   height={500}
+                 />
+               </div>
+               <div className=" ">
+                 <p className="text-black  font-semibold text-[20px] t">
+                   {items?.name}
+                 </p>
+                 <div className="text-black font-semibold text-[20px] flex items-center ">
+                   <img src="/images/Naira.png" alt="" />
+                   <p className="pl-1">{Math.floor(items?.amount)}</p>
+                 </div>
+               </div>
+             </div>
           ))}
         </div>
       </div>
@@ -239,17 +292,7 @@ const Home = () => {
           <img src="/images/maplocation.png" alt="" />
         </div>
       </section>
-      <Modal
-        width={800}
-        style={{ height: "", width: "600px" }}
-        open={openTrack}
-        onCancel={handleTrackClose}
-        footer={false}
-      >
-        <div>
-          <img src="/images/proddisc.png" alt="" className="h-full w-[] " />
-        </div>
-      </Modal>
+  
 
       <Modal
         width={700}
@@ -311,9 +354,9 @@ const Home = () => {
                   showSearch
                   placeholder="Choose nearest store"
                   className={`w-full`}
-                  options={loc?.map((category) => ({
-                    value: category?.id,
-                    label: category?.place,
+                  options={storedata?.map((category) => ({
+                    value: category?.uuid,
+                    label: category?.location,
                   }))}
                   // onChange={handleSelected}
                   isClearable
@@ -336,6 +379,18 @@ const Home = () => {
             </button>
           </div>
         </div>
+      </Modal>
+      <Modal
+        width={800}
+        style={{ height: "", width: "600px" }}
+        open={openTrack}
+        onCancel={handleTrackClose}
+        footer={false}
+      >
+           <ProductDescription singleproducts={singleproducts} getSingleProductData={getSingleProductData} handleSubtract={handleSubtract} handleAdd={handleAdd } addToCart={addToCart} quantity={quantity} addcart={addcart} />
+
+       
+      
       </Modal>
     </section>
   );

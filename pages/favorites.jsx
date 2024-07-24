@@ -1,55 +1,77 @@
 import HomeLayout from '@/components/Layout/HomeLayout';
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useSelector, useDispatch } from "react-redux";
+import { Modal } from "antd/lib";
+import { ClipLoader } from "react-spinners";
+import Image from "next/image";
+import ProductDescription from '@/components/UI/ProductDescription';
+
+import { addtocart, getSingleProduct, getcartData, favAction, getFavorites } from "@/store/slice/productSlice";
 
 const Fav = () => {
-    const featCats = [
-        {
-          img: "/images/fruit.png",
-          text: "Fruits & Vegetables",
-        },
-        {
-          img: "/images/frozen.png",
-          text: "Frozen Food",
-        },
-        {
-          img: "/images/nonalc.png",
-          text: "Non Alcoholic Drink",
-        },
-        {
-          img: "/images/bakery.png",
-          text: "Bakery",
-        },
-        {
-          img: "/images/beverages.png",
-          text: "Beverages",
-        },
-        {
-          img: "/images/wine.png",
-          text: "Liquor & Wine",
-        },
-        {
-          img: "/images/sweetsnacks.png",
-          text: "Snacks & Sweet",
-        },
-        {
-          img: "/images/grainpasta.png",
-          text: "Grain & Pasta",
-        },
-      ];
+  const dispatch = useDispatch()
+  const { allproducts, singleproducts, addcart, getfav } = useSelector((state) => state.product);
+  const { token } = useSelector((state) => state.auth);
+  const [openTrack, setOpenTrack] = useState(false);
+  const data = getfav?.results?.data?.data;
+  const [quantity, setQuantity] = useState(1);
+  const getSingleProductData = singleproducts?.results?.data?.data;
 
-      const topSell = [
-        { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-        { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-        { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-        { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-        { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-        { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-        { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-        { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-        { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-  
-      ];
+
+  useEffect(() => {
     
+    dispatch(getFavorites())
+  
+  }, [])
+  
+  
+  const handleTrackClose = () => {
+    setOpenTrack(false);
+  };
+
+  const handleTrackOpen = (id) => {
+    setOpenTrack(true);
+    dispatch(getSingleProduct(id));
+  };
+
+  const handleSubtract = () => {
+    if(quantity < 2){
+      setQuantity(1)
+    }else {
+      setQuantity(quantity - 1)
+
+    }
+  }
+
+  const handleAdd = () => {
+    setQuantity(quantity + 1)
+  }
+
+ const addToCart = (id) => {
+
+  const data = {
+    product_id : id,
+    quantity: quantity
+  }
+  dispatch(addtocart(data))
+ }
+  
+ useEffect(() => {
+  if(token){
+    dispatch(getcartData());
+
+  }
+}, [ addcart, token]);
+
+useEffect(() => {
+  if(addcart.success){
+    setOpenTrack(false);
+    setQuantity(1)
+
+  }
+  
+
+}, [addcart.success])
   return (
     <HomeLayout>
     <section>
@@ -77,31 +99,42 @@ const Fav = () => {
         </div>
   
         <div className="grid grid-cols-3 gap-6 ">
-          {topSell?.map((items, index) => (
-            <div key={index}  className="mt-6 font-urbanist">
-              {" "}
+        {data?.map((items, index) => (
+              <div key={index}  onClick={() => handleTrackOpen(items?.product?.id)} className="mt-6 cursor-pointer font-urbanist p-[13px] hover:border hover:border-1 hover:shadow-lg rounded-2xl ">
               <div className="flex ">
-                <img src={items.img} alt="" className="" />
-              </div>
-              <div className=" ">
-                <p className="text-black  font-semibold text-[20px] t">
-                  {items.desc}
-                </p>
-                <div className='flex justify-between' >
-                  <div className='bg-[#007F82] rounded-md text-[14px] text-white px-3 py-2 '  >
-                    IN STOCK
-                  </div>
-                <div className="text-black font-semibold text-[20px] flex items-center ">
-                  <img src="/images/Naira.png" alt='' />
-                  <p className="pl-1">{items.price}</p>
-                </div>
-                </div>
-            
-              </div>
-            </div>
+              <Image
+                   src={items?.product?.image_url ? items?.product?.image_url : "/images/topsell.png"}
+                   alt=""
+                   className="w-[300px] h-[300px] object-contain rounded-lg "
+                   width={500}
+                   height={500}
+                 />
+               </div>
+               <div className=" ">
+                 <p className="text-black  font-semibold text-[20px] t">
+                   {items?.product?.name}
+                 </p>
+                 <div className="text-black font-semibold text-[20px] flex items-center ">
+                   <img src="/images/Naira.png" alt="" />
+                   <p className="pl-1">{Math.floor(items?.product?.unit_price)}</p>
+                 </div>
+               </div>
+             </div>
           ))}
         </div>
       </div>
+      <Modal
+        width={800}
+        style={{ height: "", width: "600px" }}
+        open={openTrack}
+        onCancel={handleTrackClose}
+        footer={false}
+      >
+           <ProductDescription singleproducts={singleproducts} getSingleProductData={getSingleProductData} handleSubtract={handleSubtract} handleAdd={handleAdd } addToCart={addToCart} quantity={quantity} addcart={addcart} />
+
+       
+      
+      </Modal>
     </section>
     </HomeLayout>
 

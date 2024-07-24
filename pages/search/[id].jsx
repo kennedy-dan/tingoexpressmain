@@ -13,7 +13,7 @@ const Search = () => {
   const {id} = router.query
   console.log(id)
   useEffect(() => {
-    if(id && token) {
+    if(id) {
       const data = {
         name: id
       }

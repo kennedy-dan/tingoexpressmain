@@ -12,10 +12,10 @@ const Product = () => {
 
   //useeffect
   useEffect(() => {
-    if(token){
+    // if(token){
       dispatch(getAllProducts())
 
-    }
+    // }
   }, [])
   
   

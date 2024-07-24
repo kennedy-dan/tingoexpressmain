@@ -3,24 +3,53 @@ import React, { useState, useEffect } from "react";
 import { Pagination } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "antd/lib";
-import { addtocart, getSingleProduct, getcartData } from "@/store/slice/productSlice";
+import { addtocart, getSingleProduct, getcartData, favAction, getFavorites } from "@/store/slice/productSlice";
 import { ClipLoader } from "react-spinners";
+import ProductDescription from "../UI/ProductDescription";
+import Image from "next/image";
+import { MdOutlineFavorite, MdFavorite } from "react-icons/md";
+import { toast } from "react-toastify";
+
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { allproducts, singleproducts, addcart } = useSelector((state) => state.product);
+  const { allproducts, singleproducts, addcart, getfav } = useSelector((state) => state.product);
   const [openTrack, setOpenTrack] = useState(false);
   const { token } = useSelector((state) => state.auth);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [quantity, setQuantity] = useState(1);
   const [currentItems, setCurrentItems] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const metaData = allproducts?.results?.data?.metadata;
   const data = allproducts?.results?.data?.data;
   const getSingleProductData = singleproducts?.results?.data?.data;
-
+  const [loadingFavorites, setLoadingFavorites] = useState({})
   const itemsPerPage = 10;
 
+
+  const handleFavoriteClick = async (id) => {
+    setLoadingFavorites(prev => ({ ...prev, [id]: true }));
+    const isFavorite = favorites.includes(id);
+    const action = isFavorite ? 'remove' : 'add';
+    try {
+      await dispatch(favAction({ id, action })).unwrap();
+      setFavorites(prev => 
+        action === 'add' ? [...prev, id] : prev.filter(itemId => itemId !== id)
+      );
+      toast.success(`Product ${action === 'add' ? 'added to' : 'removed from'} favorites`);
+    } catch (error) {
+      toast.error(`Failed to ${action} favorite: ${error.message}`);
+    } finally {
+      setLoadingFavorites(prev => ({ ...prev, [id]: false }));
+    }
+  };
+
+  useEffect(() => {
+    if (getfav.results && getfav.results.data) {
+      setFavorites(getfav.results.data?.data?.map(item => item.id));
+    }
+  }, [getfav.results]);
   useEffect(() => {
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -70,6 +99,9 @@ const Products = () => {
   
 
 }, [addcart.success])
+useEffect(() => {
+  dispatch(getFavorites());
+}, [dispatch]);
 
 useEffect(() => {
   if(token){
@@ -94,32 +126,53 @@ useEffect(() => {
           Best Selling Product
         </p>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 ">
-          {currentItems?.map((items, index) => (
-            <div
-              key={index}
-              onClick={() => handleTrackOpen(items?.id)}
-              className="mt-6 font-urbanist"
-            >
-              {" "}
-              <div className="flex ">
-                <img
-                  src={items.image_url ? items.image_url : "/images/topsell.png"}
-                  alt=""
-                  className=""
-                />
-              </div>
-              <div className=" ">
-                <p className="text-black  font-semibold text-[20px] t">
-                  {items.name}
-                </p>
-                <div className="text-black font-semibold text-[20px] flex items-center ">
-                  <img src="/images/Naira.png" alt="" />
-                  <p className="pl-1">{Math.floor(items.unit_price)}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+  {currentItems?.map((items, index) => (
+    <div
+      key={index}
+      className="mt-6 font-urbanist"
+    >
+      <div className='relative'>
+        <div 
+          className="flex"
+          onClick={() => handleTrackOpen(items?.id)}
+        >
+          <Image
+            src={items.image_url ? items.image_url : "/images/topsell.png"}
+            alt=""
+            className="w-[300px] h-[300px] object-contain rounded-lg cursor-pointer"
+            width={500}
+            height={500}
+          />
         </div>
+        <div 
+                className='absolute top-[10%] z-[100] right-[23%] cursor-pointer'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleFavoriteClick(items?.id);
+                }}
+              >
+                {loadingFavorites[items?.id] ? (
+                  <ClipLoader size={20} color="#000000" />
+                ) : favorites.includes(items?.id) ? (
+                  <MdFavorite color="red" />
+                ) : (
+                  <MdOutlineFavorite />
+                )}
+              </div>
+      </div>
+      
+      <div className="">
+        <p className="text-black font-semibold text-[20px]">
+          {items.name}
+        </p>
+        <div className="text-black font-semibold text-[20px] flex items-center">
+          <img src="/images/Naira.png" alt="" />
+          <p className="pl-1">{Math.floor(items.unit_price)}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
       </div>
       <div className="flex py-20 justify-center">
         <div className="flex justify-center">
@@ -138,57 +191,12 @@ useEffect(() => {
         onCancel={handleTrackClose}
         footer={false}
       >
-        {singleproducts?.isLoading && <div className='w-full h-[300px] items-center justify-center flex' ><ClipLoader className='w-9 h-9' /></div>}
-        {!singleproducts?.isLoading &&   <div className="flex space-x-5 font-montserrat">
-          <div>
-            <img
-              src={
-                getSingleProductData?.image_url
-                  ? getSingleProductData?.image_url
-                  : "/images/topsell.png"
-              }
-            />
-          </div>
-          <div>
-            <p className="text-[20px] font-semibold  ">
-              {getSingleProductData?.name}
-            </p>
-
-            <p className='pt-4' >SKU: {getSingleProductData?.sku}</p>
-            <p className='pt-4'>
-              category: {getSingleProductData?.category?.name}{" "}
-              <span>
-                {" "}
-                | similar product from {
-                  getSingleProductData?.category?.name
-                }{" "}
-              </span>{" "}
-            </p>
-
-            <div className="text-black font-semibold text-[24px] pt-3 space-x-1 font-urbanist flex items-center ">
-              <div>
-                <img src="/images/Naira.png" alt="" />
-              </div>
-              <p>{Math.floor(getSingleProductData?.unit_price)}</p>
-            </div>
-            <p className='pt-2' >Quantity</p>
-            <div className="flex  items-center">
-              <button onClick={handleSubtract} >
-                <img src={"/images/sub.png"} alt="" />
-              </button>
-              <p className="text-black font-bold px-2 text-[13px]">{quantity}</p>
-              <button onClick={handleAdd}>
-                <img src={"/images/add.png"} alt="" />
-              </button>
-            </div>
-            <button onClick={() => addToCart(getSingleProductData?.id)}  className='bg-secondary w-full text-white mt-6 font-bold tet-[14px] py-2 rounded-md ' >
-             {addcart?.isLoading ? <ClipLoader size={12} color="white" /> : 'Add to cart' } 
-            </button>
-          </div>
-        </div>}
+      <ProductDescription singleproducts={singleproducts} getSingleProductData={getSingleProductData} handleSubtract={handleSubtract} handleAdd={handleAdd } addToCart={addToCart} quantity={quantity} addcart={addcart} />
+  
        
       
       </Modal>
+
     </section>
   );
 };

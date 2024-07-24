@@ -9,6 +9,7 @@ import {
 } from "@/store/slice/productSlice";
 import Link from "next/link";
 import { ClipLoader } from "react-spinners";
+import Image from "next/image";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -119,15 +120,19 @@ const Cart = () => {
                 <div className="flex   ">
                   <div className="w-1/">
                     <div>
-                      <img
-                        className="w-[220px] h-[220px] mr-3 object-cover"
-                        src={
-                          items?.product?.image_url
-                            ? items?.product?.image_url
-                            : "/images/topsell.png"
-                        }
-                        alt=""
-                      />
+                    <Image
+                    src={
+                      items?.product?.image_url
+                        ? items?.product?.image_url
+                        : "/images/topsell.png"
+                    }
+                  alt=""
+                  className="w-[220px] h-[220px] mr-3 object-cover"
+
+                  width={500}
+                  height={500}
+                />
+                    
                     </div>
                   </div>
                   <div className="w-1/">

@@ -1,36 +1,108 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "antd/lib";
+import { Pagination } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addtocart,
+  getSingleProduct,
+  getcartData,
+  getSingleCats,
+} from "@/store/slice/productSlice";
+import ProductDescription from "../UI/ProductDescription";
+import Image from "next/image";
 
 const SingleShopLocationn = () => {
+  const dispatch = useDispatch();
   const [openTrack, setOpenTrack] = useState(false);
+  const { getcats, allproducts, singleproducts, addcart, singlecats } = useSelector(
+    (state) => state.product
+  );
+
+  const { token } = useSelector((state) => state.auth);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [type, setType] = useState("product");
+  const [quantity, setQuantity] = useState(1);
+  const [currentItems, setCurrentItems] = useState([]);
+  let data;
+  useEffect(() => {
+    
+ 
+  }, [])
+  
+  if ((type === "product")) {
+    data = allproducts?.results?.data?.data;
+  }
+  if(type === "cats"){
+    data = singlecats?.results?.data?.data
+  }
+
+  const getSingleProductData = singleproducts?.results?.data?.data;
+
+  const itemsPerPage = 10;
+
+  useEffect(() => {
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    setCurrentItems(data?.slice(indexOfFirstItem, indexOfLastItem) || []);
+  }, [currentPage, data]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   const handleTrackClose = () => {
     setOpenTrack(false);
   };
 
-  const handleTrackOpen = () => {
+  const handleTrackOpen = (id) => {
     setOpenTrack(true);
+    dispatch(getSingleProduct(id));
   };
-  const topSell = [
-    { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-    { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-    { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-    { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-    { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-    { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-    { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-    { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-    { img: "/images/topsell.png", desc: "Grape Res Seedless", price: "4000" },
-  ];
-  const cats = [
-    " Baby And Kids",
-    "Bakery",
-    "Beverages",
-    "Dairy And Eggs",
-    "Fresh Produce",
-    "Frozen Foods",
-    "Organic",
-    "Health And Beauty",
-  ];
+
+  const handleSubtract = () => {
+    if (quantity < 2) {
+      setQuantity(1);
+    } else {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handleAdd = () => {
+    setQuantity(quantity + 1);
+  };
+  const catsData = getcats?.results?.data;
+
+  const addToCart = (id) => {
+    const data = {
+      product_id: id,
+      quantity: quantity,
+    };
+    dispatch(addtocart(data));
+  };
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getcartData());
+    }
+  }, [addcart, token]);
+
+  useEffect(() => {
+    if (addcart.success) {
+      setOpenTrack(false);
+      setQuantity(1);
+    }
+  }, [addcart.success]);
+
+  const fetchCats = (id) => {
+    dispatch(getSingleCats(id));
+    setType("cats");
+  };
+
+  const handleprodset = () => {
+    setType("product");
+
+  }
   return (
     <section>
       <div className="bg-[#E7EBF6] py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px]  md:flex items-center justify-between ">
@@ -51,48 +123,77 @@ const SingleShopLocationn = () => {
           </div>
           <hr />
 
+          <div className=' py-4 pl-8 cursor-pointer' onClick={handleprodset} >
+            <p>All Products</p>
+          </div>
+
           <div className="space-y-10 pl-8 py-4">
-            {cats?.map((info, index) => (
-              <p key={index}>{info}</p>
+            {catsData?.map((info, index) => (
+              <div
+                className="cursor-pointer"
+                onClick={() => fetchCats(info?.id)}
+                key={index}
+              >
+                <p>{info?.name}</p>
+              </div>
             ))}
           </div>
         </div>
         <div className="md:w-[75%] mt-20 md:mt-0 ">
-          <div className="flex justify-between ">
-            <p className="md:text-[20px] text-[14px] font-montserrat font-semibold ">
-              Beverages
-            </p>
+          <div className="">
+            <div className="flex justify-between ">
+              <p className="md:text-[24px] text-[14px] font-montserrat font-semibold ">
+                Showing 1-{itemsPerPage} of {data?.length} results
+              </p>
 
-            <p className="md:text-[20px] text-[14px] font-montserrat font-semibold ">
-              Sort by: Price Low To High
-            </p>
-          </div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
-            {topSell?.map((items, index) => (
-              <div
-                key={index}
-                onClick={handleTrackOpen}
-                className="mt-6 cursor-pointer font-urbanist   rounded-2xl relative group"
-              >
-                <div className="flex">
-                  <img src={items.img} alt="" className="" />
-                </div>
-                <div className="">
-                  <p className="text-black font-semibold text-[20px]">
-                    {items.desc}
-                  </p>
-                  <div className="text-black font-semibold text-[20px] flex items-center">
-                    <img src="/images/Naira.png" alt="" />
-                    <p className="pl-1">{items.price}</p>
+              <p className="md:text-[24px] text-[14px] font-montserrat font-semibold ">
+                Sort by: Price Low To High
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
+              {currentItems?.map((items, index) => (
+                <div
+                  key={index}
+                  onClick={() => handleTrackOpen(items?.id)}
+                  className="mt-6 cursor-pointer font-urbanist p-[13px] hover:border hover:border-1 hover:shadow-lg rounded-2xl "
+                >
+                  <div className="flex ">
+                    <Image
+                      src={
+                        items.image_url
+                          ? items.image_url
+                          : "/images/topsell.png"
+                      }
+                      alt=""
+                      className="w-[300px] h-[300px] object-contain rounded-lg "
+                      width={500}
+                      height={500}
+                    />
+                  </div>
+                  <div className=" ">
+                    <p className="text-black  font-semibold text-[20px] t">
+                      {items.name}
+                    </p>
+                    <div className="text-black font-semibold text-[20px] flex items-center ">
+                      <img src="/images/Naira.png" alt="" />
+                      <p className="pl-1">{Math.floor(items.unit_price)}</p>
+                    </div>
                   </div>
                 </div>
-
-                <div className="w-full bg-secondary mt-8 text-white py-4 rounded-lg hidden group-hover:block">
-                  <button className="w-full">Add To Cart</button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+        </div>
+      </div>
+      <div className="flex py-20 justify-center">
+        <div className="flex justify-center">
+          <Pagination
+            current={currentPage}
+            total={data?.length || 0}
+            pageSize={itemsPerPage}
+            onChange={handlePageChange}
+          />
         </div>
       </div>
       <Modal
@@ -102,9 +203,15 @@ const SingleShopLocationn = () => {
         onCancel={handleTrackClose}
         footer={false}
       >
-        <div>
-          <img src="/images/proddisc.png" alt="" className="h-full w-[] " />
-        </div>
+        <ProductDescription
+          singleproducts={singleproducts}
+          getSingleProductData={getSingleProductData}
+          handleSubtract={handleSubtract}
+          handleAdd={handleAdd}
+          addToCart={addToCart}
+          quantity={quantity}
+          addcart={addcart}
+        />
       </Modal>
     </section>
   );

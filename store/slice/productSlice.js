@@ -66,6 +66,7 @@ export const getSingleCats = createAsyncThunk(
   }
 );
 
+
 //chekout
 
 export const addtocheckout = createAsyncThunk(
@@ -88,6 +89,41 @@ export const orderHistory = createAsyncThunk(
   `customer/orderHistory`,
   async (data) => {
     const response = await axios.get(`orders/list`);
+    return response;
+  }
+);
+export const getStores= createAsyncThunk(
+  `customer/getStores`,
+  async (id) => {
+    const response = await axios.get(`stores`);
+    return response;
+  }
+);
+
+export const topSell= createAsyncThunk(
+  `customer/topSell`,
+  async (id) => {
+    const response = await axios.get(`products/top-selling`);
+    return response;
+  }
+);
+
+export const favAction = createAsyncThunk(
+  `customer/favAction`,
+  async (data) => {
+    const response = await axios.post(`favorites/action`,{ product_id: data.id }, { params: {
+      action: data.action,
+      
+
+    }},);
+    return response;
+  }
+);
+
+export const getFavorites = createAsyncThunk(
+  `customer/getFavorites`,
+  async (data) => {
+    const response = await axios.get(`favorites/list`, data);
     return response;
   }
 );
@@ -162,6 +198,25 @@ const initialState = {
     results: null,
     isLoading: true,
   },
+  getstore: {
+    results: null,
+    isLoading: true,
+  },
+
+  topsell: {
+    results: null,
+    isLoading: true,
+  },
+
+  favaction: {
+    results: null,
+    isLoading: false,
+  },
+
+  getfav: {
+    results: null,
+    isLoading: false,
+  }
 
 };
 
@@ -313,6 +368,66 @@ export const productSlice = createSlice({
       })
       .addCase(orderHistory.rejected, (state, { payload }) => {
         state.getOrder.isLoading = true;
+
+      });
+
+      builder
+      .addCase(getStores.pending, (state) => {
+        state.getstore.isLoading = true;
+
+      })
+      .addCase(getStores.fulfilled, (state, { payload }) => {
+        state.getstore.isLoading = false;
+        state.getstore.results = payload;
+
+      })
+      .addCase(getStores.rejected, (state, { payload }) => {
+        state.getstore.isLoading = true;
+
+      });
+
+      builder
+      .addCase(topSell.pending, (state) => {
+        state.topsell.isLoading = true;
+
+      })
+      .addCase(topSell.fulfilled, (state, { payload }) => {
+        state.topsell.isLoading = false;
+        state.topsell.results = payload;
+
+      })
+      .addCase(topSell.rejected, (state, { payload }) => {
+        state.topsell.isLoading = true;
+
+      });
+
+      builder
+      .addCase(favAction.pending, (state) => {
+        state.favaction.isLoading = true;
+
+      })
+      .addCase(favAction.fulfilled, (state, { payload }) => {
+        state.favaction.isLoading = false;
+        state.favaction.results = payload;
+
+      })
+      .addCase(favAction.rejected, (state, { payload }) => {
+        state.favaction.isLoading = true;
+
+      });
+
+      builder
+      .addCase(getFavorites.pending, (state) => {
+        state.getfav.isLoading = true;
+
+      })
+      .addCase(getFavorites.fulfilled, (state, { payload }) => {
+        state.getfav.isLoading = false;
+        state.getfav.results = payload;
+
+      })
+      .addCase(getFavorites.rejected, (state, { payload }) => {
+        state.getfav.isLoading = true;
 
       });
 
