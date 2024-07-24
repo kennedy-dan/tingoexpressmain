@@ -2,6 +2,7 @@ import { _loginUser } from '@/store/slice/authSlice'
 import { useRouter } from 'next/router'
 import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import Link from "next/link";
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -49,7 +50,11 @@ const Login = () => {
             </p>
             <p className="text-[16px] font-[400] text-[#8A848F] text-center ">
               Dont have an account Click{" "}
+              <Link href='/signup' >
               <span className="text-[#4FA9AB]">Sign up</span>
+
+
+            </Link>
             </p>
          
             <div className="mt-16">

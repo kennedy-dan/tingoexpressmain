@@ -62,7 +62,7 @@ const Signup = () => {
   }, [user])
   
   return (
-    <section className="md:p-[40px] p-[10px]">
+    <section className="md:p-[20px] p-[10px]">
       <div className="flex md:space-x-14   ">
         <div className="md:w-1/2 md:block hidden ">
           <img src="/images/signupimg.png" alt="" />
@@ -81,9 +81,12 @@ const Signup = () => {
           </p>
           <p className="text-[16px] font-[400] text-[#8A848F] text-center ">
             Already have an account Click{" "}
+            <Link href='/login' >
             <span className="text-[#4FA9AB]">Login</span>
+
+            </Link>
           </p>
-          <div className="mt-16">
+          <div className="mt-6">
             <p className="font-semibold">Name</p>
             <input
               placeholder="Enter Your Fullname"
@@ -143,7 +146,7 @@ const Signup = () => {
               </div>
             </div>
           </div>
-          <div className="mt-10">
+          <div className="mt-7">
             <button
             onClick={register}
               // onClick={() => onReg(2)}

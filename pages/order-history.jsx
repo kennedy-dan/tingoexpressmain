@@ -76,9 +76,9 @@ const Orderhistory = () => {
                     <p className="font-[400] py-1">QTY: {item?.quantity}</p>
                     <p>N {item?.unit_price}</p>
                   </div>
-                  <p className="text-green-400 mt-3 md:mt-0 text-[14px] font-semibold ">
+                  {/* <p className="text-green-400 mt-3 md:mt-0 text-[14px] font-semibold ">
                     Buy Again
-                  </p>
+                  </p> */}
                 </div>
               </div>
               <hr />

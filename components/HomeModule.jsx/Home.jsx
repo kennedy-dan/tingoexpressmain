@@ -111,12 +111,12 @@ const Home = () => {
                     Tingo Express{" "}
                   </p>
                   <div className="flex justify-center w-fit mt-6">
-                    <button
+                    {/* <button
                       onClick={handleLocOpen}
                       className="md:w-[550px] w-[250px] bg-secondary  text-white py-4 rounded-lg "
                     >
                       Shop Now
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>
