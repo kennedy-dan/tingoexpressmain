@@ -83,7 +83,7 @@ useEffect(() => {
         <div className='bg-[#E7EBF6] py-10 md:py-0 mt-20 px-4 lg:px-[20px]  xl:px-[100px]  flex items-center justify-between ' >
             <div>
                 <p>{"Product category" < "frozenfoods" }  </p>
-            <p className='md:text-[54px] text-[32px] font-bold text-black font-montserrat' >Frozen Foods</p>
+            <p className='md:text-[54px] text-[32px] font-bold text-black font-montserrat' ></p>
 
             </div>
             <div className='hidden md:block' >

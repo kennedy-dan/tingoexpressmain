@@ -3,13 +3,14 @@ import React, { useState, useEffect } from "react";
 import { Pagination } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "antd/lib";
-import { addtocart, getSingleProduct } from "@/store/slice/productSlice";
+import { addtocart, getSingleProduct, getcartData } from "@/store/slice/productSlice";
 import { ClipLoader } from "react-spinners";
 
 const Products = () => {
   const dispatch = useDispatch();
   const { allproducts, singleproducts, addcart } = useSelector((state) => state.product);
   const [openTrack, setOpenTrack] = useState(false);
+  const { token } = useSelector((state) => state.auth);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [quantity, setQuantity] = useState(1);
@@ -69,6 +70,13 @@ const Products = () => {
   
 
 }, [addcart.success])
+
+useEffect(() => {
+  if(token){
+    dispatch(getcartData());
+
+  }
+}, [ addcart, token]);
   
   return (
     <section>
