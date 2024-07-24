@@ -46,7 +46,7 @@ const ShopLocation = () => {
               <p className='md:py-0 py-3' >{data.location}</p>
               <div className='md:py-0 py-3'>
                 <p>Opening time</p>
-                <p>9:00am - 10:00pm"</p>
+                <p>9:00am - 10:00pm</p>
               </div>
             </div>
                 <p className="text-gray-400  text-[18px] md:mb-2 " >Contact Information</p>
