@@ -24,7 +24,7 @@ const Search = () => {
   
   return (
     <HomeLayout>
-        <SearchResult />
+        <SearchResult name={id} />
     </HomeLayout>
   )
 }
