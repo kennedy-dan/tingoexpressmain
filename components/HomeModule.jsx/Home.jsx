@@ -11,6 +11,7 @@ const Home = () => {
   const [openLoc, setOpenLoc] = useState(false);
 
   const { getcats } = useSelector((state) => state.product);
+  const { token } = useSelector((state) => state.auth);
   const handleTrackClose = () => {
     setOpenTrack(false);
   };
@@ -90,10 +91,12 @@ const Home = () => {
   ];
 
   useEffect(() => {
-    dispatch(getcategories());
+    if (token) {
+      dispatch(getcategories());
+    }
   }, []);
 
-  const catsData = getcats?.results?.data
+  const catsData = getcats?.results?.data;
 
   return (
     <section>
@@ -146,7 +149,17 @@ const Home = () => {
               <div className="mt-6 font-urbanist">
                 {" "}
                 <div className="flex justify-center ">
-                  <img src={items?.image_url ? items?.image_url : items?.code === "Non - Food" ? '/images/fruit.png' : '/images/frozen.png' } alt="" className="" />
+                  <img
+                    src={
+                      items?.image_url
+                        ? items?.image_url
+                        : items?.code === "Non - Food"
+                        ? "/images/fruit.png"
+                        : "/images/frozen.png"
+                    }
+                    alt=""
+                    className=""
+                  />
                 </div>
                 <div className="details  bg-[#F3F3F3] -mt-24 pt-14 rounded-3xl">
                   <p className="text-black py-12 text-center font-semibold text-[20px] t">
