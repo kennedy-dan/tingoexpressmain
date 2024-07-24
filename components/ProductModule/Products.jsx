@@ -4,10 +4,11 @@ import { Pagination } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "antd/lib";
 import { addtocart, getSingleProduct } from "@/store/slice/productSlice";
+import { ClipLoader } from "react-spinners";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { allproducts, singleproducts } = useSelector((state) => state.product);
+  const { allproducts, singleproducts, addcart } = useSelector((state) => state.product);
   const [openTrack, setOpenTrack] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -59,6 +60,15 @@ const Products = () => {
   }
   dispatch(addtocart(data))
  }
+ useEffect(() => {
+  if(addcart.success){
+    setOpenTrack(false);
+    setQuantity(1)
+
+  }
+  
+
+}, [addcart.success])
   
   return (
     <section>
@@ -120,7 +130,8 @@ const Products = () => {
         onCancel={handleTrackClose}
         footer={false}
       >
-        <div className="flex space-x-5 font-montserrat">
+        {singleproducts?.isLoading && <div className='w-full h-[300px] items-center justify-center flex' ><ClipLoader className='w-9 h-9' /></div>}
+        {!singleproducts?.isLoading &&   <div className="flex space-x-5 font-montserrat">
           <div>
             <img
               src={
@@ -163,10 +174,12 @@ const Products = () => {
               </button>
             </div>
             <button onClick={() => addToCart(getSingleProductData?.id)}  className='bg-secondary w-full text-white mt-6 font-bold tet-[14px] py-2 rounded-md ' >
-              Add to cart
+             {addcart?.isLoading ? <ClipLoader size={12} color="white" /> : 'Add to cart' } 
             </button>
           </div>
-        </div>
+        </div>}
+       
+      
       </Modal>
     </section>
   );

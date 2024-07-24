@@ -59,7 +59,7 @@ const ProductsId = () => {
     product_id : id,
     quantity: quantity
   }
-  dispatch(addtocart(data)).finally(setOpenTrack(false))
+  dispatch(addtocart(data))
  }
   
  useEffect(() => {
@@ -68,6 +68,16 @@ const ProductsId = () => {
 
   }
 }, [ addcart, token]);
+
+useEffect(() => {
+  if(addcart.success){
+    setOpenTrack(false);
+    setQuantity(1)
+
+  }
+  
+
+}, [addcart.success])
   return (
     <section>
         <div className='bg-[#E7EBF6] py-10 md:py-0 mt-20 px-4 lg:px-[20px]  xl:px-[100px]  flex items-center justify-between ' >
@@ -177,7 +187,7 @@ const ProductsId = () => {
               </button>
             </div>
             <button onClick={() => addToCart(getSingleProductData?.id)}  className='bg-secondary w-full text-white mt-6 font-bold tet-[14px] py-2 rounded-md ' >
-             {addcart?.isLoading ? <ClipLoader className='w-5 h-5 text-white' /> : 'Add to cart' } 
+             {addcart?.isLoading ? <ClipLoader size={12} color="white" /> : 'Add to cart' } 
             </button>
           </div>
         </div>}

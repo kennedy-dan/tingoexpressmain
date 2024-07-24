@@ -12,7 +12,10 @@ const ProductId = () => {
    const {prodid} = router.query
    console.log(router.query)
   useEffect(() => {
-    dispatch(getSingleCats(prodid))
+    if(prodid){
+      dispatch(getSingleCats(prodid))
+
+    }
   }, [prodid])
   
     

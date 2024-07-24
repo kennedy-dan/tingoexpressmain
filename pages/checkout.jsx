@@ -11,6 +11,7 @@ import {
   RemoveFromCart,
 } from "@/store/slice/productSlice";
 import { payStackConfig } from "@/utils/paystackConfig";
+import { ClipLoader } from "react-spinners";
 const Checkout = () => {
   const dispatch = useDispatch();
   const { getcart, checkout } = useSelector((state) => state.product);
@@ -270,7 +271,8 @@ const Checkout = () => {
                     onClick={handleCheckout}
                     className="w-full bg-secondary text-white py-4 rounded-lg font-semibold text-[16px] "
                   >
-                    Proceed To Payment N{total?.toFixed(2)}
+                    {checkout?.isLoading ? <ClipLoader size={12} color='white' /> : <p>Proceed To Payment N{total?.toFixed(2)}</p>}
+                    
                   </button>
                 )}
 

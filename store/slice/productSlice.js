@@ -5,8 +5,15 @@ import { toast } from "react-toastify";
 
 export const getAllProducts = createAsyncThunk(
   `customer/products`,
-  async () => {
-    const response = await axios.get("products/list");
+  async (data) => {
+  
+    const response = await axios.get("products/list", {
+      params: {
+        name: data?.name,
+        
+  
+      },
+    });
     return response;
   }
 );
@@ -77,6 +84,16 @@ export const verifyPayment = createAsyncThunk(
   }
 );
 
+export const orderHistory = createAsyncThunk(
+  `customer/orderHistory`,
+  async (data) => {
+    const response = await axios.get(`orders/list`);
+    return response;
+  }
+);
+
+
+
 // export const contributorLogin = createAsyncThunk(
 // 	`contributor/register`,
 // 	async ({ createData, cateID }) => {
@@ -103,6 +120,7 @@ const initialState = {
   addcart: {
     isLoading: false,
     results: null,
+    success:false
   },
 
   getcart: {
@@ -134,6 +152,15 @@ const initialState = {
   verify: {
     results: null,
     isLoading: false,
+  },
+    getOrder: {
+    results: null,
+    isLoading: true,
+  },
+
+  search: {
+    results: null,
+    isLoading: true,
   },
 
 };
@@ -172,14 +199,20 @@ export const productSlice = createSlice({
     builder
       .addCase(addtocart.pending, (state) => {
         state.addcart.isLoading = true;
+        state.addcart.success = false;
       })
       .addCase(addtocart.fulfilled, (state, { payload }) => {
         state.addcart.isLoading = false;
+        state.addcart.success = true;
+
         state.addcart.results = payload;
+
       })
       .addCase(addtocart.rejected, (state, { payload }) => {
         console.log(payload);
         state.addcart.isLoading = true;
+        state.addcart.success = false;
+
       });
 
     //GET CART
@@ -266,6 +299,20 @@ export const productSlice = createSlice({
       .addCase(verifyPayment.rejected, (state, { payload }) => {
         console.log(payload);
         state.verify.isLoading = true;
+
+      });
+        builder
+      .addCase(orderHistory.pending, (state) => {
+        state.getOrder.isLoading = true;
+
+      })
+      .addCase(orderHistory.fulfilled, (state, { payload }) => {
+        state.getOrder.isLoading = false;
+        state.getOrder.results = payload;
+
+      })
+      .addCase(orderHistory.rejected, (state, { payload }) => {
+        state.getOrder.isLoading = true;
 
       });
 

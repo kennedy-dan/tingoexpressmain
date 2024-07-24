@@ -8,24 +8,28 @@ import {
   RemoveFromCart,
 } from "@/store/slice/productSlice";
 import Link from "next/link";
+import { ClipLoader } from "react-spinners";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const { getcart } = useSelector((state) => state.product);
+  const { getcart, addcart, removecart } = useSelector(
+    (state) => state.product
+  );
 
   const [cartItems, setCartItems] = useState([]);
   const [quant, setquant] = useState(null);
+  const [updatingItemId, setUpdatingItemId] = useState(null);
+  const [removeItemId, setremoveItemId] = useState(null);
   const [prod, setprod] = useState(null);
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(0);
   useEffect(() => {
     if (getcart?.results?.data?.data?.items) {
       setCartItems(getcart.results.data.data.items);
     }
   }, [getcart]);
 
-  
-
   const increaseQuant = (itemId) => {
+    setUpdatingItemId(itemId.id);
     setCartItems((prevItems) =>
       prevItems.map((item) => {
         if (item.id === itemId.id) {
@@ -39,6 +43,7 @@ const Cart = () => {
   };
 
   const decreaseQuant = (itemId) => {
+    setUpdatingItemId(itemId.id);
     setCartItems((prevItems) =>
       prevItems.map((item) => {
         if (item.id === itemId.id && item.quantity > 1) {
@@ -49,19 +54,21 @@ const Cart = () => {
         return item;
       })
     );
-    // setCartItems(prevItems =>
-    //   prevItems.map(item =>
-    //     item.id === itemId && item.quantity > 1
-    //       ? { ...item, quantity: item.quantity - 1 }
-    //       : item
-    //   )
-    // );
-    // Dispatch an action to update the Redux store if necessary
-    // dispatch(updateCartItemQuantity(itemId, 'decrease'));
   };
+
+  // setCartItems(prevItems =>
+  //   prevItems.map(item =>
+  //     item.id === itemId && item.quantity > 1
+  //       ? { ...item, quantity: item.quantity - 1 }
+  //       : item
+  //   )
+  // );
+  // Dispatch an action to update the Redux store if necessary
+  // dispatch(updateCartItemQuantity(itemId, 'decrease'));
 
   const removeCart = (id) => {
     console.log(id);
+    setremoveItemId(id?.id);
     const data = {
       product_id: id?.product?.id,
       // image_url: image,
@@ -85,6 +92,7 @@ const Cart = () => {
         if (!error) {
           dispatch(getcartData());
         }
+        setUpdatingItemId(null); // Reset the updating item ID
       });
     }
   }, [quant, prod]);
@@ -93,7 +101,7 @@ const Cart = () => {
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
-      return total + item.price ;
+      return total + item.price;
     }, 0);
   };
 
@@ -126,12 +134,17 @@ const Cart = () => {
                     <p className="font-semibold text-[18px] w-[70%] ">
                       {items?.product?.name}
                     </p>
-                    <div className="text-black font-semibold text-[24px] pt-3 space-x-1 font-urbanist flex items-center ">
-                      <div>
-                        <img src="/images/naira.png" alt="" />
+                    {getcart?.isLoading ||
+                    (addcart?.isLoading && updatingItemId === items.id) ? (
+                      <ClipLoader color="black" size={12} />
+                    ) : (
+                      <div className="text-black font-semibold text-[24px] pt-3 space-x-1 font-urbanist flex items-center ">
+                        <div>
+                          <img src="/images/naira.png" alt="" />
+                        </div>
+                        <p>{Math.floor(items?.price)}</p>
                       </div>
-                      <p>{Math.floor(items?.price)}</p>
-                    </div>
+                    )}
                   </div>
                 </div>
                 <div className="">
@@ -147,17 +160,24 @@ const Cart = () => {
                     </button>
                   </div>
 
-                  <div className="flex mt-10 cursor-pointer " onClick={() => removeCart(items)}>
+                  <div
+                    className="flex mt-10 cursor-pointer "
+                    onClick={() => removeCart(items)}
+                  >
                     <div>
                       <img src="/images/delete.png" alt="" />
                     </div>
-                    <div>Remove</div>
+                    {removecart?.isLoading && removeItemId === items?.id ? (
+                      <ClipLoader color="black" size={12} />
+                    ) : (
+                      <div>Remove</div>
+                    )}
                   </div>
                 </div>
               </div>
 
               {/* <br /> */}
-              <hr className='my-5' />
+              <hr className="my-5" />
             </div>
           ))}
         </div>
@@ -182,12 +202,11 @@ const Cart = () => {
               <p className="text-[16px]">N 0</p>
             </div>
             <div className="mt-10">
-              <Link href='/checkout' >
-              <button className="w-full bg-secondary text-white py-4 rounded-lg font-semibold text-[16px] ">
-                Checkout N{total.toFixed(2)}
-              </button>
+              <Link href="/checkout">
+                <button className="w-full bg-secondary text-white py-4 rounded-lg font-semibold text-[16px] ">
+                  Checkout N{total.toFixed(2)}
+                </button>
               </Link>
-            
             </div>
           </div>
         </div>

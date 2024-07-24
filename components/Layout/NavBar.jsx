@@ -61,6 +61,7 @@ const NavBar = () => {
   const [userlog, setUserLog] = useState(false);
   const [advplacement, setadvPlacement] = useState("left");
   const [openadv, setOpenAdv] = useState(false);
+  const [name, setName] = useState('');
   const { getcart, checkout } = useSelector((state) => state.product);
 
   const [isCardOpen, setIsCardOpen] = useState(false);
@@ -123,9 +124,12 @@ const NavBar = () => {
                 />
               </div>
             </div>
-            <button className="bg-searchheader text-white h rounded-r-lg font-semibold h-[56px] text-[px] px-7 text-[16px]">
+            <Link href={`/search/${inputValue}`} >
+            <button  className="bg-searchheader text-white h rounded-r-lg font-semibold h-[56px] text-[px] px-7 text-[16px]">
               Search
             </button>
+            </Link>
+        
           </div>
         </div>
         <div className="lg:flex hidden font-semibold items-center space-x-5 text-[14px] ">
