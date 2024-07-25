@@ -40,7 +40,7 @@ const Home = () => {
   useEffect(() => {
     
     dispatch(getStores())
-    dispatch(topSell())
+    // dispatch(topSell())
   
   }, [])
 
