@@ -12,12 +12,13 @@ const Home = () => {
   const [openTrack, setOpenTrack] = useState(false);
   const [openLoc, setOpenLoc] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [loc, setLoc] = useState('');
 
   const { getcats, getstore, topsell, singleproducts, addcart } = useSelector((state) => state.product);
   const { token } = useSelector((state) => state.auth);
 
   const storedata = getstore?.results?.data?.data
-  const getSingleProductData = singleproducts?.results?.data?.data;
+  const getSingleProductData = singleproducts?.results?.data?.data?.data;
 
   const handleTrackClose = () => {
     setOpenTrack(false);
@@ -137,9 +138,9 @@ useEffect(() => {
     {
       img: "/images/bghero.png",
     },
-    {
-      img: "/images/bghero1.png",
-    },
+    // {
+    //   img: "/images/bghero1.png",
+    // },
   ];
 
   useEffect(() => {
@@ -148,14 +149,19 @@ useEffect(() => {
     // }
   }, []);
 
-  const catsData = getcats?.results?.data;
 
+
+  const catsData = getcats?.results?.data;
+  const handleSelected = (e) => {
+    console.log(e)
+    setLoc(e)
+  }
   return (
     <section>
       <AntCarousel autoplay effect="fade" speed={1500}>
         {carouselbg.map((img, index) => (
           <div key={index}>
-            <div className="relative h-[80vh] mt-28 ">
+            <div className="relative h-[80vh] mt-10 ">
               <div
                 style={{ backgroundImage: `url(${img.img})` }}
                 className={`  w-full flex justify-center h-full font-montserrat items-center bg-cover bg-blend-multiply b`}
@@ -229,12 +235,12 @@ useEffect(() => {
         </p>
         <div className="grid grid-cols-3 gap-6 ">
           {topselldata?.map((items, index) => (
-              <div key={index}  onClick={() => handleTrackOpen(items?.product_id)} className="mt-6 cursor-pointer font-urbanist p-[13px] hover:border hover:border-1 hover:shadow-lg rounded-2xl ">
+              <div key={index}  onClick={() => handleTrackOpen(items?.product_id)} className="mt-6 cursor-pointer font-urbanist p-[13px] border hover:border hover:border-1 hover:shadow-lg rounded-2xl ">
               <div className="flex ">
               <Image
                    src={items?.image_url ? items?.image_url : "/images/topsell.png"}
                    alt=""
-                   className="w-[300px] h-[300px] object-contain rounded-lg "
+                   className=" h-[300px] object-contain rounded-lg "
                    width={500}
                    height={500}
                  />
@@ -243,7 +249,7 @@ useEffect(() => {
                  <p className="text-black  font-semibold text-[20px] t">
                    {items?.name}
                  </p>
-                 <div className="text-black font-semibold text-[20px] flex items-center ">
+                 <div className="text-black font-semibold text-[20px] pt-2 flex items-center ">
                    <img src="/images/Naira.png" alt="" />
                    <p className="pl-1">{Math.floor(items?.amount)}</p>
                  </div>
@@ -274,16 +280,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
-        <p className="text-[32px] font-montserrat mb-10 font-semibold ">
-          New Arrival
-        </p>
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6   ">
-          {newArrival.map((items, index) => (
-            <img key={index} src={items} alt="" />
-          ))}
-        </div>
-      </div>
+
       <section className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-4">
         <div>
           <img src="/images/map.png" alt="" />
@@ -325,14 +322,14 @@ useEffect(() => {
               Locate Tingo Express effortlessly by entering your location bellow
               or use you current location
             </p>
-            <div className="flex justify-center items-center space-x-6 my-10">
+            {/* <div className="flex justify-center items-center space-x-6 my-10">
               <div>
                 <img src="/images/Vector.png" alt="" />
               </div>
               <p className="text-[#7A41B4] font-semibold text-[24px] font-urbanist ">
                 Use My Current location
               </p>
-            </div>
+            </div> */}
             <div className="text-left">
               <ConfigProvider
                 theme={{
@@ -350,15 +347,15 @@ useEffect(() => {
                 }}
               >
                 <Select
-                  id="country"
+                  // id="country"
                   showSearch
                   placeholder="Choose nearest store"
                   className={`w-full`}
                   options={storedata?.map((category) => ({
-                    value: category?.uuid,
+                    value: category?.location,
                     label: category?.location,
                   }))}
-                  // onChange={handleSelected}
+                  onChange={(e) => handleSelected(e)}
                   isClearable
                   style={{
                     backgroundColor: "white",
@@ -368,7 +365,7 @@ useEffect(() => {
                 />
               </ConfigProvider>
             </div>
-            <Link href="/location/1">
+            <Link href={`/location/${loc}`}>
               <button className="w-full bg-secondary mt-8  text-white py-4 rounded-lg ">
                 View Store Page
               </button>

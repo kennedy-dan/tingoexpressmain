@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Link from "next/link";
+import { ClipLoader } from "react-spinners";
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -11,7 +12,7 @@ const Login = () => {
   const [pWord, setPword] = useState('')
 
   //reduc useselector
-  const { token } = useSelector((state) => state.auth);
+  const { token, loading } = useSelector((state) => state.auth);
 
   const login = () => {
     const data= {
@@ -86,7 +87,8 @@ const Login = () => {
                 onClick={login}
                 className="w-[96%] bg-secondary text-white py-6 rounded-lg font-semibold text-[16px] "
               >
-                Login
+                              {loading ? <ClipLoader size={12} color='white' /> : <p>Login</p>}
+
               </button>
             </div>
           </div>

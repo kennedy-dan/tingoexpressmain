@@ -59,7 +59,7 @@ const ShopLocation = () => {
             <div className='flex md:justify-end my-4' >
                 <p className="text-[16px] font-[400] text-primary " >Show direction on map</p>
             </div>
-            <Link href='/location/1' >
+            <Link href={`/location/${data.location}`} >
             <button className="w-full bg-secondary mt-3 text-white flex justify-center space-x-3 py-4 rounded-lg  " >
                 <img src='/images/cartwhiteicon.png' alt='' />
                 <p className='text-[16px] font-semibold' >View Store page</p>

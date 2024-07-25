@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { _registerCustomer } from "@/store/slice/authSlice";
 import { useRouter } from "next/router";
+import { ClipLoader } from "react-spinners";
 
 const Signup = () => {
   const dispatch = useDispatch()
@@ -23,7 +24,7 @@ const Signup = () => {
 
 
   //redux useSelector
-  const { user } = useSelector((state) => state.auth);
+  const { user, loading } = useSelector((state) => state.auth);
 
   // const onReg = (val) => {
   //   setReg(val);
@@ -62,15 +63,18 @@ const Signup = () => {
   }, [user])
   
   return (
-    <section className="md:p-[20px] p-[10px]">
+    <section className="md:p-[20px] p-[10px] ">
       <div className="flex md:space-x-14   ">
-        <div className="md:w-1/2 md:block hidden ">
-          <img src="/images/signupimg.png" alt="" />
+        <div className="md:w-1/2 md:block h-screen hidden ">
+          <img src="/images/signupimg.png" alt="" className="" />
         </div>
         {/* {reg === 1 && ( */}
         <div className="md:w-1/2 font-montserrat ">
           <div className="flex w-full justify-center">
-            <img src="images/navbarlogo.png" alt="" className=" " />
+            <Link href='/' >
+            <img src="/images/navbarlogo.png" alt="" className=" " />
+
+            </Link>
           </div>
           <p className="font-semibold text-[38px] text-center ">
             Welcome to Tingo Express
@@ -152,7 +156,8 @@ const Signup = () => {
               // onClick={() => onReg(2)}
               className="w-[96%] bg-secondary text-white py-6 rounded-lg font-semibold text-[16px] "
             >
-              Register
+              {loading ? <ClipLoader size={12} color='white' /> : <p>Register</p>}
+              
             </button>
           </div>
         </div>

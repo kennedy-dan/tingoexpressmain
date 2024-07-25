@@ -112,8 +112,8 @@ export const authSlice = createSlice({
       })
       .addCase(_registerCustomer.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.user = payload.data.data;
-        toast.success(payload.data.message);
+        state.user = payload?.data?.data;
+        toast.success(payload?.data?.message);
       });
 
     builder

@@ -23,13 +23,18 @@ const TranasactionComplete = () => {
   
   return (
     <HomeLayout>
-      <div className='h-screen w-screen  flex justify-center items-center' >
-        <img src='/images/success.svg' alt='' />
+      <div className='h-screen w-screen  flex mt-10 justify-center items-center' >
+        <img src='/images/success.svg' alt='' className='w-[50%]' />
       
       </div>
-      <div className='flex justify-center ' >
+      <div className='flex justify-center my-10 ' >
           <Link href='/' >
-            <p>Back to home</p>
+          <button
+                className=" bg-secondary w-[220px] text-white py-4 rounded-lg font-semibold text-[16px] "
+              >
+                      <p>Back Home</p>
+
+              </button>
           </Link>
         </div>
     </HomeLayout>

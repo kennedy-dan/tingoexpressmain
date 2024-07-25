@@ -1,6 +1,6 @@
 import HomeLayout from "@/components/Layout/HomeLayout";
 import React, { useState, useEffect } from "react";
-import { Button, Checkbox } from "antd";
+import { Button, Radio, Select, ConfigProvider } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { PaystackButton } from "react-paystack";
 import Image from "next/image";
@@ -10,12 +10,13 @@ import {
   addtocheckout,
   getcartData,
   RemoveFromCart,
+  getStores
 } from "@/store/slice/productSlice";
 import { payStackConfig } from "@/utils/paystackConfig";
 import { ClipLoader } from "react-spinners";
 const Checkout = () => {
   const dispatch = useDispatch();
-  const { getcart, checkout } = useSelector((state) => state.product);
+  const { getcart, checkout, getstore } = useSelector((state) => state.product);
   const { token } = useSelector((state) => state.auth);
 
   const [checked, setChecked] = useState(true);
@@ -27,6 +28,10 @@ const Checkout = () => {
   const { user } = useSelector((state) => state.auth);
   const [phone, setPhone] = useState("");
   const [txRef, setTxRef] = useState(null);
+  const [deliveryOption, setDeliveryOption] = useState("pickup");
+
+
+  const storedata = getstore?.results?.data?.data
 
   const [total, setTotal] = useState(0);
 
@@ -47,6 +52,10 @@ const Checkout = () => {
     }
   }, []);
 
+  useEffect(() => {
+      dispatch(getStores());
+  }, []);
+
   const data = getcart?.results?.data?.data?.items;
 
   const calculateTotal = () => {
@@ -60,17 +69,34 @@ const Checkout = () => {
   }, [data]);
 
   const handleCheckout = async () => {
-    const data = {
-      name: user?.first_name,
-      email: user?.email,
-      phone: phone,
-      state: state,
-      address: address,
-      gateway: "Paystack",
-      country: country,
-      city: city,
-      payment_method: "Card",
-    };
+    let data
+    if(deliveryOption === "pickup"){
+       data = {
+        name: user?.first_name,
+        email: user?.email,
+        // phone: phone,
+        state: 'Lagos',
+        address: address,
+        gateway: "Paystack",
+        country: 'Nigeria',
+        city: 'Lagos',
+        payment_method: "Card",
+      };
+    }
+    if(deliveryOption === "delivery"){
+       data = {
+        name: user?.first_name,
+        email: user?.email,
+        phone: phone,
+        state: state,
+        address: address,
+        gateway: "Paystack",
+        country: country,
+        city: city,
+        payment_method: "Card",
+      };
+    }
+   
     try {
       const resultAction = await dispatch(addtocheckout(data));
       console.log(resultAction);
@@ -98,39 +124,85 @@ const Checkout = () => {
 
   console.log(txRef);
 
+  const handleDeliveryOptionChange = (e) => {
+    setDeliveryOption(e.target.value);
+  };
+  const handleSelected = (e) => {
+    setAddress(e)
+    console.log(e)
+  }
+
+  
+
   return (
     <HomeLayout>
       <section className="py-20 px-10 lg:px-[20px] font-montserrat lg:py-[20px] xl:px-[100px] xl:py-[100px]">
         <p className="font-bold text-[24px] pb-5">Checkout</p>
         <div className="md:flex justify-between">
-          <div>
-            <div className="">
-              <Checkbox checked={checked} onChange={onChange}>
+          <div className='w-1/2' >
+          <Radio.Group onChange={handleDeliveryOptionChange} value={deliveryOption}>
+              <Radio value="pickup">
                 <p>Pickup at station</p>
-              </Checkbox>
-            </div>
-            <p className="text-gray-400">Address</p>
-            <p>
-              Tingo mall- ikeja 22, adefowora str, off Adefisan. Ikeja, Lagos
-              Nigeria
-            </p>
-            <p className="text-gray-400 font-[500]">
-              Opening time: 9:00am - 10:00pm
-            </p>
-
-            <hr className="my-4" />
-            <div className="">
-              <Checkbox checked={checked} onChange={onChange}>
+              </Radio>
+              <Radio value="delivery">
                 <p>Door delivery</p>
-              </Checkbox>
-            </div>
-            <p className="text-gray-400 font-[500]">Delivery within 24 hours</p>
+              </Radio>
+            </Radio.Group>
             <hr className="my-4" />
+            {deliveryOption === "pickup" && (
+              <>
+              <ConfigProvider
+                theme={{
+                  components: {
+                    Select: {
+                      optionSelectedFontWeight: 600,
+                    },
+                  },
+                  token: {
+                    borderRadius: 12,
+                    controlHeight: 60,
+                    colorBgContainer: "#F9F9F9",
+                    fontSize: 16,
+                  },
+                }}
+              >
+                <Select
+                  // id="country"
+                  showSearch
+                  placeholder="Choose nearest store"
+                  className={`w-full`}
+                  options={storedata?.map((category) => ({
+                    value: category?.location,
+                    label: category?.location,
+                  }))}
+                  onChange={(e) => handleSelected(e)}
+                  isClearable
+                  style={{
+                    backgroundColor: "white",
+                    borderRadius: "5px",
+                    border: 1,
+                  }}
+                />
+              </ConfigProvider>
+              </>
+              // <div>
+              //   <p className="text-gray-400">Address</p>
+              //   <p>
+              //     Tingo mall- ikeja 22, adefowora str, off Adefisan. Ikeja, Lagos
+              //     Nigeria
+              //   </p>
+              //   <p className="text-gray-400 font-[500]">
+              //     Opening time: 9:00am - 10:00pm
+              //   </p>
+              // </div>
+            )}
 
-            <div>
+{deliveryOption === "delivery" && (
+  <>
+       <div>
               <p className="font-bold pb-1 mt-9 text-[14px] ">First name</p>
               <input
-                className="w-full py-5 bg-[#C6E7FF] border border-gray-400 px-4 text-[16px] outline-none "
+                className="w-full py-5  border border-gray-400 px-4 text-[16px] outline-none "
                 placeholder="Enter Name"
                 value={user?.first_name}
               />
@@ -138,7 +210,7 @@ const Checkout = () => {
             <div className="mt-10">
               <p className="font-bold pb-1 mt-9 text-[14px] ">Email Address</p>
               <input
-                className="w-full py-5 bg-[#C6E7FF] px-4 text-[16px] border border-gray-400 outline-none "
+                className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
                 placeholder="Enter Email Address"
                 value={user?.email}
               />
@@ -188,6 +260,10 @@ const Checkout = () => {
                 value={address}
               />
             </div>
+  </>
+  )}
+
+       
           </div>
 
           <div>

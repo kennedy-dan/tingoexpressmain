@@ -22,10 +22,13 @@ const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
       ref={profileDropdownRef}
       className="fixed z-50 top-[80px] font-urbanist right-[85px] h-[200px] font-medium  bg-[#DEDCE0] rounded-lg border shadow-lg p-4"
     >
+      <Link href='/profile' >
       <div className="flex space-x-3">
         <img src="/images/profile.png" alt="" />
         <p>My Profile</p>
       </div>
+      </Link>
+  
       <Link href="/favorites">
         {" "}
         <div className="flex my-4 space-x-3">

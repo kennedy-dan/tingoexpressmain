@@ -21,7 +21,7 @@ const ProductId = () => {
     
   return (
    <HomeLayout>
-        <ProductsId />
+        <ProductsId prodid={prodid} />
    </HomeLayout>
   )
 }

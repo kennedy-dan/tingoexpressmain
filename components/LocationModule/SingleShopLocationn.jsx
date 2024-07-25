@@ -11,7 +11,7 @@ import {
 import ProductDescription from "../UI/ProductDescription";
 import Image from "next/image";
 
-const SingleShopLocationn = () => {
+const SingleShopLocationn = ({name}) => {
   const dispatch = useDispatch();
   const [openTrack, setOpenTrack] = useState(false);
   const { getcats, allproducts, singleproducts, addcart, singlecats } = useSelector(
@@ -19,16 +19,14 @@ const SingleShopLocationn = () => {
   );
 
   const { token } = useSelector((state) => state.auth);
+  // console.log(id)
 
   const [currentPage, setCurrentPage] = useState(1);
   const [type, setType] = useState("product");
   const [quantity, setQuantity] = useState(1);
   const [currentItems, setCurrentItems] = useState([]);
   let data;
-  useEffect(() => {
-    
- 
-  }, [])
+
   
   if ((type === "product")) {
     data = allproducts?.results?.data?.data;
@@ -37,7 +35,7 @@ const SingleShopLocationn = () => {
     data = singlecats?.results?.data?.data
   }
 
-  const getSingleProductData = singleproducts?.results?.data?.data;
+  const getSingleProductData = singleproducts?.results?.data?.data?.data;
 
   const itemsPerPage = 10;
 
@@ -109,7 +107,7 @@ const SingleShopLocationn = () => {
         <div>
           <p>{"Product category" < "frozenfoods"} </p>
           <p className="text-[39px] font-bold text-black font-montserrat">
-            Tingo supermarket- Ikeja
+            {name}
           </p>
         </div>
         <div className="md:flex hidden">
@@ -166,7 +164,7 @@ const SingleShopLocationn = () => {
                           : "/images/topsell.png"
                       }
                       alt=""
-                      className="w-[300px] h-[300px] object-contain rounded-lg "
+                      className=" h-[300px] object-contain rounded-lg "
                       width={500}
                       height={500}
                     />
