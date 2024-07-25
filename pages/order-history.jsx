@@ -28,7 +28,10 @@ const Orderhistory = () => {
     <HomeLayout>
       <section className="py-20 px-4 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] font-montserrat ">
         {data?.map((items, index) => (
-          <div key={index} className="border border-gray-300 rounded-lg md:p-[50px] p-[15px] ">
+          <div
+            key={index}
+            className="border border-gray-300 mb-8 rounded-lg md:p-[50px] p-[15px] "
+          >
             <div className="border md:px-9 px-3 md:space-y-0 space-y-4 py-4 md:flex justify-between bg-[#EBF6F6] ">
               <div className="md:flex md:space-y-0 space-y-4">
                 <div>
@@ -42,12 +45,15 @@ const Orderhistory = () => {
                 <div className="md:ml-16">
                   <p className="text-black font-bold text-[17px] ">Date</p>
                   {console.log(items?.payment?.date)}
-                  {items?.payment?.date ? format(parseISO(items.payment.date), "MMM d, yyyy") : "N/A"}                </div>{" "}
+                  {items?.payment?.date
+                    ? format(parseISO(items.payment.date), "MMM d, yyyy")
+                    : "N/A"}{" "}
+                </div>{" "}
                 <div className="md:ml-16">
                   <p className="text-black font-bold text-[17px] ">
                     Total aount
                   </p>
-                  <p className="text-black text-[16px] ">{items?.amount}</p>
+                  <p className="text-black text-[16px] ">N{items?.amount}</p>
                 </div>
               </div>
               <div>
@@ -61,29 +67,28 @@ const Orderhistory = () => {
             </div>
             {items?.items?.map((item, index) => (
               <div key={index}>
-  <div className="md:flex py-4 md:space-x-3">
-                <img
-                  src={
-                    item?.image_url
-                      ? item?.image_url
-                      : "/images/checkoutrightimg.png"
-                  }
-                  alt=""
-                />
-                <div className="md:flex text-[17px] justify-between w-full font-[500] ">
-                  <div>
-                    <p>{item?.product?.name}</p>
-                    <p className="font-[400] py-1">QTY: {item?.quantity}</p>
-                    <p>N {item?.unit_price}</p>
-                  </div>
-                  {/* <p className="text-green-400 mt-3 md:mt-0 text-[14px] font-semibold ">
+                <div className="md:flex py-4 md:space-x-3">
+                  <img
+                    src={
+                      item?.image_url
+                        ? item?.image_url
+                        : "/images/checkoutrightimg.png"
+                    }
+                    alt=""
+                  />
+                  <div className="md:flex text-[17px] justify-between w-full font-[500] ">
+                    <div>
+                      <p>{item?.product?.name}</p>
+                      <p className="font-[400] py-1">QTY: {item?.quantity}</p>
+                      <p>N {item?.unit_price}</p>
+                    </div>
+                    {/* <p className="text-green-400 mt-3 md:mt-0 text-[14px] font-semibold ">
                     Buy Again
                   </p> */}
+                  </div>
                 </div>
+                <hr />
               </div>
-              <hr />
-              </div>
-            
             ))}
           </div>
         ))}
