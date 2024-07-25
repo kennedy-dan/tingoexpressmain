@@ -1,5 +1,6 @@
 import HomeLayout from "@/components/Layout/HomeLayout";
 import { getUsers } from "@/store/slice/authSlice";
+import Link from "next/link";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -38,12 +39,17 @@ const Profile = () => {
             <div>
               <p>My Profile</p>
             </div>
+            <Link href='/favorites' >
             <div>
               <p>Favorites</p>
             </div>{" "}
-            <div>
+            </Link>
+           <Link href='/order-history' >
+           <div>
               <p>Order History</p>
             </div>
+           </Link>
+          
           </div>
         </div>
 
