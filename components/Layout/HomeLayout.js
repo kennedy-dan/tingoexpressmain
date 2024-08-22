@@ -6,6 +6,7 @@ import Footer from './Footer';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getcartData } from "@/store/slice/productSlice.js";
+import SearchInput from './SearchInput';
 const HomeLayout = ({children}) => {
   // const { width } = useWindowDimension();
   const dispatch = useDispatch()
@@ -25,6 +26,9 @@ const HomeLayout = ({children}) => {
         //   overflowY: "auto",
         // }}
       >
+        <div className='flex justify-center md:hidden ' >
+          <SearchInput />
+        </div>
         <main>{children}</main>
         <Footer />
       </div>

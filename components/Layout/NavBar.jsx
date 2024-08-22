@@ -22,13 +22,13 @@ const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
       ref={profileDropdownRef}
       className="fixed z-50 top-[80px] font-urbanist right-[85px] h-[200px] font-medium  bg-[#DEDCE0] rounded-lg border shadow-lg p-4"
     >
-      <Link href='/profile' >
-      <div className="flex space-x-3">
-        <img src="/images/profile.png" alt="" />
-        <p>My Profile</p>
-      </div>
+      <Link href="/profile">
+        <div className="flex space-x-3">
+          <img src="/images/profile.png" alt="" />
+          <p>My Profile</p>
+        </div>
       </Link>
-  
+
       <Link href="/favorites">
         {" "}
         <div className="flex my-4 space-x-3">
@@ -64,13 +64,15 @@ const NavBar = () => {
   const [userlog, setUserLog] = useState(false);
   const [advplacement, setadvPlacement] = useState("left");
   const [openadv, setOpenAdv] = useState(false);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const { getcart, checkout } = useSelector((state) => state.product);
 
   const [isCardOpen, setIsCardOpen] = useState(false);
 
   const { user } = useSelector((state) => state.auth);
-
+  const logOut = () => {
+    dispatch(logOutCustomer());
+  };
   const profileDropdownRef = useRef(null);
 
   const toggleCard = () => {
@@ -127,12 +129,11 @@ const NavBar = () => {
                 />
               </div>
             </div>
-            <Link href={`/search/${inputValue}`} >
-            <button  className="bg-searchheader text-white h rounded-r-lg font-semibold h-[56px] text-[px] px-7 text-[16px]">
-              Search
-            </button>
+            <Link href={`/search/${inputValue}`}>
+              <button className="bg-searchheader text-white h rounded-r-lg font-semibold h-[56px] text-[px] px-7 text-[16px]">
+                Search
+              </button>
             </Link>
-        
           </div>
         </div>
         <div className="lg:flex hidden font-semibold items-center space-x-5 text-[14px] ">
@@ -207,7 +208,7 @@ const NavBar = () => {
           </Space>
         }
       >
-        <section className="font-poppins">
+        <section className="font-poppins space-y-9">
           <div className="flex justify-end ">
             <button onClick={onCloseadv}>
               <MdOutlineCancel className="w-8 h-8" />
@@ -216,6 +217,67 @@ const NavBar = () => {
           <div>
             <img src="/images/navbarlogo.png" alt="" className=" " />
           </div>
+          <div className="space-y-6 font-[500] text-[19px]">
+            <div>
+              <Link href="/product">
+                <div className="text-black">Product</div>
+              </Link>
+            </div>
+
+            <div>
+              <Link href="/contact">
+                <div className="text-black">Contact us</div>
+              </Link>
+            </div>
+
+            <div>
+              <Link href="/location">
+                <div className="text-black">Location</div>
+              </Link>
+            </div>
+          </div>
+
+          {user && (
+            <div className="space-y-6 font-[500] text-[19px]">
+              <div>
+                <Link href="/profile">
+                  <div className="flex space-x-3">
+                    <img src="/images/profile.png" alt="" />
+                    <p>My Profile</p>
+                  </div>
+                </Link>
+              </div>
+
+              <div>
+                <Link href="/favorites">
+                  {" "}
+                  <div className="flex my-4 space-x-3">
+                    <img src="/images/fav.png" alt="" />
+                    <p>Favorite</p>
+                  </div>
+                </Link>
+              </div>
+
+              <div>
+                <Link href="/order-history">
+                  <div className="flex space-x-3">
+                    <img src="/images/ord.png" alt="" />
+                    <p>Orders History</p>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="h-[1px] bg-gray-400 w-full mt-4 "></div>
+
+              <div
+                onClick={logOut}
+                className="flex mt-4 space-x-3 cursor-pointer "
+              >
+                <img src="/images/ord.png" alt="" className="opacity-0" />
+                <p>Logout</p>
+              </div>
+            </div>
+          )}
         </section>
       </Drawer>
     </section>

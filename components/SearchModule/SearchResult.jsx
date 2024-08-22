@@ -118,13 +118,13 @@ const SearchResult = ({name}) => {
 }, [ addcart, token]);
   return (
     <section>
-       <div className='bg-[#E7EBF6] px-[100px] flex items-center justify-between ' >
+       <div className='bg-[#E7EBF6] py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] flex items-center justify-between ' >
             <div>
                 <p>{"Product category" < "frozenfoods" }  </p>
             <p className='text-[50px] font-bold text-black font-montserrat' >Search Result: {name}</p>
 
             </div>
-            <div>
+            <div className=' md:block hidden' >
                 <img src='/images/searchcartbanner.png' alt='' />
             </div>
         </div>
