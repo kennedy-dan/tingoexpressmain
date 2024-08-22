@@ -14,6 +14,7 @@ import {
 } from "@/store/slice/productSlice";
 import { payStackConfig } from "@/utils/paystackConfig";
 import { ClipLoader } from "react-spinners";
+import { toast } from "react-toastify";
 const Checkout = () => {
   const dispatch = useDispatch();
   const { getcart, checkout, getstore } = useSelector((state) => state.product);
@@ -68,8 +69,13 @@ const Checkout = () => {
   }, [data]);
 
   const handleCheckout = async () => {
+  
     let data;
     if (deliveryOption === "pickup") {
+      if(address === ""){
+        toast.error('Input all fields')
+        return
+      }
       data = {
         name: user?.first_name,
         email: user?.email,
@@ -83,6 +89,10 @@ const Checkout = () => {
       };
     }
     if (deliveryOption === "delivery") {
+      if(address === "" || phone ==='' || state ==='' || country ==='' || city ===''){
+        toast.error('Input all fields')
+        return
+      }
       data = {
         name: user?.first_name,
         email: user?.email,

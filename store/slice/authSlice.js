@@ -93,13 +93,17 @@ export const authSlice = createSlice({
       })
       .addCase(_loginUser.fulfilled, (state, { payload }) => {
         state.loading = false;
-        const { user } = payload?.data?.data;
-        console.log(payload);
-        console.log(user);
-
-        state.token = payload?.data?.data?.token;
+        if(payload?.data?.data){
+          const { user } = payload?.data?.data;
         state.user = user;
         state.contributorData = user.contributor_data;
+
+          console.log(payload);
+          console.log(user);
+        }
+    
+
+        state.token = payload?.data?.data?.token;
         state.modalDisplay = false;
       });
 
