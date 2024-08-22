@@ -96,7 +96,7 @@ useEffect(() => {
   return (
     <HomeLayout>
     <section>
-        <div className='bg-[#E7EBF6] px-[100px] flex items-center justify-between ' >
+        <div className='bg-[#E7EBF6] lg:px-[100px] flex items-center justify-between ' >
             <div>
                 <p>{"Product category" < "frozenfoods" }  </p>
             <p className='text-[54px] font-bold text-black font-montserrat' >Favorite</p>
@@ -107,14 +107,14 @@ useEffect(() => {
             </div>
         </div>
       
-      <div className="p-[100px]">
+      <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
       {!currentItems?.length && <div className='mt-4' ><p className='font-[500] text-4xl' >No record found</p></div>}
   
   
-        <div className="grid grid-cols-3 gap-6 ">
+        <div className="grid lg:grid-cols-3 grid-cols-2 gap-6 ">
         {currentItems?.map((items, index) => (
             <div key={index} className="mt-6 font-urbanist">
-              <div className="relative">
+              <div className="relative border border-1 rounded-xl md:p-5 p-4">
                 <div
                   className="flex"
                   onClick={() => handleTrackOpen(items?.product?.id)}
@@ -122,7 +122,7 @@ useEffect(() => {
                   <Image
                   src={items?.product?.image_url ? items?.product?.image_url : "/images/topsell.png"}
                     alt=""
-                    className=" h-[300px] object-contain rounded-lg cursor-pointer"
+                    className=" md:h-[300px] h-[200px] md:object-contain object-cover rounded-lg cursor-pointer"
                     width={500}
                     height={500}
                   />

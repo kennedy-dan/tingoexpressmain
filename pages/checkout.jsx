@@ -10,7 +10,7 @@ import {
   addtocheckout,
   getcartData,
   RemoveFromCart,
-  getStores
+  getStores,
 } from "@/store/slice/productSlice";
 import { payStackConfig } from "@/utils/paystackConfig";
 import { ClipLoader } from "react-spinners";
@@ -30,8 +30,7 @@ const Checkout = () => {
   const [txRef, setTxRef] = useState(null);
   const [deliveryOption, setDeliveryOption] = useState("pickup");
 
-
-  const storedata = getstore?.results?.data?.data
+  const storedata = getstore?.results?.data?.data;
 
   const [total, setTotal] = useState(0);
 
@@ -53,7 +52,7 @@ const Checkout = () => {
   }, []);
 
   useEffect(() => {
-      dispatch(getStores());
+    dispatch(getStores());
   }, []);
 
   const data = getcart?.results?.data?.data?.items;
@@ -69,22 +68,22 @@ const Checkout = () => {
   }, [data]);
 
   const handleCheckout = async () => {
-    let data
-    if(deliveryOption === "pickup"){
-       data = {
+    let data;
+    if (deliveryOption === "pickup") {
+      data = {
         name: user?.first_name,
         email: user?.email,
         // phone: phone,
-        state: 'Lagos',
+        state: "Lagos",
         address: address,
         gateway: "Paystack",
-        country: 'Nigeria',
-        city: 'Lagos',
+        country: "Nigeria",
+        city: "Lagos",
         payment_method: "Card",
       };
     }
-    if(deliveryOption === "delivery"){
-       data = {
+    if (deliveryOption === "delivery") {
+      data = {
         name: user?.first_name,
         email: user?.email,
         phone: phone,
@@ -96,7 +95,7 @@ const Checkout = () => {
         payment_method: "Card",
       };
     }
-   
+
     try {
       const resultAction = await dispatch(addtocheckout(data));
       console.log(resultAction);
@@ -128,19 +127,20 @@ const Checkout = () => {
     setDeliveryOption(e.target.value);
   };
   const handleSelected = (e) => {
-    setAddress(e)
-    console.log(e)
-  }
-
-  
+    setAddress(e);
+    console.log(e);
+  };
 
   return (
     <HomeLayout>
       <section className="py-20 px-10 lg:px-[20px] font-montserrat lg:py-[20px] xl:px-[100px] xl:py-[100px]">
         <p className="font-bold text-[24px] pb-5">Checkout</p>
         <div className="md:flex justify-between">
-          <div className='w-1/2' >
-          <Radio.Group onChange={handleDeliveryOptionChange} value={deliveryOption}>
+          <div className="md:w-1/2">
+            <Radio.Group
+              onChange={handleDeliveryOptionChange}
+              value={deliveryOption}
+            >
               <Radio value="pickup">
                 <p>Pickup at station</p>
               </Radio>
@@ -151,39 +151,39 @@ const Checkout = () => {
             <hr className="my-4" />
             {deliveryOption === "pickup" && (
               <>
-              <ConfigProvider
-                theme={{
-                  components: {
-                    Select: {
-                      optionSelectedFontWeight: 600,
+                <ConfigProvider
+                  theme={{
+                    components: {
+                      Select: {
+                        optionSelectedFontWeight: 600,
+                      },
                     },
-                  },
-                  token: {
-                    borderRadius: 12,
-                    controlHeight: 60,
-                    colorBgContainer: "#F9F9F9",
-                    fontSize: 16,
-                  },
-                }}
-              >
-                <Select
-                  // id="country"
-                  showSearch
-                  placeholder="Choose nearest store"
-                  className={`w-full`}
-                  options={storedata?.map((category) => ({
-                    value: category?.location,
-                    label: category?.location,
-                  }))}
-                  onChange={(e) => handleSelected(e)}
-                  isClearable
-                  style={{
-                    backgroundColor: "white",
-                    borderRadius: "5px",
-                    border: 1,
+                    token: {
+                      borderRadius: 12,
+                      controlHeight: 60,
+                      colorBgContainer: "#F9F9F9",
+                      fontSize: 16,
+                    },
                   }}
-                />
-              </ConfigProvider>
+                >
+                  <Select
+                    // id="country"
+                    showSearch
+                    placeholder="Choose nearest store"
+                    className={`w-full`}
+                    options={storedata?.map((category) => ({
+                      value: category?.location,
+                      label: category?.location,
+                    }))}
+                    onChange={(e) => handleSelected(e)}
+                    isClearable
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: "5px",
+                      border: 1,
+                    }}
+                  />
+                </ConfigProvider>
               </>
               // <div>
               //   <p className="text-gray-400">Address</p>
@@ -197,73 +197,73 @@ const Checkout = () => {
               // </div>
             )}
 
-{deliveryOption === "delivery" && (
-  <>
-       <div>
-              <p className="font-bold pb-1 mt-9 text-[14px] ">First name</p>
-              <input
-                className="w-full py-5  border border-gray-400 px-4 text-[16px] outline-none "
-                placeholder="Enter Name"
-                value={user?.first_name}
-              />
-            </div>
-            <div className="mt-10">
-              <p className="font-bold pb-1 mt-9 text-[14px] ">Email Address</p>
-              <input
-                className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
-                placeholder="Enter Email Address"
-                value={user?.email}
-              />
-            </div>
-            <div className="mt-10">
-              <p className="font-bold pb-1 mt-9 text-[14px] ">Country</p>
-              <input
-                className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
-                placeholder="Enter Country"
-                onChange={(e) => setCountry(e.target.value)}
-                value={country}
-              />
-            </div>
-            <div className="mt-10">
-              <p className="font-bold pb-1 mt-9 text-[14px] ">State</p>
-              <input
-                className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
-                placeholder="Enter State"
-                onChange={(e) => setState(e.target.value)}
-                value={state}
-              />
-            </div>
-            <div className="mt-10">
-              <p className="font-bold pb-1 mt-9 text-[14px] ">city</p>
-              <input
-                className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
-                placeholder="Enter city"
-                onChange={(e) => setCity(e.target.value)}
-                value={city}
-              />
-            </div>
-            <div className="mt-10">
-              <p className="font-bold pb-1 mt-9 text-[14px] ">Phone</p>
-              <input
-                className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
-                placeholder="Enter Email Address"
-                onChange={(e) => setPhone(e.target.value)}
-                value={phone}
-              />
-            </div>
-            <div className="mt-10">
-              <p className="font-bold pb-1 mt-9 text-[14px] ">Address</p>
-              <input
-                className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
-                placeholder="Enter Address"
-                onChange={(e) => setAddress(e.target.value)}
-                value={address}
-              />
-            </div>
-  </>
-  )}
-
-       
+            {deliveryOption === "delivery" && (
+              <>
+                <div>
+                  <p className="font-bold pb-1 mt-9 text-[14px] ">First name</p>
+                  <input
+                    className="w-full py-5  border border-gray-400 px-4 text-[16px] outline-none "
+                    placeholder="Enter Name"
+                    value={user?.first_name}
+                  />
+                </div>
+                <div className="mt-10">
+                  <p className="font-bold pb-1 mt-9 text-[14px] ">
+                    Email Address
+                  </p>
+                  <input
+                    className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
+                    placeholder="Enter Email Address"
+                    value={user?.email}
+                  />
+                </div>
+                <div className="mt-10">
+                  <p className="font-bold pb-1 mt-9 text-[14px] ">Country</p>
+                  <input
+                    className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
+                    placeholder="Enter Country"
+                    onChange={(e) => setCountry(e.target.value)}
+                    value={country}
+                  />
+                </div>
+                <div className="mt-10">
+                  <p className="font-bold pb-1 mt-9 text-[14px] ">State</p>
+                  <input
+                    className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
+                    placeholder="Enter State"
+                    onChange={(e) => setState(e.target.value)}
+                    value={state}
+                  />
+                </div>
+                <div className="mt-10">
+                  <p className="font-bold pb-1 mt-9 text-[14px] ">city</p>
+                  <input
+                    className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
+                    placeholder="Enter city"
+                    onChange={(e) => setCity(e.target.value)}
+                    value={city}
+                  />
+                </div>
+                <div className="mt-10">
+                  <p className="font-bold pb-1 mt-9 text-[14px] ">Phone</p>
+                  <input
+                    className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
+                    placeholder="Enter Email Address"
+                    onChange={(e) => setPhone(e.target.value)}
+                    value={phone}
+                  />
+                </div>
+                <div className="mt-10">
+                  <p className="font-bold pb-1 mt-9 text-[14px] ">Address</p>
+                  <input
+                    className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
+                    placeholder="Enter Address"
+                    onChange={(e) => setAddress(e.target.value)}
+                    value={address}
+                  />
+                </div>
+              </>
+            )}
           </div>
 
           <div>
@@ -271,22 +271,21 @@ const Checkout = () => {
               <p className="font-bold text-[32px]">Summary</p>
               {data?.map((items, index) => (
                 <div key={index} className="w-full">
-                  <div className="flex w-full justify-between  font-montserrat">
-                    <div className="flex   ">
+                  <div className="md:flex w-full justify-between  font-montserrat">
+                    <div className="md:flex md:mt-0 mt-7  ">
                       <div className="w-1/">
                         <div>
-                        <Image
-                    src={
-                      items?.product?.image_url
-                        ? items?.product?.image_url
-                        : "/images/topsell.png"
-                    }
-                  alt=""
-                  className="w-[90px] h-[90px] mr-3 object-cover rounded-lg"
-
-                  width={500}
-                  height={500}
-                />
+                          <Image
+                            src={
+                              items?.product?.image_url
+                                ? items?.product?.image_url
+                                : "/images/topsell.png"
+                            }
+                            alt=""
+                            className="md:w-[90px] w-full md:h-[90px] h-[130px] mr-3 object-cover rounded-lg"
+                            width={500}
+                            height={500}
+                          />
                         </div>
                       </div>
                       <div className="w-1/">
@@ -351,8 +350,11 @@ const Checkout = () => {
                     onClick={handleCheckout}
                     className="w-full bg-secondary text-white py-4 rounded-lg font-semibold text-[16px] "
                   >
-                    {checkout?.isLoading ? <ClipLoader size={12} color='white' /> : <p>Proceed To Payment N{total?.toFixed(2)}</p>}
-                    
+                    {checkout?.isLoading ? (
+                      <ClipLoader size={12} color="white" />
+                    ) : (
+                      <p>Proceed To Payment N{total?.toFixed(2)}</p>
+                    )}
                   </button>
                 )}
 

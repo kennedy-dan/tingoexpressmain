@@ -127,7 +127,7 @@ const Products = () => {
       </div>
 
       <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
-        <p className="text-[32px] font-montserrat font-semibold ">
+        <p className="text-[28px] font-montserrat font-semibold ">
           Best Selling Product
         </p>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 ">

@@ -62,6 +62,7 @@ const Signup = () => {
   
   }, [user])
   
+  
   return (
     <section className="md:p-[20px] p-[10px] ">
       <div className="flex md:space-x-14   ">

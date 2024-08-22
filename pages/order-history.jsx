@@ -27,6 +27,7 @@ const Orderhistory = () => {
   return (
     <HomeLayout>
       <section className="py-20 px-4 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] font-montserrat ">
+        {data?.length < 1 && <p>No Order History</p>}
         {data?.map((items, index) => (
           <div
             key={index}

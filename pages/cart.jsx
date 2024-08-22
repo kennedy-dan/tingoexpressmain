@@ -116,8 +116,8 @@ const Cart = () => {
         <div className="w-full">
           {cartItems?.map((items, index) => (
             <div key={index} className="w-full">
-              <div className="flex w-full justify-between  font-montserrat">
-                <div className="flex   ">
+              <div className="md:flex w-full justify-between  font-montserrat">
+                <div className="md:flex   ">
                   <div className="w-1/">
                     <div>
                     <Image
@@ -127,7 +127,7 @@ const Cart = () => {
                         : "/images/topsell.png"
                     }
                   alt=""
-                  className="w-[220px] h-[220px] mr-3 object-cover"
+                  className="md:w-[220px] w-full h-[220px] mr-3 object-cover"
 
                   width={500}
                   height={500}
@@ -136,7 +136,7 @@ const Cart = () => {
                     </div>
                   </div>
                   <div className="w-1/">
-                    <p className="font-semibold text-[18px] w-[70%] ">
+                    <p className="font-semibold md:mt-0 mt-3 text-[18px] w-[70%] ">
                       {items?.product?.name}
                     </p>
                     {getcart?.isLoading ||
@@ -153,7 +153,7 @@ const Cart = () => {
                   </div>
                 </div>
                 <div className="">
-                  <div className="flex  items-center">
+                  <div className="flex md:mt-0 mt-3 items-center">
                     <button onClick={() => decreaseQuant(items)}>
                       <img src={"/images/sub.png"} alt="Decrease" />
                     </button>
@@ -166,7 +166,7 @@ const Cart = () => {
                   </div>
 
                   <div
-                    className="flex mt-10 cursor-pointer "
+                    className="flex md:mt-10 mt-3 cursor-pointer "
                     onClick={() => removeCart(items)}
                   >
                     <div>

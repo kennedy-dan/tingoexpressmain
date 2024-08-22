@@ -25,7 +25,7 @@ const ProductDescription = ({
         </div>
       )}
       {!singleproducts?.isLoading && (
-        <div className="flex space-x-5 font-montserrat">
+        <div className="md:flex md:mt-0 mt-4 md:space-x-5 font-montserrat">
           <div>
           <Image
                      src={
@@ -34,26 +34,26 @@ const ProductDescription = ({
                           : "/images/topsell.png"
                       }
                   alt=""
-                  className="w-[300px] h-[300px] object-contain rounded-lg "
+                  className="md:w-[300px] w-full h-[300px] object-contain rounded-lg "
                   width={500}
                   height={500}
                 />
          
           </div>
           <div>
-            <p className="text-[20px] font-semibold  ">
+            <p className="text-[20px] md:mt-0 mt-4 font-semibold  ">
               {getSingleProductData?.name}
             </p>
 
             <p className="pt-4">SKU: {getSingleProductData?.sku}</p>
             <p className="pt-4">
               category: {getSingleProductData?.category?.name}{" "}
-              <span>
+              {/* <span>
                 {" "}
                 | similar product from {
                   getSingleProductData?.category?.name
                 }{" "}
-              </span>{" "}
+              </span>{" "} */}
             </p>
 
             <div className="text-black font-semibold text-[24px] pt-3 space-x-1 font-urbanist flex items-center ">
@@ -62,8 +62,8 @@ const ProductDescription = ({
               </div>
               <p>{Math.floor(getSingleProductData?.unit_price)}</p>
             </div>
-            <p className="pt-2">Quantity</p>
-            <div className="flex  items-center">
+            <p className="pt-2 font-[500]">Quantity</p>
+            <div className="flex md:mt-0 mt-2  items-center">
               <button onClick={handleSubtract}>
                 <img src={"/images/sub.png"} alt="" />
               </button>
