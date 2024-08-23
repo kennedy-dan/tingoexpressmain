@@ -9,7 +9,7 @@ import { addtocart, getSingleProduct, getcartData,  favAction,
 import { ClipLoader } from "react-spinners";
 import Image from "next/image";
 import ProductDescription from "../UI/ProductDescription";
-import { MdOutlineFavorite, MdFavorite } from "react-icons/md";
+import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
@@ -118,21 +118,21 @@ const SearchResult = ({name}) => {
 }, [ addcart, token]);
   return (
     <section>
-       <div className='bg-[#E7EBF6] py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] flex items-center justify-between ' >
+       <div className='bg-[#E7EBF6] py-20 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] flex items-center justify-between ' >
             <div>
                 <p>{"Product category" < "frozenfoods" }  </p>
-            <p className='text-[50px] font-bold text-black font-montserrat' >Search Result: {name}</p>
+            <p className='md:text-[50px] text-[22px] font-bold text-black font-montserrat' >Search Result: {name}</p>
 
             </div>
             <div className=' md:block hidden' >
                 <img src='/images/searchcartbanner.png' alt='' />
             </div>
         </div>
-        <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
+        <div className="py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
 
           {!data?.length && <div className='mt-4' ><p className='font-[500] text-4xl' >No record found</p></div>}
       
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 ">
+        <div className="grid lg:grid-cols-3 grid-cols-2 gap-6 ">
         {currentItems?.map((items, index) => (
             <div key={index} className="mt-6 font-urbanist">
               <div className="relative">
@@ -145,13 +145,13 @@ const SearchResult = ({name}) => {
                       items.image_url ? items.image_url : "/images/topsell.png"
                     }
                     alt=""
-                    className=" h-[300px] object-contain rounded-lg cursor-pointer"
+                    className=" md:h-[300px] h-[200px] md:object-contain object-cover rounded-lg cursor-pointer"
                     width={500}
                     height={500}
                   />
                 </div>
                 <div
-                  className="absolute top-[10%] z-[100] right-[23%] cursor-pointer"
+                  className="absolute top-[10%] z-[100] right-[10%] md:right-[15%] cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleFavoriteClick(items?.id, items?.is_favorite);
@@ -160,19 +160,19 @@ const SearchResult = ({name}) => {
                   {loadingFavorites[items?.id] ? (
                     <ClipLoader size={20} color="#000000" />
                   ) : items?.is_favorite ? (
-                    <MdFavorite color="red" />
+                    <MdOutlineFavoriteBorder color="red" size={26} />
                   ) : (
-                    <MdOutlineFavorite />
+                    <MdOutlineFavoriteBorder size={26} color="black" />
                   )}
                 </div>
               </div>
 
               <div className="">
-                <p className="text-black font-semibold text-[20px]">
+                <p className="text-black font-semibold md:text-[20px] text-[14px]">
                   {items.name}
                 </p>
-                <div className="text-black font-semibold text-[20px] flex items-center">
-                  <img src="/images/Naira.png" alt="" />
+                <div className="text-black font-semibold md:text-[20px] text-[14px] flex items-center">
+                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[12px] w-[12px]' />
                   <p className="pl-1">{Math.floor(items.unit_price)}</p>
                 </div>
               </div>

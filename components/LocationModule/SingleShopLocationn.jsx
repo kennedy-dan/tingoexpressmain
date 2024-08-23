@@ -103,10 +103,10 @@ const SingleShopLocationn = ({name}) => {
   }
   return (
     <section>
-      <div className="bg-[#E7EBF6] py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px]  md:flex items-center justify-between ">
+      <div className="bg-[#E7EBF6] py-20 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px]  md:flex items-center justify-between ">
         <div>
           <p>{"Product category" < "frozenfoods"} </p>
-          <p className="text-[39px] font-bold text-black font-montserrat">
+          <p className="md:text-[39px] text-[22px] font-bold text-black font-montserrat">
             {name}
           </p>
         </div>
@@ -114,7 +114,7 @@ const SingleShopLocationn = ({name}) => {
           <img src="/images/locationcartbanner.png" alt="" />
         </div>
       </div>
-      <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-10 justify-between font-montserrat">
+      <div className="py-20 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-10 justify-between font-montserrat">
         <div className="md:w-[25%] shadow-md h-fit border   rounded-lg ">
           <div className="font-bold pl-8 py-2 text-[18px]">
             <p>Categories</p>
@@ -144,12 +144,12 @@ const SingleShopLocationn = ({name}) => {
                 Showing 1-{itemsPerPage} of {data?.length} results
               </p>
 
-              <p className="md:text-[24px] text-[14px] font-montserrat font-semibold ">
+              <p className="md:text-[24px] hidden text-[14px] font-montserrat font-semibold ">
                 Sort by: Price Low To High
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
+            <div className="grid lg:grid-cols-3 grid-cols-2 md:gap-6 gap3 ">
               {currentItems?.map((items, index) => (
                 <div
                   key={index}
@@ -164,16 +164,16 @@ const SingleShopLocationn = ({name}) => {
                           : "/images/topsell.png"
                       }
                       alt=""
-                      className=" h-[300px] object-contain rounded-lg "
+                      className=" md:h-[300px] h-[200px] md:object-contain object-cover  rounded-lg "
                       width={500}
                       height={500}
                     />
                   </div>
                   <div className=" ">
-                    <p className="text-black  font-semibold text-[20px] t">
+                    <p className="text-black  font-semibold md:text-[20px] text-[14px] t">
                       {items.name}
                     </p>
-                    <div className="text-black font-semibold text-[20px] flex items-center ">
+                    <div className="text-black font-semibold md:text-[20px] text-[14px] flex items-center ">
                       <img src="/images/Naira.png" alt="" />
                       <p className="pl-1">{Math.floor(items.unit_price)}</p>
                     </div>

@@ -15,7 +15,7 @@ import { ClipLoader } from "react-spinners";
 import ProductDescription from "../UI/ProductDescription";
 import Image from "next/image";
 import { toast } from "react-toastify";
-import { MdOutlineFavorite, MdFavorite } from "react-icons/md";
+import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useRouter } from "next/router";
 
 const ProductsId = ({ prodid }) => {
@@ -128,16 +128,16 @@ const ProductsId = ({ prodid }) => {
 
       <div className="py-20 px-4 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
         <div className="flex justify-between ">
-          <p className="md:text-[24px] text-[14px] font-montserrat font-semibold ">
+          <p className="md:text-[24px] text-[17px] font-montserrat font-semibold ">
             Showing 1-{itemsPerPage} of {data?.length} results
           </p>
 
-          <p className="md:text-[24px] text-[14px] font-montserrat font-semibold ">
+          <p className="md:text-[24px] hidden text-[14px] font-montserrat font-semibold ">
             Sort by: Price Low To High
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
+        <div className="grid lg:grid-cols-3 grid-cols-2  gap-6 ">
           {currentItems?.map((items, index) => (
             <div key={index} className="mt-6 font-urbanist">
               <div className="relative">
@@ -152,13 +152,13 @@ const ProductsId = ({ prodid }) => {
                         : "/images/topsell.png"
                     }
                     alt=""
-                    className=" h-[300px] object-contain rounded-lg cursor-pointer"
+                    className=" md:h-[300px] h-[200px] md:object-contain object-cover rounded-lg cursor-pointer"
                     width={500}
                     height={500}
                   />
                 </div>
                 <div
-                  className="absolute top-[10%] z-[100] right-[23%] cursor-pointer"
+                  className="absolute top-[10%] z-[100] right-[10%] md:right-[15%] cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleFavoriteClick(items?.id, items?.is_favorite);
@@ -167,19 +167,19 @@ const ProductsId = ({ prodid }) => {
                   {loadingFavorites[items?.id] ? (
                     <ClipLoader size={20} color="#000000" />
                   ) : items?.is_favorite ? (
-                    <MdFavorite color="red" />
+                    <MdOutlineFavoriteBorder size={26} color="red" />
                   ) : (
-                    <MdOutlineFavorite />
+                    <MdOutlineFavoriteBorder size={26} color="black"   />
                   )}
                 </div>
               </div>
 
               <div className="">
-                <p className="text-black font-semibold text-[20px]">
+                <p className="text-black font-semibold md:text-[20px] text-[14px]">
                   {items.name}
                 </p>
-                <div className="text-black font-semibold text-[20px] flex items-center">
-                  <img src="/images/Naira.png" alt="" />
+                <div className="text-black font-semibold md:text-[20px] text-[14px] flex items-center">
+                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[12px] w-[12px]' />
                   <p className="pl-1">{Math.floor(items.unit_price)}</p>
                 </div>
               </div>
