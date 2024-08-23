@@ -171,7 +171,7 @@ const SearchResult = ({name}) => {
                 <p className="text-black font-semibold md:text-[20px] text-[14px]">
                   {items.name}
                 </p>
-                <div className="text-black font-semibold md:text-[20px] text-[14px] flex items-center">
+                <div className="text-black font-semibold md:text-[20px] text-[16px] flex items-center">
                   <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[12px] w-[12px]' />
                   <p className="pl-1">{Math.floor(items.unit_price)}</p>
                 </div>

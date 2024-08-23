@@ -59,7 +59,7 @@ const Login = () => {
           <p className="text-[16px] font-[400] text-[#8A848F] text-center ">
             Dont have an account Click{" "}
             <Link href="/signup">
-              <span className="text-[#4FA9AB]">Sign up</span>
+              <span className="text-[#4FA9AB] font-bold text-[20px]">Sign up</span>
             </Link>
           </p>
           <div className="mt-16">

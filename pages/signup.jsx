@@ -87,7 +87,7 @@ const Signup = () => {
           <p className="text-[16px] font-[400] text-[#8A848F] text-center ">
             Already have an account Click{" "}
             <Link href='/login' >
-            <span className="text-[#4FA9AB]">Login</span>
+            <span className="text-[#4FA9AB] font-bold text-[20px]">Login</span>
 
             </Link>
           </p>
