@@ -237,6 +237,16 @@ const NavBar = () => {
             </div>
           </div>
 
+          {!user && (
+            <div>
+              <div>
+              <Link href="/login">
+                <div className="text-black">Login</div>
+              </Link>
+            </div>
+            </div>
+          )}
+
           {user && (
             <div className="space-y-6 font-[500] text-[19px]">
               <div>
