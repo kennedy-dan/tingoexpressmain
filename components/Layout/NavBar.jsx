@@ -60,6 +60,7 @@ const OrderHistoryCard = ({ isOpen, onClose, profileDropdownRef }) => {
 const NavBar = () => {
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const dispatch = useDispatch();
 
   const [userlog, setUserLog] = useState(false);
   const [advplacement, setadvPlacement] = useState("left");
@@ -183,8 +184,14 @@ const NavBar = () => {
           )}
         </div>
 
-        <div className="lg:hidden block" onClick={showDrawerAdv}>
-          <IoIosMenu size={26} />
+        <div className="lg:hidden space-x-3 items-center flex">
+          <Link href="/cart">
+            <img alt="" src="/images/carticon.png" />
+          </Link>
+
+          <buton onClick={showDrawerAdv}>
+            <IoIosMenu size={26} />
+          </buton>
         </div>
       </div>
       <OrderHistoryCard
@@ -240,10 +247,10 @@ const NavBar = () => {
           {!user && (
             <div>
               <div>
-              <Link href="/login">
-                <div className="text-black">Login</div>
-              </Link>
-            </div>
+                <Link href="/login">
+                  <div className="text-black font-[500] text-[19px]">Login</div>
+                </Link>
+              </div>
             </div>
           )}
 

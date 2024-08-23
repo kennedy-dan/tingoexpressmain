@@ -261,6 +261,7 @@ export const productSlice = createSlice({
         state.addcart.success = true;
 
         state.addcart.results = payload;
+        toast.success('Product added to cart')
 
       })
       .addCase(addtocart.rejected, (state, { payload }) => {
