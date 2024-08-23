@@ -84,8 +84,13 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (token) {
-      dispatch(getcartData());
+    if(token) {
+      const timer = setTimeout(() => {
+        dispatch(getcartData());
+      }, 6000); // 5000 milliseconds = 5 seconds
+
+      // Cleanup function to clear the timer if the component unmounts
+      return () => clearTimeout(timer);
     }
   }, [addcart]);
 
