@@ -12,13 +12,10 @@ const ProductDescription = ({
   quantity,
   handleAdd,
   addcart,
-  addToCart
+  addToCart,
 }) => {
   return (
-   
-        <div>
-
-        
+    <div>
       {singleproducts?.isLoading && (
         <div className="w-full h-[300px] items-center justify-center flex">
           <ClipLoader className="w-9 h-9" />
@@ -27,26 +24,27 @@ const ProductDescription = ({
       {!singleproducts?.isLoading && (
         <div className="md:flex md:mt-0 mt-4 md:space-x-5 font-montserrat">
           <div>
-          <Image
-                     src={
-                        getSingleProductData?.image_url
-                          ? getSingleProductData?.image_url
-                          : "/images/topsell.png"
-                      }
-                  alt=""
-                  className="md:w-[300px] w-full h-[300px] object-contain rounded-lg "
-                  width={500}
-                  height={500}
-                />
-         
+            <Image
+              src={
+                getSingleProductData?.image_url
+                  ? getSingleProductData?.image_url
+                  : "/images/topsell.png"
+              }
+              alt=""
+              className="md:w-[300px] w-full h-[300px] object-contain rounded-lg "
+              width={500}
+              height={500}
+            />
           </div>
           <div>
             <p className="text-[20px] md:mt-0 mt-4 font-semibold  ">
               {getSingleProductData?.name}
             </p>
 
-            <p className="pt-4">SKU: {getSingleProductData?.sku}</p>
-            <p className="pt-4">
+            <p className="pt-4 font-[500] text-black">
+              SKU: {getSingleProductData?.sku}
+            </p>
+            <p className="pt-4 font-[500] text-black ">
               category: {getSingleProductData?.category?.name}{" "}
               {/* <span>
                 {" "}
@@ -56,7 +54,7 @@ const ProductDescription = ({
               </span>{" "} */}
             </p>
 
-            <div className="text-black font-semibold text-[24px] pt-3 space-x-1 font-urbanist flex items-center ">
+            <div className="text-black font-[500] md:font-semibold md:text-[24px] text-[32px] pt-3 space-x-1 font-urbanist flex items-center ">
               <div>
                 <img src="/images/Naira.png" alt="" />
               </div>
@@ -76,19 +74,22 @@ const ProductDescription = ({
             </div>
             <button
               onClick={() => addToCart(getSingleProductData?.id)}
-              className="bg-secondary w-full text-white mt-6 font-bold tet-[14px] py-2 rounded-md "
+              className="bg-secondary w-full text-white mt-6 font-[500] tet-[17px] py-3 rounded-md "
             >
               {addcart?.isLoading ? (
                 <ClipLoader size={12} color="white" />
               ) : (
-                "Add to cart"
+                <div className="flex space-x-4 items-center justify-center">
+                  <img alt="" src="/images/cartwhiteicon.png" />
+
+                  <p>Add to cart</p>
+                </div>
               )}
             </button>
           </div>
         </div>
       )}
-      </div>
-   
+    </div>
   );
 };
 

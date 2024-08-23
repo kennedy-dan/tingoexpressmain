@@ -149,7 +149,7 @@ const Home = () => {
         ))}
       </AntCarousel>
 
-      <section className=" py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
+      <section className=" py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
         <div className="md:flex md:space-x-7 ">
           <div>
             <img src="/images/discount.png" alt="" />
@@ -160,8 +160,8 @@ const Home = () => {
         </div>
       </section>
 
-      <div className=" py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
-        <p className="md:text-[32px] text-[28px] font-montserrat font-semibold ">
+      <div className=" py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
+        <p className="md:text-[32px] text-[22px] font-montserrat font-semibold ">
           Featured Categories
         </p>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2  md:gap-4 gap-2 ">
@@ -179,11 +179,11 @@ const Home = () => {
                         : "/images/frozen.png"
                     }
                     alt=""
-                    className=""
+                    className="md:w-fit md:h-fit w-[100px] h-[100px]"
                   />
                 </div>
-                <div className="details  bg-[#F3F3F3] -mt-24 pt-14 rounded-3xl">
-                  <p className="text-black py-12 text-center font-semibold text-[20px] t">
+                <div className="details  bg-[#F3F3F3] md:-mt-24 -mt-12  md:pt-14 pt-7  rounded-3xl">
+                  <p className="text-black md:py-12 py-5 text-center font-semibold md:text-[20px] text-[15px]">
                     {items?.name}
                   </p>
                 </div>
@@ -192,8 +192,8 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div className=" py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
-        <p className="text-[32px] font-montserrat font-semibold ">
+      <div className=" py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
+        <p className="md:text-[32px] text-[22px] font-montserrat font-semibold ">
           Top Selling Product
         </p>
         <div className="grid md:grid-cols-3 grid-cols-2 md:gap-6 gap-2 ">
@@ -201,7 +201,7 @@ const Home = () => {
             <div
               key={index}
               onClick={() => handleTrackOpen(items?.product_id)}
-              className="mt-6 cursor-pointer font-urbanist md:p-[13px] p-[5px] border hover:border hover:border-1 hover:shadow-lg rounded-2xl "
+              className="mt-6 cursor-pointer font-urbanist md:p-[13px] p-[5px]  rounded-2xl "
             >
               <div className="flex ">
                 <Image
@@ -215,11 +215,11 @@ const Home = () => {
                 />
               </div>
               <div className=" ">
-                <p className="text-black  font-semibold text-[20px] t">
-                  {items?.name}
+                <p className="text-black  font-semibold md:text-[20px] text-[14px]">
+                  {items?.product_name}
                 </p>
-                <div className="text-black font-semibold text-[20px] pt-2 flex items-center ">
-                  <img src="/images/Naira.png" alt="" />
+                <div className="text-black font-semibold md:text-[20px] text-[14px] pt-2 flex items-center ">
+                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[12px] w-[12px]' />
                   <p className="pl-1">{Math.floor(items?.amount)}</p>
                 </div>
               </div>
@@ -250,11 +250,11 @@ const Home = () => {
         </div>
       </div> */}
 
-      <section className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-4">
+      <section className="py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-4">
         <div className='md:block hidden' >
           <img src="/images/map.png" alt="" />
         </div>
-        <div className="md:mt-0 mt-10 ">
+        <div className="md:mt-0 mt-0 ">
           <img src="/images/maplocation.png" alt="" />
         </div>
       </section>

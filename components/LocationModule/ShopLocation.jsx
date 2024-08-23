@@ -26,10 +26,10 @@ const ShopLocation = () => {
   ];
   return (
     <section>
-      <div className="bg-[#E7EBF6] py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px]  md:flex items-center justify-between ">
+      <div className="bg-[#E7EBF6] py-20 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px]  md:flex items-center justify-between ">
         <div>
           <p>{"Product category" < "frozenfoods"} </p>
-          <p className="text-[39px] font-bold text-black font-montserrat">
+          <p className="md:text-[39px]  text-[30px] font-bold text-black font-montserrat">
             Explore Tingos Store location
           </p>
         </div>
@@ -37,12 +37,12 @@ const ShopLocation = () => {
           <img src="/images/locationcartbanner.png" alt='' />
         </div>
       </div>
-      <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] font-montserrat ">
+      <div className="py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] font-montserrat ">
         {storedata?.map((data, index) => (
           <div key={index}  className="border rounded-xl mb-9 border-gray-300 md:p-[50px] p-[7px]    w-full">
             <p className="font-[500] text-[24px]"> {data?.location}</p>
 
-            <div className="mt-2 md:flex justify-between items-center font-[400] text-[14px] md:text-[16px]">
+            <div className="mt-2 flex justify-between items-center font-[400] text-[14px] md:text-[16px]">
               <p className='md:py-0 py-3' >{data.location}</p>
               <div className='md:py-0 py-3'>
                 <p>Opening time</p>

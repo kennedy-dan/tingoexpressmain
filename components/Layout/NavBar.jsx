@@ -97,7 +97,7 @@ const NavBar = () => {
 
   return (
     <section>
-      <div className="bg-white flex justify-between items-center font-montserrat px-10 lg:px-[20px] xl:px-[100px]">
+      <div className="bg-white flex justify-between items-center font-montserrat px-5 lg:px-[20px] xl:px-[100px]">
         <Link href="/">
           <img src="/images/navbarlogo.png" alt="" className=" " />
         </Link>
@@ -184,7 +184,7 @@ const NavBar = () => {
         </div>
 
         <div className="lg:hidden block" onClick={showDrawerAdv}>
-          <IoIosMenu />
+          <IoIosMenu size={26} />
         </div>
       </div>
       <OrderHistoryCard
