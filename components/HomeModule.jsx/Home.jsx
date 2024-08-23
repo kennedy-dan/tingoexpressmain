@@ -80,19 +80,18 @@ const Home = () => {
       product_id: id,
       quantity: quantity,
     };
-    dispatch(addtocart(data));
+    dispatch(addtocart(data)).then(({ error }) => {
+      if (!error) {
+        dispatch(getcartData());
+      }
+    });
   };
 
-  useEffect(() => {
-    if(token) {
-      const timer = setTimeout(() => {
-        dispatch(getcartData());
-      }, 6000); // 5000 milliseconds = 5 seconds
-
-      // Cleanup function to clear the timer if the component unmounts
-      return () => clearTimeout(timer);
-    }
-  }, [addcart]);
+  // useEffect(() => {
+  //   if (token) {
+  //     dispatch(getcartData());\
+  //   }
+  // }, [addcart]);
 
   useEffect(() => {
     if (addcart.success) {
