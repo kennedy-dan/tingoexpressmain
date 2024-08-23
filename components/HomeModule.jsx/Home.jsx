@@ -25,7 +25,7 @@ const Home = () => {
   const { getcats, getstore, topsell, singleproducts, addcart } = useSelector(
     (state) => state.product
   );
-  const { token } = useSelector((state) => state.auth);
+  const { token, user } = useSelector((state) => state.auth);
 
   const storedata = getstore?.results?.data?.data;
   const getSingleProductData = singleproducts?.results?.data?.data?.data;
@@ -80,18 +80,14 @@ const Home = () => {
       product_id: id,
       quantity: quantity,
     };
-    dispatch(addtocart(data)).then(({ error }) => {
-      if (!error) {
-        dispatch(getcartData());
-      }
-    });
+    dispatch(addtocart(data));
   };
 
-  // useEffect(() => {
-  //   if (token) {
-  //     dispatch(getcartData());\
-  //   }
-  // }, [addcart]);
+  useEffect(() => {
+    if (user?.first_name) {
+      dispatch(getcartData());
+    }
+  }, [addcart]);
 
   useEffect(() => {
     if (addcart.success) {
