@@ -13,10 +13,15 @@ const HomeLayout = ({children}) => {
   const {token, user} = useSelector(state => state.auth)
 
   useEffect(() => {
-    if(token && token, user) {
-      dispatch(getcartData())
+    if(token && user) {
+      const timer = setTimeout(() => {
+        dispatch(getcartData());
+      }, 5000); // 5000 milliseconds = 5 seconds
+
+      // Cleanup function to clear the timer if the component unmounts
+      return () => clearTimeout(timer);
     }
-  }, [])
+  }, [token, user, dispatch]);
   return (
     <>
         <NavBar />
