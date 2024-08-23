@@ -166,7 +166,7 @@ const Products = () => {
               </div>
 
               <div className="">
-                <p className="text-black font-semibold md:text-[20px] text-[14px]">
+                <p className="text-black font-semibold md:text-[20px] text-[16px]">
                   {items.name}
                 </p>
                 <div className="text-black font-semibold md:text-[20px] text-[14px] flex items-center">

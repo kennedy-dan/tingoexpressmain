@@ -173,7 +173,7 @@ const SingleShopLocationn = ({name}) => {
                     <p className="text-black  font-semibold md:text-[20px] text-[14px] t">
                       {items.name}
                     </p>
-                    <div className="text-black font-semibold md:text-[20px] text-[14px] flex items-center ">
+                    <div className="text-black font-semibold md:text-[20px] text-[16px] flex items-center ">
                       <img src="/images/Naira.png" alt="" />
                       <p className="pl-1">{Math.floor(items.unit_price)}</p>
                     </div>
