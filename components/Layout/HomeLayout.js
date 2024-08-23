@@ -15,7 +15,7 @@ const HomeLayout = ({children}) => {
   useEffect(() => {
     if(token && user) {
       const timer = setTimeout(() => {
-        dispatch(getcartData());
+        // dispatch(getcartData());
       }, 5000); // 5000 milliseconds = 5 seconds
 
       // Cleanup function to clear the timer if the component unmounts

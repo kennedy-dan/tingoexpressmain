@@ -87,7 +87,7 @@ const Home = () => {
     if (token) {
       dispatch(getcartData());
     }
-  }, [addcart, token]);
+  }, [addcart]);
 
   useEffect(() => {
     if (addcart.success) {
