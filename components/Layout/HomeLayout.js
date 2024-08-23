@@ -10,10 +10,10 @@ import SearchInput from './SearchInput';
 const HomeLayout = ({children}) => {
   // const { width } = useWindowDimension();
   const dispatch = useDispatch()
-  const {token} = useSelector(state => state.auth)
+  const {token, user} = useSelector(state => state.auth)
 
   useEffect(() => {
-    if(token) {
+    if(token && token, user) {
       dispatch(getcartData())
     }
   }, [])
