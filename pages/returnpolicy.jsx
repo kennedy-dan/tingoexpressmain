@@ -8,7 +8,7 @@ const Return = () => {
         <div className="bg-[#E7EBF6] px-[100px] flex items-center justify-between ">
           <div>
             <p>{"Product category" < "frozenfoods"} </p>
-            <p className="text-[54px] font-bold text-black font-montserrat">
+            <p className="md:text-[54px] text-[22px] font-bold text-black font-montserrat">
               Return Policy
             </p>
           </div>
