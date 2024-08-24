@@ -85,7 +85,7 @@ const Home = () => {
 
   useEffect(() => {
     if (user?.first_name) {
-      dispatch(getcartData());
+      // dispatch(getcartData());
     }
   }, [addcart]);
 
