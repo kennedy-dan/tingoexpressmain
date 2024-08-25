@@ -218,8 +218,8 @@ const Home = () => {
                 <p className="text-black  font-semibold md:text-[20px] text-[13px] md:pt-0 pt-1">
                   {items?.product_name}
                 </p>
-                <div className="text-black font-semibold md:text-[20px] text-[14px] pt-2 flex items-center ">
-                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[8px] w-[8px] pr-1' />
+                <div className="text-black font-semibold md:text-[20px] text-[13px] pt-2 flex items-center ">
+                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[10px] w-[10px] mr-1' />
                   < >{Math.floor(items?.amount)}</>
                 </div>
               </div>
