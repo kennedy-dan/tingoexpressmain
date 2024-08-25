@@ -161,7 +161,7 @@ const Home = () => {
       </section>
 
       <div className=" py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
-        <p className="md:text-[32px] text-[22px] font-montserrat font-semibold ">
+        <p className="md:text-[32px] text-[17px] font-montserrat font-semibold ">
           Featured Categories
         </p>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2  md:gap-4 gap-2 ">
@@ -183,7 +183,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="details  bg-[#F3F3F3] md:-mt-24 -mt-12  md:pt-14 pt-7  rounded-3xl">
-                  <p className="text-black md:py-12 py-5 text-center font-semibold md:text-[20px] text-[15px]">
+                  <p className="text-black md:py-12 py-5 text-center font-semibold md:text-[20px] text-[13px]">
                     {items?.name}
                   </p>
                 </div>
@@ -193,7 +193,7 @@ const Home = () => {
         </div>
       </div>
       <div className=" py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
-        <p className="md:text-[32px] text-[22px] font-montserrat font-semibold ">
+        <p className="md:text-[32px] text-[17px] font-montserrat font-semibold ">
           Top Selling Product
         </p>
         <div className="grid md:grid-cols-3 grid-cols-2 md:gap-6 gap-2 ">
@@ -215,11 +215,11 @@ const Home = () => {
                 />
               </div>
               <div className=" ">
-                <p className="text-black  font-semibold md:text-[20px] text-[14px]">
+                <p className="text-black  font-semibold md:text-[20px] text-[13px] md:pt-0 pt-1">
                   {items?.product_name}
                 </p>
-                <div className="text-black font-semibold md:text-[20px] text-[16px] pt-2 flex items-center ">
-                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[12px] w-[12px]' />
+                <div className="text-black font-semibold md:text-[20px] text-[14px] pt-2 flex items-center ">
+                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[10px] w-[10px]' />
                   <p className="pl-1">{Math.floor(items?.amount)}</p>
                 </div>
               </div>
