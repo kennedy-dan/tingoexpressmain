@@ -166,13 +166,14 @@ const Products = () => {
               </div>
 
               <div className="">
-                <p className="text-black font-semibold md:text-[20px] text-[16px]">
-                  {items.name}
+              <p className="text-black  font-semibold md:text-[20px] text-[13px] md:pt-0 pt-1">
+                  {items?.name}
                 </p>
-                <div className="text-black font-semibold md:text-[20px] text-[14px] flex items-center">
-                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[12px] w-[12px]' />
-                  <p className="pl-1">{Math.floor(items.unit_price)}</p>
+                <div className="text-black font-semibold md:text-[20px] text-[13px] pt-2 flex items-center ">
+                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[10px] w-[10px] mr-1' />
+                  < >{Math.floor(items?.unit_price)}</>
                 </div>
+            
               </div>
             </div>
           ))}
