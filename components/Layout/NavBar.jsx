@@ -98,7 +98,7 @@ const NavBar = () => {
 
   return (
     <section>
-      <div className="bg-white flex justify-between items-center font-montserrat px-5 lg:px-[20px] xl:px-[100px]">
+      <div className="bg-white flex justify-between w-full sticky-header items-center font-montserrat px-5 lg:px-[20px] xl:px-[100px]">
         <Link href="/">
           <img src="/images/navbarlogo.png" alt="" className=" " />
         </Link>

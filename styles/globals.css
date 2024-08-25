@@ -46,3 +46,24 @@
   display: none; /* Hide the placeholder when focused */
 }
 
+.sticky-header {
+  /* position: -webkit-sticky; For Safari */
+  position: fixed;
+  top: 0;
+  /* background-color: #333; */
+  /* color: white; */
+  /* padding: 10px; */
+  text-align: center;
+  z-index: 1000;
+}
+
+.sticky-search {
+  /* position: -webkit-sticky; For Safari */
+  position: fixed;
+  top: 10;
+  /* background-color: #333; */
+  /* color: white; */
+  /* padding: 10px; */
+  text-align: center;
+  z-index: 1000;
+}

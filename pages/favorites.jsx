@@ -5,7 +5,7 @@ import { Modal } from "antd/lib";
 import { ClipLoader } from "react-spinners";
 import Image from "next/image";
 import ProductDescription from '@/components/UI/ProductDescription';
-import { MdOutlineFavorite, MdFavorite } from "react-icons/md";
+import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { toast } from "react-toastify";
 
 import { addtocart, getSingleProduct, getcartData, favAction, getFavorites } from "@/store/slice/productSlice";
@@ -96,25 +96,25 @@ useEffect(() => {
   return (
     <HomeLayout>
     <section>
-        <div className='bg-[#E7EBF6] lg:px-[100px] flex items-center justify-between ' >
+        <div className=' bg-[#E7EBF6] py-10 md:py-0 md:mt-20 mt-8 px-4 lg:px-[20px]  xl:px-[100px] flex items-center justify-between ' >
             <div>
-                <p>{"Product category" < "frozenfoods" }  </p>
-            <p className='text-[54px] font-bold text-black font-montserrat' >Favorite</p>
+                <p>{"Home" < "Favorites" }  </p>
+            <p className='md:text-[54px] text-[22px] font-bold text-black font-montserrat' >Favorite</p>
 
             </div>
-            <div>
+            <div className='md:block hidden'>
                 <img src='/images/favouritecartbanner.png' alt='' />
             </div>
         </div>
       
-      <div className="py-20 px-10 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
+      <div className="py-10 px-6 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
       {!currentItems?.length && <div className='mt-4' ><p className='font-[500] text-4xl' >No record found</p></div>}
   
   
         <div className="grid lg:grid-cols-3 grid-cols-2 gap-6 ">
         {currentItems?.map((items, index) => (
             <div key={index} className="mt-6 font-urbanist">
-              <div className="relative border border-1 rounded-xl md:p-5 p-4">
+              <div className="relative ">
                 <div
                   className="flex"
                   onClick={() => handleTrackOpen(items?.product?.id)}
@@ -128,7 +128,7 @@ useEffect(() => {
                   />
                 </div>
                 <div
-                  className="absolute top-[10%] z-[100] right-[23%] cursor-pointer"
+                  className="absolute top-[10%] z-[100] right-[10%] md:right-[15%] cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleFavoriteClick(items?.product?.id, items?.is_favorite);
@@ -137,21 +137,22 @@ useEffect(() => {
                   {loadingFavorites[items?.product?.id] ? (
                     <ClipLoader size={20} color="#000000" />
                   ) : items?.is_favorite ? (
-                    <MdFavorite color="red" />
+                    <MdOutlineFavoriteBorder size={26} color="red" />
                   ) : (
-                    <MdOutlineFavorite />
+                    <MdOutlineFavoriteBorder size={26} color="black"   />
                   )}
                 </div>
               </div>
 
               <div className="">
-                <p className="text-black font-semibold text-[20px]">
-                {items?.product?.name}
-                </p>
-                <div className="text-black font-semibold text-[20px] flex items-center">
-                  <img src="/images/Naira.png" alt="" />
-                  <p className="pl-1">{Math.floor(items?.product?.unit_price)}</p>
+              <p className="text-black  font-semibold md:text-[20px] text-[13px] md:pt-0 pt-1">
+              {items?.product?.name}
+              </p>
+                <div className="text-black font-semibold md:text-[20px] text-[13px] pt-2 flex items-center ">
+                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[10px] w-[10px] mr-1' />
+                  < >{Math.floor(items?.product?.unit_price)}</>
                 </div>
+               
               </div>
             </div>
           ))}

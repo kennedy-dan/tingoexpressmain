@@ -67,7 +67,7 @@ const Contact = () => {
               gravida nibh ultrices urna egestas lectus tempus. Eu eu dui tellus
               mattis feugiat et elementum convallis sit. Velit porttitor nam
               auctor a commodo at risus nisl elementum.
-            </p>    <p className="md:text-[20px] text-[16px] mt-1 font-semibold " >CONTACT INFORMATION</p>
+            </p>    <p className="md:text-[20px] text-[13px] mt-1 font-semibold " >CONTACT INFORMATION</p>
             <p className="font-[400] md:text-[16px] text-[13px] pt-3 pb-5 " >
               Lorem ipsum dolor sit amet consectetur. Sodales velit elementum
               gravida nibh ultrices urna egestas lectus tempus. Eu eu dui tellus

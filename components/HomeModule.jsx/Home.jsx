@@ -31,7 +31,7 @@ const Home = () => {
   const getSingleProductData = singleproducts?.results?.data?.data?.data;
 
   const handleResize = () => {
-    setIsMobile(window.innerWidth <= 768);
+    setIsMobile(window.innerWidth <= 568);
   };
 
   useEffect(() => {
@@ -80,14 +80,18 @@ const Home = () => {
       product_id: id,
       quantity: quantity,
     };
-    dispatch(addtocart(data));
+    dispatch(addtocart(data)).then(({ error }) => {
+      if (!error) {
+        dispatch(getcartData());
+      }
+    });
   };
 
-  useEffect(() => {
-    if (user?.first_name) {
-      // dispatch(getcartData());
-    }
-  }, [addcart]);
+  // useEffect(() => {
+  //   if (user?.first_name) {
+  //     // dispatch(getcartData());
+  //   }
+  // }, [addcart]);
 
   useEffect(() => {
     if (addcart.success) {

@@ -31,7 +31,7 @@ const HomeLayout = ({children}) => {
         //   overflowY: "auto",
         // }}
       >
-        <div className='flex justify-center md:hidden ' >
+        <div className='flex justify-center lg:hidden ' >
           <SearchInput />
         </div>
         <main>{children}</main>

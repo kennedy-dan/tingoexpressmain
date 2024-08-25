@@ -7,52 +7,52 @@ const Footer = () => {
       <div className="lg:flex justify-between lg:px-20 md:px-10 px-6">
         <div>
           <img src="images/navbarlogo.png" alt="" className=" " />
-          <p className="text-white mt-4 ">
+          {/* <p className="text-white mt-4 ">
             Lorem ipsum dolor sit amet <br /> consectetur. Sodales velit <br />{" "}
             elementum gravida nibh ultrices <br /> urna egestas lectus tempus.
             Eu <br /> eu dui tellus mattis feugiat et <br /> elementum.
-          </p>
+          </p> */}
           <p className="my-6 text-white ">Follow us on</p>
           <div>
             <img src="/images/socials.png" alt="" />
           </div>
         </div>
         <div className="text-white lg:pt-6 pt-6">
-          <p className="text-white text-[24px] font-semibold pb-4 ">Explore</p>
+          <p className="text-white text-[18px] md:text-[24px] font-semibold pb-4 ">Explore</p>
           <Link href="/about">
-            <p className="text-[18px] mb-3  ">About us</p>
+            <p className="md:text-[18px] text-[13px] mb-3  ">About us</p>
           </Link>
           <Link href="/product">
-            <p className="text-[18px] mb-3  ">Products</p>
+            <p className="md:text-[18px] text-[13px] mb-3  ">Products</p>
           </Link>
 
-          <p className="text-[18px] mb-3  ">Blogs</p>
+          <p className="md:text-[18px] text-[13px] mb-3  ">Blogs</p>
 
-          <p className="text-[18px] mb-3  ">New arrivals</p>
-          <p className="text-[18px] mb-3  ">Location</p>
+          <p className="md:text-[18px] text-[13px] mb-3  ">New arrivals</p>
+          <p className="md:text-[18px] text-[13px]mb-3  ">Location</p>
         </div>
 
         <div className="text-white lg:pt-6 pt-6">
-          <p className="text-white text-[24px] font-semibold pb-4 ">
+          <p className="text-white text-[18px] md:text-[24px] font-semibold pb-4 ">
             Terms & Conditions
           </p>
 
           <Link href="/returnpolicy">
-            <p className="text-[18px] mb-3  ">Return Poicy</p>
+            <p className="md:text-[18px] text-[13px] mb-3  ">Return Poicy</p>
           </Link>
           <Link href="/privacy-policy">
-            <p className="text-[18px] mb-3  ">Privacy Policy</p>
+            <p className="md:text-[18px] text-[13px] mb-3  ">Privacy Policy</p>
           </Link>
           <Link href="/cookies">
-            <p className="text-[18px] mb-3  ">Cookie Policy</p>
+            <p className="md:text-[18px] text-[13px] mb-3  ">Cookie Policy</p>
           </Link>
           <Link href="/dataprivacy">
-            <p className="text-[18px] mb-3  ">Data Privacy Statement</p>
+            <p className="md:text-[18px] text-[13px] mb-3  ">Data Privacy Statement</p>
           </Link>
         </div>
 
         <div className="lg:w-[40%] w-full lg:pt-6 pt-6">
-          <p className="text-[24px] font-  text-white pb-2">
+          <p className="text-[18px] md:text-[24px] font-  text-white pb-2">
             Sign up for our newsletters
           </p>
           <div className="flex h-[54px]  ">

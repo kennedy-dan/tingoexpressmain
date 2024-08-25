@@ -6,10 +6,10 @@ const SearchInput = () => {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <div className="flex items-center h-[] py-4">
-      <div className="relative h-[56px] ">
+    <div className="flex items-center mt-20  h-[] py-4">
+      <div className="relative h-[56px] bg-white ">
         <div
-          className={` h-full rounded-l-lg border-gray-400 border lg:w-[230px] xl:w-[350px] custom-input ${
+          className={` h-full rounded-l-lg border-gray-400 border  lg:w-[230px] xl:w-[350px] custom-input ${
             isFocused || inputValue ? "focused" : ""
           }`}
         >
