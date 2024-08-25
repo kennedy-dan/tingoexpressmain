@@ -130,14 +130,14 @@ const Home = () => {
                 className={`  w-full flex justify-center h-full font-montserrat items-center bg-no-repeat md:bg-cover bg-auto bg-center bg-blend-multiply b`}
               >
                 <div className=" ">
-                  <p className="font-semibold  text-center text-[24px] md:text-[30px] lg:text-[54px] tracking-tight leading-[30px] md:leading-[65px]  text-white ">
+                  <p className="font-semibold  text-center text-[19px] md:text-[30px] lg:text-[54px] tracking-tight leading-[30px] md:leading-[65px]  text-white ">
                     Discover the Future <br className='hidden md:block' /> of Grocery Shopping <br className='hidden md:block' /> with
                     Tingo Express{" "}
                   </p>
-                  <div className="flex justify-center md:w-fit w-full mt-6">
+                  <div className="flex text-[15px] md:text-base justify-center md:w-fit w-full mt-6">
                     <button
                       onClick={handleLocOpen}
-                      className="md:w-[550px] w-[250px] bg-secondary  text-white py-4 rounded-lg "
+                      className="md:w-[550px] w-[250px] bg-secondary  text-white md:py-4 py-2 rounded-lg "
                     >
                       Shop Now
                     </button>
