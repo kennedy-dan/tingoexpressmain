@@ -219,7 +219,7 @@ const Home = () => {
                   {items?.product_name}
                 </p>
                 <div className="text-black font-semibold md:text-[20px] text-[14px] pt-2 flex items-center ">
-                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[10px] w-[10px]' />
+                  <img src="/images/Naira.png" alt="" className='md:h-fit md:w-fit h-[11px] w-[11px]' />
                   <p className="pl-1">{Math.floor(items?.amount)}</p>
                 </div>
               </div>
