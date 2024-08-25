@@ -74,7 +74,7 @@ const Contact = () => {
               mattis feugiat et elementum convallis sit. Velit porttitor nam
               auctor a commodo at risus nisl elementum.
             </p>
-            <div className="flex text-[20px] mt-1 pb-4 font-semibold justify-between" >
+            <div className="flex text-[16px] md:text-[20px] mt-1 pb-4 font-semibold justify-between" >
                 <p>Tingo’s Supermarket location</p>
                 <p>Phone Number</p>
             </div>
