@@ -7,18 +7,18 @@ const Footer = () => {
       <div className="lg:flex justify-between lg:px-20 md:px-10 px-6">
         <div>
           <img src="images/navbarlogo.png" alt="" className=" " />
-          {/* <p className="text-white mt-4 ">
-            Lorem ipsum dolor sit amet <br /> consectetur. Sodales velit <br />{" "}
-            elementum gravida nibh ultrices <br /> urna egestas lectus tempus.
-            Eu <br /> eu dui tellus mattis feugiat et <br /> elementum.
-          </p> */}
+          <p className="text-white mt-4 md:block hidden ">
+        Welcome to Tingo Express,<br /> where grocery shopping is made fast, <br /> easy, and convenient. 
+          </p>
           <p className="my-6 text-white ">Follow us on</p>
           <div>
             <img src="/images/socials.png" alt="" />
           </div>
         </div>
         <div className="text-white lg:pt-6 pt-6">
-          <p className="text-white text-[18px] md:text-[24px] font-semibold pb-4 ">Explore</p>
+          <p className="text-white text-[18px] md:text-[24px] font-semibold pb-4 ">
+            Explore
+          </p>
           <Link href="/about">
             <p className="md:text-[18px] text-[13px] mb-3  ">About us</p>
           </Link>
@@ -29,7 +29,9 @@ const Footer = () => {
           <p className="md:text-[18px] text-[13px] mb-3  ">Blogs</p>
 
           <p className="md:text-[18px] text-[13px] mb-3  ">New arrivals</p>
-          <p className="md:text-[18px] text-[13px]mb-3  ">Location</p>
+          <Link href="/location">
+            <p className="md:text-[18px] text-[13px] mb-3  ">Location</p>
+          </Link>
         </div>
 
         <div className="text-white lg:pt-6 pt-6">
@@ -47,7 +49,9 @@ const Footer = () => {
             <p className="md:text-[18px] text-[13px] mb-3  ">Cookie Policy</p>
           </Link>
           <Link href="/dataprivacy">
-            <p className="md:text-[18px] text-[13px] mb-3  ">Data Privacy Statement</p>
+            <p className="md:text-[18px] text-[13px] mb-3  ">
+              Data Privacy Statement
+            </p>
           </Link>
         </div>
 

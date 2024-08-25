@@ -12,16 +12,20 @@ const Contact = () => {
               Contact Us
             </p>
           </div>
-          <div className="md:flex hidden" >
-            <img src="/images/contactcartbanner.png" alt='' />
+          <div className="md:flex hidden">
+            <img src="/images/contactcartbanner.png" alt="" />
           </div>
         </div>
 
         <div className="md:flex py-20 px-6 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] font-montserrat">
           <div className="md:w-1/2 font-montserrat ">
-            <p className="font-semibold text-[18px] md:text-[34px] ">Leave A Message</p>
+            <p className="font-semibold text-[18px] md:text-[34px] ">
+              Leave A Message
+            </p>
             <div className="md:mt-16 mt-10">
-              <p className="font-semibold md:text-base text-[16px]">Enter Full Name</p>
+              <p className="font-semibold md:text-base text-[16px]">
+                Enter Full Name
+              </p>
               <input
                 placeholder="Enter Your Email Address"
                 className=" w-full md:w-[96%] pl-5 outline-none border border-[#C9C5CC] bg-[#F9F9F9] rounded-lg py-5"
@@ -54,32 +58,39 @@ const Contact = () => {
             <p className="font-semibold text-[18px] md:text-[34px] ">
               We would love to hear from you!
             </p>
-            <p className="md:text-[20px] text-[16px] mt-8 md:mt-16 font-semibold " >HEAD OFFICE</p>
-            <p className="font-[400] md:text-[16px] text-[13px] pt-3 pb-2 " >
-              Lorem ipsum dolor sit amet consectetur. Sodales velit elementum
-              gravida nibh ultrices urna egestas lectus tempus. Eu eu dui tellus
-              mattis feugiat et elementum convallis sit. Velit porttitor nam
-              auctor a commodo at risus nisl elementum.
+            <p className="md:text-[20px] text-[16px] mt-8 md:mt-16 font-semibold ">
+              HEAD OFFICE
             </p>
-            <p className="md:text-[20px] text-[16px]] mt-1 font-semibold " >BUSINESS HOURS</p>
-            <p className="font-[400] md:text-[16px] text-[13px] pt-3 pb-5 " >
-              Lorem ipsum dolor sit amet consectetur. Sodales velit elementum
-              gravida nibh ultrices urna egestas lectus tempus. Eu eu dui tellus
-              mattis feugiat et elementum convallis sit. Velit porttitor nam
-              auctor a commodo at risus nisl elementum.
-            </p>    <p className="md:text-[20px] text-[13px] mt-1 font-semibold " >CONTACT INFORMATION</p>
-            <p className="font-[400] md:text-[16px] text-[13px] pt-3 pb-5 " >
-              Lorem ipsum dolor sit amet consectetur. Sodales velit elementum
-              gravida nibh ultrices urna egestas lectus tempus. Eu eu dui tellus
-              mattis feugiat et elementum convallis sit. Velit porttitor nam
-              auctor a commodo at risus nisl elementum.
+            <p className="font-[400] md:text-[16px] text-[13px] pt-3 pb-2 ">
+              6 Ahmed Onibudo street, VI, Lagos.
             </p>
-            <div className="flex text-[16px] md:text-[20px] mt-1 pb-4 font-semibold justify-between" >
-                <p>Tingo’s Supermarket location</p>
-                <p>Phone Number</p>
+            {/* <p className="md:text-[20px] text-[16px]] mt-1 font-semibold ">
+              BUSINESS HOURS
+            </p>
+            <p className="font-[400] md:text-[16px] text-[13px] pt-3 pb-5 ">
+              Lorem ipsum dolor sit amet consectetur. Sodales velit elementum
+              gravida nibh ultrices urna egestas lectus tempus. Eu eu dui tellus
+              mattis feugiat et elementum convallis sit. Velit porttitor nam
+              auctor a commodo at risus nisl elementum.
+            </p>{" "} */}
+            <p className="md:text-[20px] text-[13px] mt-1 font-semibold ">
+              CONTACT INFORMATION
+            </p>
+            <p className="font-[400] md:text-[16px] text-[13px] pt-3 pb-5 ">
+              support@tingoexpress.com
+            </p>
+            <div className="flex text-[13px] md:text-[20px] mt-1 pb-4 font-semibold justify-between">
+              <p>Tingo’s Supermarket location</p>
+              <p>Phone Number</p>
             </div>
-            <img src='/images/loc.png' alt='' />
-
+            <div className="flex justify-between md:text-base text-[13px] font-[500]">
+              <div className="border border-1 py-3 px-2 border-gray-400 rounded-xl">
+                <p>Tingo supermarket- Ikeja</p>
+              </div>
+              <div className="border border-1 py-3 px-2 border-gray-400 rounded-xl">
+                <p>08023476581</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

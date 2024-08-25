@@ -254,7 +254,7 @@ const Home = () => {
         </div>
       </div> */}
 
-      <section className="pt-10 px-5 md:bg-[#F4F3F5] lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-6">
+      <section className="py-10 px-5 md:bg-[#F4F3F5] lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-6">
         <div className='md:block hidden md:w-1/2' >
           <img src="/images/map.png" alt="" />
         </div>
