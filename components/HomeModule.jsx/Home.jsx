@@ -250,13 +250,23 @@ const Home = () => {
         </div>
       </div> */}
 
-      <section className="py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-4">
-        <div className='md:block hidden' >
+      <section className="py-10 px-5 bg-[#F4F3F5] lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-6">
+        <div className='md:block hidden md:w-1/2' >
           <img src="/images/map.png" alt="" />
         </div>
-        <div className="md:mt-0 mt-0 ">
+        <section className="" >
+          <p className="md:text-[32px] text-[17px] font-montserrat font-semibold ">Tingo's Supermarket location</p>
+
+          <div className='flex justify-between bg-white mt-3 border border-1 border-gray-400 items-center rounded-xl px-3 py-4' >
+            <p className=' text-[13px] md:text-[18px] font-semibold' >Tingo's Supermarket Ajah</p>
+            <div className='bg-[#FFF8F4] rounded-full h-9 w-9 flex justify-center items-center' >
+              <img src='/images/carticon.png' className='w-6 h-6'  />
+            </div>
+          </div>
+        </section>
+        {/* <div className="md:mt-0 mt-0 ">
           <img src="/images/maplocation.png" alt="" />
-        </div>
+        </div> */}
       </section>
 
       <Modal
@@ -278,15 +288,15 @@ const Home = () => {
         onCancel={handleLocClose}
         footer={false}
       >
-        <div className="flex justify-center font-montserrat text-center p-[50px] ">
+        <div className="flex justify-center font-montserrat text-center p-10 md:p-[50px] ">
           <div>
             <div className="flex justify-center mb-4">
               <img src="/images/storeloc.png" alt="" />
             </div>
-            <p className="font-semibold text-black text-[32px] ">
+            <p className="font-semibold text-black text-[18px] md:text-[32px] ">
               Find Tingo Express Near Me{" "}
             </p>
-            <p className="text-[#827568] font-[400] text-[16px] mt-8 ">
+            <p className="text-[#827568] font-[400] text-[13px] md:text-[16px] mt-8 ">
               Locate Tingo Express effortlessly by entering your location bellow
               or use you current location
             </p>
