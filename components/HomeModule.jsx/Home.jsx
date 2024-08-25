@@ -255,10 +255,10 @@ const Home = () => {
           <img src="/images/map.png" alt="" />
         </div>
         <section className="" >
-          <p className="md:text-[32px] text-[17px] font-montserrat font-semibold ">Tingo's Supermarket location</p>
+          <p className="md:text-[32px] text-[17px] font-montserrat font-semibold">Tingo&apos;s Supermarket location</p>
 
           <div className='flex justify-between bg-white mt-3 border border-1 border-gray-400 items-center rounded-xl px-3 py-4' >
-            <p className=' text-[13px] md:text-[18px] font-semibold' >Tingo's Supermarket Ajah</p>
+            <p className=' text-[13px] md:text-[18px] font-semibold' >Tingo&apos;s Supermarket Ajah</p>
             <div className='bg-[#FFF8F4] rounded-full h-9 w-9 flex justify-center items-center' >
               <img src='/images/carticon.png' className='w-6 h-6'  />
             </div>
