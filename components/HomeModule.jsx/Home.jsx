@@ -250,7 +250,7 @@ const Home = () => {
         </div>
       </div> */}
 
-      <section className="py-10 px-5 bg-[#F4F3F5] lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-6">
+      <section className="pt-10 px-5 md:bg-[#F4F3F5] lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] md:flex md:space-x-6">
         <div className='md:block hidden md:w-1/2' >
           <img src="/images/map.png" alt="" />
         </div>
@@ -288,7 +288,7 @@ const Home = () => {
         onCancel={handleLocClose}
         footer={false}
       >
-        <div className="flex justify-center font-montserrat text-center p-10 md:p-[50px] ">
+        <div className="flex justify-center font-montserrat text-center p-6 md:p-[50px] ">
           <div>
             <div className="flex justify-center mb-4">
               <img src="/images/storeloc.png" alt="" />

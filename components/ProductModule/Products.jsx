@@ -118,8 +118,8 @@ const Products = () => {
   return (
     <section>
       <div className="bg-[#E7EBF6] py-20 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px] flex items-center justify-between ">
-        <p className="md:text-[54px] text-[30px] font-bold text-black font-montserrat ">
-          Product Categories
+        <p className="md:text-[54px] text-[22px] font-bold text-black font-montserrat ">
+          Products
         </p>
         <div className="md:block hidden">
           <img src="/images/prodcartbanner.png" alt="" />
@@ -127,7 +127,7 @@ const Products = () => {
       </div>
 
       <div className="py-10 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px] xl:py-[100px]">
-        <p className="md:text-[28px] text-[22px] font-montserrat font-semibold ">
+        <p className="md:text-[28px] text-[18px] font-montserrat font-semibold ">
           Best Selling Product
         </p>
         <div className="grid lg:grid-cols-3 grid-cols-2 gap-6 ">
