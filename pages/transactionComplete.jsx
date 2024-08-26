@@ -27,7 +27,7 @@ const TranasactionComplete = () => {
         <img src='/images/success.svg' alt='' className='w-[50%]' />
       
       </div>
-      <div className='flex justify-center my-10 ' >
+      <div className='flex justify-center my-10 md:my-20 ' >
           <Link href='/' >
           <button
                 className=" bg-secondary w-[220px] text-white py-4 rounded-lg font-semibold text-[16px] "
