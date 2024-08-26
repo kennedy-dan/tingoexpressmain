@@ -50,10 +50,10 @@ const Login = () => {
 
             </Link>
           </div>
-          <p className="font-semibold text-[38px] text-center ">
+          <p className="font-semibold text-[22px] md:text-[38px text-center ">
             Welcome Back to Tingo Express
           </p>
-          <p className="text-[16px] font-[400] text-[#8A848F] text-center tracking-wide  ">
+          <p className="md:text-[16px] text-[13px] font-[400] text-[#8A848F] text-center tracking-wide  ">
             Login to enjoy our seamless service and for nice shopping experience
           </p>
           <p className="text-[16px] font-[400] text-[#8A848F] text-center ">
