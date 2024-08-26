@@ -23,7 +23,7 @@ const TranasactionComplete = () => {
   
   return (
     <HomeLayout>
-      <div className='h-screen w-screen  flex mt-10 justify-center items-center' >
+      <div className='h-[70vh] w-screen  flex mt-10 justify-center items-center' >
         <img src='/images/success.svg' alt='' className='w-[50%]' />
       
       </div>

@@ -8,7 +8,7 @@ const Footer = () => {
         <div>
           <img src="images/navbarlogo.png" alt="" className=" " />
           <p className="text-white mt-4 md:block hidden ">
-        Welcome to Tingo Express,<br /> where grocery shopping is made fast, <br /> easy, and convenient. 
+        Tingo Express,<br /> where grocery shopping is made fast, <br /> easy, and convenient. 
           </p>
           <p className="my-6 text-white ">Follow us on</p>
           <div>
@@ -26,9 +26,7 @@ const Footer = () => {
             <p className="md:text-[18px] text-[13px] mb-3  ">Products</p>
           </Link>
 
-          <p className="md:text-[18px] text-[13px] mb-3  ">Blogs</p>
-
-          <p className="md:text-[18px] text-[13px] mb-3  ">New arrivals</p>
+     
           <Link href="/location">
             <p className="md:text-[18px] text-[13px] mb-3  ">Location</p>
           </Link>

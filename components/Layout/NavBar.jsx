@@ -185,9 +185,18 @@ const NavBar = () => {
         </div>
 
         <div className="lg:hidden space-x-3 items-center flex">
-          <Link href="/cart">
-            <img alt="" src="/images/carticon.png" />
-          </Link>
+        <div>
+            <Link href="/cart">
+              <div className="relative">
+                <img src="/images/carticon.png" alt="" />
+                <div className="absolute top-[-56%] left-[50%] z-10 ">
+                  <div className="text-[8px] bg-red-800 text-white flex justify-center items-center h-[16px] w-[16px] rounded-full ">
+                    {data?.length}
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
 
           <buton onClick={showDrawerAdv}>
             <IoIosMenu size={26} />

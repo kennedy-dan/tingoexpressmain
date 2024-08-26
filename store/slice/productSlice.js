@@ -332,7 +332,13 @@ export const productSlice = createSlice({
       .addCase(addtocheckout.fulfilled, (state, { payload }) => {
         state.checkout.isLoading = false;
         state.checkout.results = payload;
-        state.checkout.success = true;
+        if(payload?.data){
+          state.checkout.success = true;
+
+        }else {
+          state.checkout.success = false;
+
+        }
 
         
       })

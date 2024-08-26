@@ -31,7 +31,7 @@ const ProductDescription = ({
                   : "/images/topsell.png"
               }
               alt=""
-              className="md:w-[300px] w-full h-[300px] object-contain rounded-lg "
+              className="md:w-[300px] w-full h-[300px] md:object-contain object-cover rounded-lg "
               width={500}
               height={500}
             />
@@ -74,7 +74,7 @@ const ProductDescription = ({
             </div>
             <button
               onClick={() => addToCart(getSingleProductData?.id)}
-              className="bg-secondary w-full text-white mt-6 font-[500] tet-[17px] py-3 rounded-md "
+              className="bg-secondary w-[200px] text-white mt-6 font-[500] tet-[17px]  py-3 rounded-md "
             >
               {addcart?.isLoading ? (
                 <ClipLoader size={12} color="white" />

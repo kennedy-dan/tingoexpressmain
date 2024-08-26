@@ -72,14 +72,14 @@ const Checkout = () => {
   
     let data;
     if (deliveryOption === "pickup") {
-      if(address === ""){
+      if(address === "" || phone ==''){
         toast.error('Input all fields')
         return
       }
       data = {
         name: user?.first_name,
         email: user?.email,
-        // phone: phone,
+        phone: phone,
         state: "Lagos",
         address: address,
         gateway: "Paystack",
@@ -194,6 +194,15 @@ const Checkout = () => {
                     }}
                   />
                 </ConfigProvider>
+                <div className="mt-10">
+                  <p className="font-bold pb-1 mt-9 text-[14px] ">Phone</p>
+                  <input
+                    className="w-full py-5  px-4 text-[16px] border border-gray-400 outline-none "
+                    placeholder="Enter Email Address"
+                    onChange={(e) => setPhone(e.target.value)}
+                    value={phone}
+                  />
+                </div>
               </>
               // <div>
               //   <p className="text-gray-400">Address</p>
