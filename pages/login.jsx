@@ -49,7 +49,7 @@ const Login = () => {
       toast.info("Password is required");
       return;
     }
-    if(newpWord.length < 6){
+    if(pWord.length < 6){
       toast.info('Password must be up to 6 characters')
       return
     }
