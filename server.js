@@ -12,6 +12,7 @@ app.prepare().then(() => {
     // Parse the URL
     const parsedUrl = parse(req.url, true);
     
+    
     // Let Next.js handle the request
     handle(req, res, parsedUrl);
   }).listen(port, (err) => {
