@@ -101,6 +101,8 @@ const SingleShopLocationn = ({name}) => {
     setType("product");
 
   }
+
+
   return (
     <section>
       <div className="bg-[#E7EBF6] py-20 px-5 lg:px-[20px] lg:py-[20px] xl:px-[100px]  md:flex items-center justify-between ">
