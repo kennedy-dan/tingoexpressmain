@@ -273,7 +273,7 @@ const Login = () => {
                   value={input}
                   onChange={(e) => handleChange(index, e.target.value)}
                   ref={(el) => (inputRefs.current[index] = el)}
-                  className="bg-[#F9F9F9] lg:pl-10 md:pl-5 pl-6 w-[71%] rounded-2xl md:py-10 py-5 border-[#C9C5CC] border"
+                  className="bg-[#F9F9F9] lg:pl-10 md:pl-5 pl-5 w-[71%] rounded-2xl md:py-10 py-5 border-[#C9C5CC] border"
                 />
               </div>
             ))}
